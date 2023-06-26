@@ -22,18 +22,15 @@ const Button = ({ title, size = "big", type = "dark", noBorder = false }) => {
       case "light":
         finalType = "text-[#F8F8F8] bg-[#FFF] border-[#275682]";
       case "normal":
-        finalType = "text-#484848 bg-[#FFF],border-[#999]";
+        finalType = "text-[#484848] bg-[#FFF] border-[#999]";
     }
     return finalType;
   };
   return (
     <div
-      className={[
-        "border rounded-[8px]",
-        noBorder === true ? "border-none" : null,
-        btnSize(),
-        btnType(),
-      ].join("")}
+      className={`border rounded-[8px] ${
+        noBorder ? "border-none" : null
+      } ${btnSize()} ${btnType()}`}
     >
       {title}
     </div>
