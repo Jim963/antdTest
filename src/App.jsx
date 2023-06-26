@@ -7,19 +7,19 @@ function App() {
   return (
     <>
       <h1 className="text-3xl font-bold underline"></h1>
-      {/* <ModalOne
+      <ModalOne
         title={"test"}
         isOpen={openModal}
         cancelAction={() => setModal1Open(false)}
         okAction={() => setModal1Open(false)}
-      ></ModalOne> */}
+      ></ModalOne>
 
-      <ModalTwo
-        title={"test"}
+      {/* <ModalTwo
+        title="textTitle"
         isOpen={openModal}
         cancelAction={() => setModal1Open(false)}
         okAction={() => setModal1Open(false)}
-      ></ModalTwo>
+      ></ModalTwo> */}
       <button onClick={() => setModal1Open(true)}>Test</button>
     </>
   );

@@ -5,11 +5,14 @@ const Button = ({ title, size = "big", type = "dark", noBorder = false }) => {
     let finalSize;
     switch (size) {
       case "big":
-        finalSize = "w-[200px] h-[48px]";
+        finalSize = "w-btnBig h-btnBig";
+        break;
       case "middle":
-        finalSize = "w-[150px] h-[48px]";
+        finalSize = "w-btnMiddle h-btnMiddle";
+        break;
       case "small":
-        finalSize = "w-[100px] h-[32px]";
+        finalSize = "w-btnSmall h-btnSmall";
+        break;
     }
     return finalSize;
   };
@@ -18,17 +21,20 @@ const Button = ({ title, size = "big", type = "dark", noBorder = false }) => {
     let finalType;
     switch (type) {
       case "dark":
-        finalType = "text-[#FFF] bg-[#F8F8F8]";
+        finalType = "text-white bg-navyBlue";
+        break;
       case "light":
-        finalType = "text-[#F8F8F8] bg-[#FFF] border-[#275682]";
+        finalType = "text-navyBlue bg-white border-navyBlue";
+        break;
       case "normal":
-        finalType = "text-[#484848] bg-[#FFF] border-[#999]";
+        finalType = "text-black bg-white border-btnBorder";
+        break;
     }
     return finalType;
   };
   return (
     <div
-      className={`border rounded-[8px] ${
+      className={`border rounded-btnRadius ${
         noBorder ? "border-none" : null
       } ${btnSize()} ${btnType()}`}
     >
