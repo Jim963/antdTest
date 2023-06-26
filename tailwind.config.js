@@ -8,5 +8,9 @@ export default {
     extend: {},
   },
   plugins: [],
+  //解決tailwind 與 ant-design衝突
+  corePlugins:{
+    preflight:false
+  }
 }
 
