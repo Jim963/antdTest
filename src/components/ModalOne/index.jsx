@@ -15,12 +15,16 @@ const ModalOne = ({
   const showFooter = () => {
     return (
       <div className="flex flex-row items-center justify-center">
-        <Button size={"large"} onClick={cancelAction}>
-          {cancelText}
-        </Button>
-        <Button type="primary" size={"large"} onClick={okAction}>
-          {okText}
-        </Button>
+        <div className="w-[200px] mx-2">
+          <Button block onClick={cancelAction}>
+            <span className="allCenter text-[16px]">{cancelText}</span>
+          </Button>
+        </div>
+        <div className="w-[200px] mx-2">
+          <Button block type="primary" onClick={okAction}>
+            <span className="allCenter text-[16px]">{okText}</span>
+          </Button>
+        </div>
       </div>
     );
   };
