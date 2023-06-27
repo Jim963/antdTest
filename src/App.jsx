@@ -7,37 +7,24 @@ import { notification, Alert } from "antd";
 function App() {
   //store
   const dispatch = useDispatch();
-  const alertState = useSelector((state) => state.alerts);
-  console.log(alertState, "瞧瞧");
+  const alertList = useSelector((state) => state.alerts.alertList);
 
   const handleAlert = async (type, text) => {
-    const id = type + new Date();
-    dispatch(
-      addAlert({
-        id,
-        type,
-        text,
-      })
-    );
+    const id = type + text + alertList.length;
+    dispatch(addAlert({ id, type, text }));
     await wait(5000);
     dispatch(deleteAlert({ id }));
   };
   //store
 
   const wait = (ms) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(ms);
-      }, ms);
-    });
+    return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
   //notification
   const [api, contextHolder] = notification.useNotification();
   console.log(api, "看看");
   //notification
-
-  const [isAlert, setIsAlert] = useState(false);
 
   //modal
   const [openModal, setModal1Open] = useState(false);
@@ -48,15 +35,9 @@ function App() {
       {contextHolder}
 
       <div className="top-8 horizonCenter flex flex-col items-center justify-center">
-        {alertState.alertList.map((item) => (
-          <div className="w-[500px] py-2">
-            <Alert
-              key={item.id}
-              message={item.text}
-              type={item.type}
-              showIcon
-              closable
-            />
+        {alertList.map((item) => (
+          <div key={item.id} className="w-[500px] py-2">
+            <Alert message={item.text} type={item.type} showIcon closable />
           </div>
         ))}
       </div>
