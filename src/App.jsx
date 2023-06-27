@@ -47,7 +47,7 @@ function App() {
     <>
       {contextHolder}
 
-      <div className="flex flex-col items-center justify-center">
+      <div className="top-8 horizonCenter flex flex-col items-center justify-center">
         {alertState.alertList.map((item) => (
           <div className="w-[500px] py-2">
             <Alert
