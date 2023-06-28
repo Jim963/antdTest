@@ -1,22 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addAlert, deleteAlert, handleAlert } from "./store/slices/alert";
+import { handleAlert } from "./store/slices/alert";
 import ModalOne from "./components/ModalOne";
 import { notification, Alert } from "antd";
-
-import { wait } from "./utils";
 
 function App() {
   //store
   const dispatch = useDispatch();
   const alertList = useSelector((state) => state.alerts.alertList);
-
-  // const handleAlert = async (type, text) => {
-  //   const id = type + text + alertList.length;
-  //   dispatch(addAlert({ id, type, text }));
-  //   await wait(5000);
-  //   dispatch(deleteAlert({ id }));
-  // };
   //store
 
   //notification
