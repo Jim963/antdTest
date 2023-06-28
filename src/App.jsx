@@ -1,25 +1,23 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addAlert, deleteAlert } from "./store/slices/alert";
+import { addAlert, deleteAlert, handleAlert } from "./store/slices/alert";
 import ModalOne from "./components/ModalOne";
 import { notification, Alert } from "antd";
+
+import { wait } from "./utils";
 
 function App() {
   //store
   const dispatch = useDispatch();
   const alertList = useSelector((state) => state.alerts.alertList);
 
-  const handleAlert = async (type, text) => {
-    const id = type + text + alertList.length;
-    dispatch(addAlert({ id, type, text }));
-    await wait(5000);
-    dispatch(deleteAlert({ id }));
-  };
+  // const handleAlert = async (type, text) => {
+  //   const id = type + text + alertList.length;
+  //   dispatch(addAlert({ id, type, text }));
+  //   await wait(5000);
+  //   dispatch(deleteAlert({ id }));
+  // };
   //store
-
-  const wait = (ms) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
 
   //notification
   const [api, contextHolder] = notification.useNotification();
@@ -27,13 +25,16 @@ function App() {
   //notification
 
   //modal
-  const [openModal, setModal1Open] = useState(false);
+  const [openModal, setModal1Open] = useState(true);
   //modal
 
   return (
     <>
+      {/* notification */}
       {contextHolder}
+      {/* notification */}
 
+      {/* alert */}
       <div className="top-8 horizonCenter flex flex-col items-center justify-center">
         {alertList.map((item) => (
           <div key={item.id} className="w-[500px] py-2">
@@ -43,19 +44,25 @@ function App() {
       </div>
 
       <div className="flex flex-row items-center justify-center">
-        <button onClick={() => handleAlert("success", "success content")}>
+        <button
+          onClick={() => dispatch(handleAlert("success", "success content"))}
+        >
           success
         </button>
-        <button onClick={() => handleAlert("info", "info content")}>
+        <button onClick={() => dispatch(handleAlert("info", "info content"))}>
           info
         </button>
-        <button onClick={() => handleAlert("warning", "warning content")}>
+        <button
+          onClick={() => dispatch(handleAlert("warning", "warning content"))}
+        >
           warning
         </button>
         <button>error</button>
       </div>
+      {/* alert */}
 
       <h1 className="text-3xl font-bold underline"></h1>
+
       <ModalOne
         title={"test"}
         isOpen={openModal}
