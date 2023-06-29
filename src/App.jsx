@@ -4,6 +4,8 @@ import { handleAlert } from "./store/slices/alert";
 import ModalOne from "./components/ModalOne";
 import { notification, Alert } from "antd";
 
+import CardOne from "./components/CardOne";
+
 function App() {
   //store
   const dispatch = useDispatch();
@@ -63,6 +65,10 @@ function App() {
         okAction={() => setModal1Open(false)}
       ></ModalOne>
       <button onClick={() => setModal1Open(true)}>Test</button>
+
+      {/* Card */}
+      <CardOne></CardOne>
+      {/* Card */}
     </>
   );
 }
