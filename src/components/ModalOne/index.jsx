@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Modal, Button, Card } from "antd";
+import { CloseCircleFilled } from "@ant-design/icons";
 
 const ModalOne = ({
   title,
   oriCharge = 100000,
-  extraCharge,
+  extraCharge = true,
   linePay = true,
   okText = "確認",
   cancelText = "取消",
@@ -57,20 +58,37 @@ const ModalOne = ({
     { name: "起單時間", value: "2023/06/29 10:10" },
   ];
 
-  const closeIcon = () => {};
   return (
     <Modal
       centered
+      closable={true}
       width="600px"
       title={showTitle()}
       footer={showFooter()}
       open={isOpen}
+      closeIcon={<CloseCircleFilled />}
+      onCancel={cancelAction}
       // bodyStyle={{ padding: "20px" }}
     >
       <div className="px-[20px]">
         <div className="pt-[12px] pb-[28px]">
+          {extraCharge && (
+            <Card
+              bodyStyle={{ padding: "10px 20px" }}
+              className={"bg-[#F7BC58] mb-[15px]"}
+            >
+              <div className="flex flex-row items-center justify-between">
+                <span className="text-[16px] font-bold">缺繳金額:</span>
+                <div className="flex flex-row items-center justify-center">
+                  <span className="font-bold text-[26px]">{oriCharge}</span>
+                  <span className="text-[16px] px-1">元</span>
+                </div>
+              </div>
+            </Card>
+          )}
+
           <Card bodyStyle={{ padding: "10px 20px" }} className={"bg-[#EFEFEF]"}>
-            <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center justify-between border-b border-black">
               <span className="text-[16px] font-bold">服務單總金額:</span>
               <div className="flex flex-row items-center justify-center">
                 <span className="font-bold text-[26px]">{oriCharge}</span>
@@ -86,7 +104,11 @@ const ModalOne = ({
               className="w-1/2 flex flex-col items-start justify-center pb-[18px]"
             >
               <span className="text-[16px]">{item.name}:</span>
-              <span className="text-[18px] font-bold pt-[8px]">
+              <span
+                className={`text-[18px] font-bold pt-[8px] ${
+                  item.name === "訂單進度" && "text-[#F87700]"
+                }`}
+              >
                 {item.value}
               </span>
             </div>
