@@ -9,6 +9,7 @@ const ModalOne = ({
   linePay = true,
   okText = "確認",
   cancelText = "取消",
+  isClose = true,
   isOpen,
   okAction,
   cancelAction,
@@ -61,13 +62,14 @@ const ModalOne = ({
   return (
     <Modal
       centered
-      closable={true}
+      closable={isClose}
       width="600px"
       title={showTitle()}
       footer={showFooter()}
       open={isOpen}
       closeIcon={<CloseCircleFilled />}
       onCancel={cancelAction}
+      maskClosable={false}
       // bodyStyle={{ padding: "20px" }}
     >
       <div className="px-[20px]">
@@ -88,13 +90,32 @@ const ModalOne = ({
           )}
 
           <Card bodyStyle={{ padding: "10px 20px" }} className={"bg-[#EFEFEF]"}>
-            <div className="flex flex-row items-center justify-between border-b border-black">
+            <div className="flex flex-row items-center justify-between border-0 border-solid border-b">
               <span className="text-[16px] font-bold">服務單總金額:</span>
               <div className="flex flex-row items-center justify-center">
                 <span className="font-bold text-[26px]">{oriCharge}</span>
                 <span className="text-[16px] px-1">元</span>
               </div>
             </div>
+
+            {extraCharge && (
+              <div className="mt-[12px]">
+                <div className="flex flex-row items-center justify-between">
+                  <span className="text-[14px]">原始金額:</span>
+                  <div className="flex flex-row items-center justify-center">
+                    <span className="font-bold text-[18px]">{oriCharge}</span>
+                    <span className="text-[14px] px-1">元</span>
+                  </div>
+                </div>
+                <div className="flex flex-row items-center justify-between">
+                  <span className="text-[14px]">補增款項:</span>
+                  <div className="flex flex-row items-center justify-center">
+                    <span className="font-bold text-[18px]">{"20"}</span>
+                    <span className="text-[14px] px-1">元</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </Card>
         </div>
         <div className="flex flex-row flex-wrap items-center justify-center">
