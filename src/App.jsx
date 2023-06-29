@@ -48,7 +48,9 @@ function App() {
         >
           warning
         </button>
-        <button>error</button>
+        <button onClick={() => dispatch(handleAlert("error", "error content"))}>
+          error
+        </button>
       </div>
       {/* alert */}
 

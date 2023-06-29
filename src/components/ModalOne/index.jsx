@@ -5,6 +5,7 @@ const ModalOne = ({
   title,
   oriCharge = 100000,
   extraCharge,
+  linePay = true,
   okText = "確認",
   cancelText = "取消",
   isOpen,
@@ -20,19 +21,27 @@ const ModalOne = ({
   };
   const showFooter = () => {
     return (
-      <div className="flex flex-row items-center justify-center pt-[40px] pb-[20px]">
-        {cancelAction && (
-          <div className="w-[200px] mx-3">
-            <Button block onClick={cancelAction}>
-              <span className="allCenter text-[16px]">{cancelText}</span>
-            </Button>
-          </div>
-        )}
-        {okAction && (
-          <div className="w-[200px] mx-3">
-            <Button block type="primary" onClick={okAction}>
-              <span className="allCenter text-[16px]">{okText}</span>
-            </Button>
+      <div className="flex flex-col items-center justify-center pt-[40px] pb-[20px]">
+        <div className="flex flex-row items-center justify-center">
+          {cancelAction && (
+            <div className="w-[200px] mx-3">
+              <Button block onClick={cancelAction}>
+                <span className="allCenter text-[16px]">{cancelText}</span>
+              </Button>
+            </div>
+          )}
+          {okAction && (
+            <div className="w-[200px] mx-3">
+              <Button block type="primary" onClick={okAction}>
+                <span className="allCenter text-[16px]">{okText}</span>
+              </Button>
+            </div>
+          )}
+        </div>
+
+        {linePay && (
+          <div className="text-[18px] text-[#275682] font-bold pt-[25px] cursor-pointer underline underline-offset-2">
+            發送 LINE PAY 付款通知
           </div>
         )}
       </div>
@@ -72,7 +81,10 @@ const ModalOne = ({
         </div>
         <div className="flex flex-row flex-wrap items-center justify-center">
           {serviceList.map((item) => (
-            <div className="w-1/2 flex flex-col items-start justify-center pb-[18px]">
+            <div
+              key={item.name}
+              className="w-1/2 flex flex-col items-start justify-center pb-[18px]"
+            >
               <span className="text-[16px]">{item.name}:</span>
               <span className="text-[18px] font-bold pt-[8px]">
                 {item.value}

@@ -38,8 +38,7 @@ export const { addAlert, deleteAlert } = alertsSlice.actions;
 
 export const handleAlert = (type: string, text: string): AppThunk => {
   return async (dispatch, getState) => {
-    const { alerts } = getState();
-    const id = type + text + alerts.alertList.length;
+    const id = type + new Date().getTime();
     dispatch(addAlert({ id, type, text }));
     await wait(5000);
     dispatch(deleteAlert({ id }));
