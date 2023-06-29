@@ -55,7 +55,7 @@ function App() {
       <h1 className="text-3xl font-bold underline"></h1>
 
       <ModalOne
-        title={"test"}
+        title={"測試標題"}
         isOpen={openModal}
         cancelAction={() => setModal1Open(false)}
         okAction={() => setModal1Open(false)}
