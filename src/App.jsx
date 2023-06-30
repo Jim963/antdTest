@@ -67,7 +67,19 @@ function App() {
       <button onClick={() => setModal1Open(true)}>Test</button>
 
       {/* Card */}
-      <CardOne></CardOne>
+      <CardOne
+        total={"123"}
+        type="multi"
+        title="本月營收"
+        linePay={"123445"}
+        cash={"54321"}
+      ></CardOne>
+      <CardOne
+        total={"456"}
+        type="normal"
+        title="本月來客數"
+        unit="人"
+      ></CardOne>
       {/* Card */}
     </>
   );
