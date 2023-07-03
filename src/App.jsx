@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleAlert } from "./store/slices/alert";
 import ModalOne from "./components/ModalOne";
+import ModalTwo from "./components/ModalTwo";
+
 import { notification, Alert } from "antd";
 
 import CardOne from "./components/CardOne";
@@ -64,6 +66,14 @@ function App() {
         cancelAction={() => setModal1Open(false)}
         okAction={() => setModal1Open(false)}
       ></ModalOne>
+
+      <ModalTwo
+        title={"測試標題"}
+        isOpen={openModal}
+        cancelAction={() => setModal1Open(false)}
+        okAction={() => setModal1Open(false)}
+      ></ModalTwo>
+
       <button onClick={() => setModal1Open(true)}>Test</button>
 
       {/* Card */}
