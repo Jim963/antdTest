@@ -30,21 +30,31 @@ const ModalTwo = ({
         <div className="flex flex-row items-center justify-center">
           {cancelAction && (
             <div className="w-[200px] mx-3">
-              <Button block onClick={cancelAction}>
+              <Button block className={"h-[48px]"} onClick={cancelAction}>
                 <span className="allCenter text-[16px]">{cancelText}</span>
               </Button>
             </div>
           )}
           {okAction && (
             <div className="w-[200px] mx-3">
-              <Button block type="primary" onClick={okAction}>
+              <Button
+                block
+                type="primary"
+                className={"h-[48px]"}
+                onClick={okAction}
+              >
                 <span className="allCenter text-[16px]">{okText}</span>
               </Button>
             </div>
           )}
         </div>
 
-        {remind && <div className="text-[18px] font-bold pt-[25px]">提醒</div>}
+        {remind && (
+          <div className="text-[14px] pt-[12px] text-[#484848]">
+            點選<span className="font-bold px-1">確認建立訂單</span>
+            後，系統將發送付款通知給該客戶
+          </div>
+        )}
       </div>
     );
   };
