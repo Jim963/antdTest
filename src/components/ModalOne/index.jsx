@@ -23,7 +23,7 @@ const ModalOne = ({
   };
   const showFooter = () => {
     return (
-      <div className="flex flex-col items-center justify-center pt-[40px] pb-[20px]">
+      <div className="flex flex-col items-center justify-center pt-[30px] pb-[20px]">
         <div className="flex flex-row items-center justify-center">
           {cancelAction && (
             <div className="w-[200px] mx-3">
