@@ -9,7 +9,7 @@ const ModalOne = ({
   linePay = true,
   okText = "確認",
   cancelText = "取消",
-  isClose = true,
+  isClose = false,
   isOpen,
   okAction,
   cancelAction,
