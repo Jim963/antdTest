@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Modal, Button, Input } from "antd";
+import { Modal, Button, Input, Select } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 
 const ModalTwo = ({
@@ -14,6 +14,7 @@ const ModalTwo = ({
 }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
+  const [serviceType, setServiceType] = useState("");
 
   const showTitle = () => {
     return (
@@ -61,6 +62,10 @@ const ModalTwo = ({
     setName(value);
   };
 
+  const serviceChange = (value) => {
+    setServiceType(value);
+  };
+
   return (
     <>
       <Modal
@@ -81,7 +86,6 @@ const ModalTwo = ({
             <Input
               className="text-[16px] font-bold py-[9px] mt-[5px]"
               placeholder="請輸入客戶姓名"
-              value={name}
               allowClear
               onChange={nameChange}
             />
@@ -99,21 +103,19 @@ const ModalTwo = ({
           <div className="w-1/2 flex flex-col items-start justify-center">
             <span className="text-[16px]">服務項目:</span>
 
-            <Input
-              className="text-[16px] font-bold py-[9px] mt-[5px]"
-              placeholder="請輸入客戶姓名"
-              value={name}
-              allowClear
-              onChange={nameChange}
+            <Select
+              className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[6px] py-[5px]"
+              placeholder={<span>請使用下拉選項</span>}
+              bordered={false}
+              options={[
+                { value: "124", label: "Test Option" },
+                { value: "valueTwo", label: "Test Option Two" },
+              ]}
+              onChange={serviceChange}
             />
           </div>
 
-          <div className="w-1/2">
-            <div className="flex flex-col items-start justify-center pl-[25px]">
-              <span className="text-[16px]">數量:</span>
-              <span className="text-[18px] font-bold pt-[8px]">0987654321</span>
-            </div>
-          </div>
+          <div className="w-1/2"></div>
         </div>
 
         <div className="flex flex-row flex-wrap items-center justify-center px-[20px]">
@@ -123,7 +125,6 @@ const ModalTwo = ({
             <Input
               className="text-[16px] font-bold py-[9px] mr-[25px]"
               placeholder="請輸入電話號碼"
-              value={phoneNumber}
               allowClear
               maxLength="10"
               showCount
