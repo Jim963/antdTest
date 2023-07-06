@@ -1,7 +1,6 @@
-import { Outlet } from "react-router-dom";
-import Header from "@components/Header";
-import SideBar from "@components/SideBar";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import SideBar from "../components/SideBar";
 
 const BasicLayout = () => {
   const go = useNavigate();
