@@ -31,9 +31,7 @@ function App() {
       <AlertDisplay></AlertDisplay>
 
       <div className="flex flex-row items-center justify-center">
-        <button
-          onClick={() => dispatch(handleAlert("success", "success content"))}
-        >
+        <button onClick={handleAlert("success", "success content")}>
           success
         </button>
         <button onClick={() => dispatch(handleAlert("info", "info content"))}>
