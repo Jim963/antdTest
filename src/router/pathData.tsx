@@ -2,6 +2,7 @@ import React from "react";
 import BasicLayout from "../layout/BasicLayout";
 import Login from "../containers/Login";
 import Demo from "../containers/Demo";
+import NotFound from "../containers/NotFound";
 
 interface Route {
   name: string;
@@ -26,10 +27,10 @@ const routesData: routeLayout[] = [
     path: "/login",
     element: <Login />,
   },
-  //   {
-  //     path: "*",
-  //     element: <NotFound />,
-  //   },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ];
 
 export default routesData;
