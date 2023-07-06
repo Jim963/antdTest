@@ -21,7 +21,7 @@ const routesData: routeLayout[] = [
   {
     path: "/",
     element: <BasicLayout />,
-    children: [{ name: "Demo", path: "/demo", element: <Demo />, auth: false }],
+    children: [{ name: "Demo", path: "/", element: <Demo />, auth: false }],
   },
   {
     path: "/login",
