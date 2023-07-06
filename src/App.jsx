@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { handleAlert } from "./store/slices/alert";
 import ModalOne from "./components/ModalOne";
 import ModalTwo from "./components/ModalTwo";
-
-import { notification, Alert } from "antd";
-
 import CardOne from "./components/CardOne";
+import AlertDisplay from "./components/AlertDisplay";
+
+import { notification } from "antd";
 
 function App() {
   //store
   const dispatch = useDispatch();
-  const alertList = useSelector((state) => state.alerts.alertList);
   //store
 
   //notification
@@ -29,14 +28,7 @@ function App() {
       {contextHolder}
       {/* notification */}
 
-      {/* alert */}
-      <div className="top-8 horizonCenter flex flex-col items-center justify-center">
-        {alertList.map((item) => (
-          <div key={item.id} className="w-[500px] py-2">
-            <Alert message={item.text} type={item.type} showIcon closable />
-          </div>
-        ))}
-      </div>
+      <AlertDisplay></AlertDisplay>
 
       <div className="flex flex-row items-center justify-center">
         <button
