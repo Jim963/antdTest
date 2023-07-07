@@ -7,7 +7,7 @@ function App() {
   console.log(userToken, "userToken");
   const routeElement = useRoutes(routes(userToken));
 
-  return <div className="App">{routeElement}</div>;
+  return <div className="App text-[#484848]">{routeElement}</div>;
 }
 
 export default App;

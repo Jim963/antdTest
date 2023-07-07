@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AppThunk } from "../../store/index";
 import { wait } from "../../utils";
 
-interface Alert {
+export interface Alert {
   id: string | number;
   type: string;
   text: string;
   completed: boolean;
 }
 
-interface AlertState {
+export interface AlertState {
   alertList: Alert[];
 }
 

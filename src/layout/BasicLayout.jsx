@@ -8,7 +8,7 @@ const BasicLayout = () => {
   return (
     <div className="w-screen h-screen flex flex-row">
       <SideBar />
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start w-[calc(100%-240px)]">
         <Header />
         <Outlet />
       </div>

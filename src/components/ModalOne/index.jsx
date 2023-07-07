@@ -15,11 +15,7 @@ const ModalOne = ({
   cancelAction,
 }) => {
   const showTitle = () => {
-    return (
-      <span className="text-[22px] pt-[12px] px-[20px] text-[#484848]">
-        {title}
-      </span>
-    );
+    return <span className="text-[22px] pt-[12px] px-[20px]">{title}</span>;
   };
   const showFooter = () => {
     return (

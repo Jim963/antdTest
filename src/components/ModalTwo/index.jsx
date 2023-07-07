@@ -18,11 +18,7 @@ const ModalTwo = ({
   const [amount, setAmount] = useState("");
 
   const showTitle = () => {
-    return (
-      <span className="text-[22px] pt-[12px] px-[20px] text-[#484848]">
-        {title}
-      </span>
-    );
+    return <span className="text-[22px] pt-[12px] px-[20px]">{title}</span>;
   };
   const showFooter = () => {
     return (
@@ -50,7 +46,7 @@ const ModalTwo = ({
         </div>
 
         {remind && (
-          <div className="text-[14px] pt-[12px] text-[#484848]">
+          <div className="text-[14px] pt-[12px]">
             點選<span className="font-bold px-1">確認建立訂單</span>
             後，系統將發送付款通知給該客戶
           </div>
