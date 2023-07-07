@@ -14,7 +14,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <ConfigProvider
         locale={zhTW}
-        theme={{ token: { colorPrimary: "#275682" } }}
+        theme={{
+          token: {
+            colorPrimary: "#275682",
+            // colorTextBase: "rgba(72,72,72,1)",
+            colorText: "rgba(72,72,72,1)",
+          },
+        }}
       >
         <HashRouter>
           <App />

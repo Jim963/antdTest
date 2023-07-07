@@ -29,24 +29,16 @@ const CardOne = ({
               <div className="flex flex-col items-start justify-center border-0 border-solid border-[#D9D9D9] border-t pt-[12px] pb-[20px]">
                 <div className="text-[#8A8F93] text-[16px]">現金</div>
                 <div className="flex flex-row items-center justify-center mt-[8px]">
-                  <div className="text-[18px] text-[#484848]">
-                    {toCurrency(cash)}
-                  </div>
-                  <span className="text-[14px] text-[#484848] ml-[4px]">
-                    元
-                  </span>
+                  <div className="text-[18px]">{toCurrency(cash)}</div>
+                  <span className="text-[14px] ml-[4px]">元</span>
                 </div>
               </div>
 
               <div className="flex flex-col items-start justify-center border-0 border-dashed border-[#D9D9D9] border-t py-[12px]">
                 <div className="text-[#8A8F93] text-[16px]">LINE Pay</div>
                 <div className="flex flex-row items-center justify-center mt-[8px]">
-                  <div className="text-[18px] text-[#484848]">
-                    {toCurrency(linePay)}
-                  </div>
-                  <span className="text-[14px] text-[#484848] ml-[4px]">
-                    元
-                  </span>
+                  <div className="text-[18px]">{toCurrency(linePay)}</div>
+                  <span className="text-[14px] ml-[4px]">元</span>
                 </div>
               </div>
             </>
