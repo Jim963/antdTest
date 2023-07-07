@@ -1,5 +1,15 @@
 import { Card } from "antd";
 import { toCurrency } from "../../utils";
+import React from "react";
+
+interface Props {
+  title?: string;
+  type?: string;
+  unit?: string;
+  total?: string | number;
+  linePay?: string | number;
+  cash?: string | number;
+}
 
 const CardOne = ({
   title = "測試標題",
@@ -8,7 +18,7 @@ const CardOne = ({
   total,
   linePay,
   cash,
-}) => {
+}: Props) => {
   return (
     <>
       <div className="w-[260px]">

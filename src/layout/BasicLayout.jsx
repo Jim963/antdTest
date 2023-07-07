@@ -8,9 +8,11 @@ const BasicLayout = () => {
   return (
     <div className="w-screen h-screen flex flex-row">
       <SideBar />
-      <div className="flex flex-col items-start bg-[#F8F8F8] w-[calc(100%-240px)] px-[44px] pb-[120px]">
-        <Header />
-        <Outlet />
+      <div className="flex flex-col items-center bg-[#F8F8F8] w-full">
+        <div className="box-border w-full px-[44px] pb-[120px]">
+          <Header />
+          <Outlet />
+        </div>
       </div>
     </div>
   );

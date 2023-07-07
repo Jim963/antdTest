@@ -5,8 +5,8 @@ const SideBar = () => {
   ];
   return (
     <>
-      <div className="h-screen w-[240px] px-[30px] pt-[54px]">
-        <div className="flex flex-col items-start justify-start">
+      <div className="h-screen w-[240px]">
+        <div className="flex flex-col items-start justify-start px-[30px] pt-[54px]">
           <div className="w-[180px] h-[56px] bg-slate-500 mb-[60px] font-bold text-center">
             Logo Img
           </div>

@@ -20,7 +20,7 @@ const Demo = () => {
   //notification
 
   //modal
-  const [openModal, setModal1Open] = useState(true);
+  const [openModal, setModal1Open] = useState(false);
   //modal
 
   return (
@@ -69,23 +69,52 @@ const Demo = () => {
 
       <button onClick={() => setModal1Open(true)}>Test</button>
 
-      {/* Card */}
-      <CardOne
-        total={"123"}
-        type="multi"
-        title="本月營收"
-        linePay={"123445"}
-        cash={"54321"}
-      ></CardOne>
-      <CardOne
-        total={"456"}
-        type="normal"
-        title="本月來客數"
-        cash={"100"}
-        linePay={"200"}
-        unit="人"
-      ></CardOne>
-      {/* Card */}
+      <div className="w-full flex flex-row items-stretch justify-between flex-wrap">
+        <CardOne
+          total={1200000}
+          type="multi"
+          title="本月營收"
+          linePay={400000}
+          cash={800000}
+        ></CardOne>
+        <CardOne
+          total={50000}
+          type="multi"
+          title="本日營收"
+          linePay={12000}
+          cash={38000}
+        ></CardOne>
+
+        <div className="flex flex-col items-between justify-between">
+          <CardOne
+            title="本月來客數"
+            total={38591}
+            type="normal"
+            unit="人"
+          ></CardOne>
+          <CardOne
+            title="本日來客數"
+            total={241}
+            type="normal"
+            unit="人"
+          ></CardOne>
+        </div>
+
+        <div className="flex flex-col items-center justify-between">
+          <CardOne
+            title="三天內未取件數"
+            total={51}
+            type="normal"
+            unit="件"
+          ></CardOne>
+          <CardOne
+            title="三天以上未取件數"
+            total={12}
+            type="normal"
+            unit="件"
+          ></CardOne>
+        </div>
+      </div>
     </>
   );
 };
