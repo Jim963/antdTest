@@ -9,12 +9,14 @@ const Header = () => {
         <div className="h-full flex flex-row items-center justify-between">
           <div className="flex flex-row items-center justify-center">
             <span className="h-[40px] border-4 border-solid border-[#275682]"></span>
-            <span className="text-[32px] font-bold px-[8px]">Page Name</span>
+            <span className="text-[22px] xl:text-[32px] font-bold px-[8px]">
+              Page Name
+            </span>
           </div>
 
           <div className="flex flex-row items-center justify-center">
             <Select
-              className="w-[220px] text-[16px] font-bold border border-solid border-[#d9d9d9] rounded-[8px] py-[3px]"
+              className="w-[200px] xl:w-[220px] text-[16px] font-bold border border-solid border-[#d9d9d9] rounded-[8px] py-[3px]"
               placeholder={<span>請使用下拉選項</span>}
               bordered={false}
               options={[
@@ -25,7 +27,7 @@ const Header = () => {
             />
 
             <Select
-              className="w-[160px] text-[16px] font-bold border border-solid border-[#d9d9d9] rounded-[8px] py-[3px] ml-[8px]"
+              className="w-[140px] xl:w-[160px] text-[16px] font-bold border border-solid border-[#d9d9d9] rounded-[8px] py-[3px] ml-[8px]"
               placeholder={<span>請使用下拉選項</span>}
               bordered={false}
               options={[

@@ -9,7 +9,7 @@ const BasicLayout = () => {
     <div className="w-screen h-screen flex flex-row">
       <SideBar />
       <div className="bg-[#F8F8F8] w-full">
-        <div className="box-border w-full px-[44px] pb-[120px]">
+        <div className="box-border w-full px-[35px] xl:px-[44px] pb-[120px]">
           <Header />
           <Outlet />
         </div>
