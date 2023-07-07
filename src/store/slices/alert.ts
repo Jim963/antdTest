@@ -4,7 +4,7 @@ import { wait } from "../../utils";
 
 export interface Alert {
   id: string | number;
-  type: string;
+  type?: "error" | "success" | "info" | "warning";
   text: string;
   completed: boolean;
 }

@@ -1,13 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Alert } from "antd";
-import { AlertState } from "../../store/slices/alert";
-
+import { RootState } from "../../store";
 interface props {
   width?: string;
 }
 const AlertDisplay = ({ width = "w-[260px]" }: props) => {
-  const alertList = useSelector((state: AlertState) => state.alerts.alertList);
+  const alertList = useSelector((state: RootState) => state.alerts.alertList);
 
   return (
     <div className="top-8 horizonCenter flex flex-col items-center justify-center">
