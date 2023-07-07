@@ -8,7 +8,7 @@ const Header = () => {
         <div className="h-full flex flex-row items-center justify-between px-[44px]">
           <div className="flex flex-row items-center justify-center">
             <span className="h-[40px] border-4 border-solid border-[#275682]"></span>
-            <span className="text-[32px] font-bold px-[8px]">首頁</span>
+            <span className="text-[32px] font-bold px-[8px]">Page Name</span>
           </div>
 
           <div className="flex flex-row items-center justify-center">
