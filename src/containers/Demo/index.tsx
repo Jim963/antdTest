@@ -69,7 +69,7 @@ const Demo = () => {
 
       <button onClick={() => setModal1Open(true)}>Test</button>
 
-      <div className="w-full flex flex-row items-stretch justify-between flex-wrap">
+      <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">
         <CardOne
           total={1200000}
           type="multi"
