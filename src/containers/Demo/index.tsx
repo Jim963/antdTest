@@ -9,6 +9,9 @@ import CardOne from "../../components/CardOne";
 import AlertDisplay from "../../components/AlertDisplay";
 import { notification } from "antd";
 
+//test
+import BarChartTest from "../../components/BarChart";
+
 const Demo = () => {
   //store
   const dispatch = useDispatch<AppDispatch>();
@@ -115,6 +118,8 @@ const Demo = () => {
           ></CardOne>
         </div>
       </div>
+
+      <BarChartTest></BarChartTest>
     </>
   );
 };
