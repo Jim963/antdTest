@@ -35,8 +35,6 @@ const BarChartTest = ({ title = "測試標題" }) => {
   //     };
   //   });
 
-  console.log(xAxisData);
-
   const options = {
     ...defaultOptions,
     xAxis: {

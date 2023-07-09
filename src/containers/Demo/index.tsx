@@ -10,7 +10,7 @@ import AlertDisplay from "../../components/AlertDisplay";
 import { notification } from "antd";
 
 //test
-import BarChartTest from "../../components/BarChart";
+import BarChart from "../../components/BarChart";
 
 const Demo = () => {
   //store
@@ -19,7 +19,7 @@ const Demo = () => {
 
   //notification
   const [api, contextHolder] = notification.useNotification();
-  console.log(api, "看看");
+  console.log(api, "useNotification");
   //notification
 
   //modal
@@ -119,7 +119,7 @@ const Demo = () => {
         </div>
       </div>
 
-      <BarChartTest></BarChartTest>
+      <BarChart title="本月營收圖表"></BarChart>
     </>
   );
 };

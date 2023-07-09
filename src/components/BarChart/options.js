@@ -4,7 +4,7 @@ export const defaultOptions = {
     top: 30,
     right: 0,
     left: 60,
-    bottom: 50,
+    bottom: 60,
   },
   legend: {
     show: true,
@@ -57,7 +57,6 @@ export const linePayOption = {
     position: "bottom",
     distance: 13,
     formatter: (params) => {
-      console.log(params);
       return params.name;
     },
   },
@@ -77,7 +76,6 @@ export const cashOption = {
   //   show: true,
   //   position: "top",
   //   formatter: (params) => {
-  //     // console.log(params);
   //     return params.name;
   //   },
   // },

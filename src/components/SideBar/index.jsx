@@ -1,8 +1,14 @@
+import { Button } from "antd";
+
 const SideBar = () => {
   const pageList = [
     { name: "查詢服務單", route: "" },
     { name: "營業報表", route: "" },
   ];
+
+  const newStore = () => {
+    console.log("build new store");
+  };
   return (
     <>
       <div className="h-screen w-[180px] xl:w-[240px]">
@@ -18,6 +24,18 @@ const SideBar = () => {
               </div>
             );
           })}
+        </div>
+
+        <div className="absolute bottom-[40px] w-[200px] mx-3">
+          <Button
+            block
+            ghost
+            className={"h-[48px]"}
+            type="primary"
+            onClick={newStore}
+          >
+            <span className="allCenter text-[16px]">建立新店家</span>
+          </Button>
         </div>
       </div>
     </>
