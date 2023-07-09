@@ -1,9 +1,16 @@
 export const defaultOptions = {
   tooltip: {},
+  grid: {
+    top: 30,
+    right: 0,
+    left: 60,
+    bottom: 50,
+  },
   legend: {
     show: true,
-    bottom: 20,
+    bottom: 0,
     itemHeight: 5,
+    padding: [16, 0, 0, 0],
     textStyle: {
       fontSize: 14,
       color: "#484848",
@@ -48,8 +55,9 @@ export const linePayOption = {
   label: {
     show: true,
     position: "bottom",
+    distance: 13,
     formatter: (params) => {
-      // console.log(params);
+      console.log(params);
       return params.name;
     },
   },
