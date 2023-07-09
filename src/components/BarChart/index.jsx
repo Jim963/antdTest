@@ -9,7 +9,11 @@ import {
 import { CanvasRenderer } from "echarts/renderers";
 import { ConfigProvider, Card } from "antd";
 import { defaultOptions, linePayOption, cashOption } from "./options";
-import { singleBarChartData as rawData } from "./dataStore";
+import {
+  singleBarChartData as rawData,
+  xAxisData,
+  randomData,
+} from "./dataStore";
 
 echarts.use([
   BarChart,
@@ -21,15 +25,17 @@ echarts.use([
 ]);
 
 const BarChartTest = ({ title = "測試標題" }) => {
-  const xAxisData = rawData.map((item) => item.month);
-  const colorPicker = ["#2596be", "#f8af6a", "#103560", "#e28743"];
-  const chartData = rawData.map((item, i) => {
-    if (i >= colorPicker.length) i = i % 4;
-    return {
-      value: item.days,
-      itemStyle: { color: colorPicker[i] },
-    };
-  });
+  //   const xAxisData = rawData.map((item) => item.month);
+  //   const colorPicker = ["#2596be", "#f8af6a", "#103560", "#e28743"];
+  //   const chartData = rawData.map((item, i) => {
+  //     if (i >= colorPicker.length) i = i % 4;
+  //     return {
+  //       value: item.days,
+  //       //   itemStyle: { color: colorPicker[i] },
+  //     };
+  //   });
+
+  console.log(xAxisData);
 
   const options = {
     ...defaultOptions,
@@ -37,7 +43,10 @@ const BarChartTest = ({ title = "測試標題" }) => {
       ...defaultOptions.xAxis,
       data: xAxisData,
     },
-    series: [{ ...linePayOption, data: chartData }, { ...cashOption }],
+    series: [
+      { ...linePayOption, data: randomData() },
+      { ...cashOption, data: randomData() },
+    ],
   };
 
   return (

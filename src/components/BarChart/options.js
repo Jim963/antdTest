@@ -43,6 +43,7 @@ export const linePayOption = {
   stack: "x",
   itemStyle: {
     borderRadius: [0, 0, 23, 23],
+    color: "#275682",
   },
   label: {
     show: true,
@@ -58,10 +59,11 @@ export const linePayOption = {
 export const cashOption = {
   name: "現金收款",
   type: "bar",
-  data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+  data: [],
   stack: "x",
   itemStyle: {
     borderRadius: [23, 23, 0, 0],
+    color: "#75A1CA",
   },
   // label: {
   //   show: true,

@@ -12,3 +12,15 @@ export const singleBarChartData = [
   { month: "Nov", days: 30 },
   { month: "Dec", days: 31 },
 ];
+
+const randomValue = (value) => {
+  return Math.floor(Math.random() * value);
+};
+
+const emptyArr = Array.from({ length: 31 });
+
+export const xAxisData = emptyArr.map((item, index) => index + 1);
+
+export const randomData = () => {
+  return emptyArr.map(() => randomValue(20000));
+};
