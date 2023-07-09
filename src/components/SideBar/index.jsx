@@ -11,7 +11,7 @@ const SideBar = () => {
   };
   return (
     <>
-      <div className="h-screen w-[180px] xl:w-[240px]">
+      <div className="w-[180px] xl:w-[240px]">
         <div className="flex flex-col items-start justify-start px-[30px] pt-[54px]">
           <div className="w-[120px] xl:w-[180px] h-[38px] xl:h-[56px] bg-slate-500 mb-[60px] font-bold text-center">
             Logo Img
@@ -26,7 +26,7 @@ const SideBar = () => {
           })}
         </div>
 
-        <div className="absolute bottom-[40px] w-[200px] mx-3">
+        <div className="absolute bottom-[40px] w-[160px] xl:w-[200px] mx-3">
           <Button
             block
             ghost
