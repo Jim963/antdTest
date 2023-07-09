@@ -7,6 +7,8 @@ import {
   LegendComponent,
 } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
+import { ConfigProvider, Card } from "antd";
+import { defaultOptions, linePayOption, cashOption } from "./options";
 import { singleBarChartData as rawData } from "./dataStore";
 
 echarts.use([
@@ -18,7 +20,7 @@ echarts.use([
   CanvasRenderer,
 ]);
 
-const BarChartTest = () => {
+const BarChartTest = ({ title = "測試標題" }) => {
   const xAxisData = rawData.map((item) => item.month);
   const colorPicker = ["#2596be", "#f8af6a", "#103560", "#e28743"];
   const chartData = rawData.map((item, i) => {
@@ -28,82 +30,41 @@ const BarChartTest = () => {
       itemStyle: { color: colorPicker[i] },
     };
   });
+
   const options = {
-    tooltip: {},
-    legend: {
-      show: true,
-      bottom: 20,
-      itemHeight: 5,
-      textStyle: {
-        fontSize: 14,
-        color: "#484848",
-      },
-      formatter: (params) => {
-        return params;
-      },
-    },
+    ...defaultOptions,
     xAxis: {
-      type: "category",
+      ...defaultOptions.xAxis,
       data: xAxisData,
-      show: false,
-      axisLabel: {
-        textStyle: { fontSize: 14, color: "#484848" },
-      },
     },
-    yAxis: {
-      name: "元/日",
-      nameTextStyle: {
-        color: "#999",
-      },
-      type: "value",
-      axisLabel: {
-        textStyle: { fontSize: 14, color: "#484848" },
-      },
-      //   splitLine: { show: false },
-    },
-    series: [
-      {
-        name: "Line Pay 收款",
-        type: "bar",
-        barWidth: 10,
-        data: chartData,
-        stack: "x",
-        itemStyle: {
-          borderRadius: [0, 0, 23, 23],
-        },
-        label: {
-          show: true,
-          position: "bottom",
-          formatter: (params) => {
-            // console.log(params);
-            return params.name;
-          },
-        },
-      },
-      {
-        name: "現金收款",
-        type: "bar",
-        data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
-        stack: "x",
-        itemStyle: {
-          borderRadius: [23, 23, 0, 0],
-        },
-        // label: {
-        //   show: true,
-        //   position: "top",
-        //   formatter: (params) => {
-        //     // console.log(params);
-        //     return params.name;
-        //   },
-        // },
-      },
-    ],
+    series: [{ ...linePayOption, data: chartData }, { ...cashOption }],
   };
+
   return (
-    <div>
-      <h1>React Echarts - Coloured Bar Chart</h1>
-      <ReactEChartsCore echarts={echarts} lazyUpdate={true} option={options} />
-    </div>
+    <>
+      <ConfigProvider
+        theme={{
+          token: {
+            paddingLG: 0,
+            boxShadowTertiary: "0px 3px 12px 0px rgba(0, 0, 0, 0.08)",
+          },
+        }}
+      >
+        <div className="text-[18px] xl:text-[22px] font-bold p-[8px]">
+          {title}
+        </div>
+        <Card
+          bordered={false}
+          className="p-[10px] xl:p-[20px] rounded-[24px] shadow-xl"
+        >
+          <ReactEChartsCore
+            echarts={echarts}
+            lazyUpdate={true}
+            option={options}
+          />
+        </Card>
+      </ConfigProvider>
+    </>
   );
 };
 
