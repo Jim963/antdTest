@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Modal, Button, Card } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 
@@ -122,7 +121,7 @@ const ModalOne = ({
               </div>
               <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
 
-              <div className="flex flex-row items-center justify-between ">
+              <div className="flex flex-row items-center justify-between">
                 <span className="text-[14px]">只有洗衣-30分鐘(22kg):</span>
                 <div className="flex flex-row items-center justify-center">
                   <span className="font-bold text-[18px]">{cash}</span>

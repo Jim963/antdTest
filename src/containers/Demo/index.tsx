@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { handleAlert } from "../../store/slices/alert";
-import ModalOne from "../../components/ModalOne";
+import SheetDetailModal from "../../components/SheetDetailModal";
 import ModalTwo from "../../components/ModalTwo";
 import DashboardCard from "../../components/DashboardCard";
 import AlertDisplay from "../../components/AlertDisplay";
@@ -56,19 +56,19 @@ const Demo = () => {
 
       <h1 className="text-3xl font-bold underline"></h1>
 
-      <ModalOne
-        title={"測試標題"}
+      <SheetDetailModal
+        title={"服務單資訊"}
         isOpen={openModal}
         cancelAction={() => setModal1Open(false)}
         okAction={() => setModal1Open(false)}
-      ></ModalOne>
+      ></SheetDetailModal>
 
-      {/* <ModalTwo
+      <ModalTwo
         title={"選擇服務項目"}
         isOpen={openModal}
         cancelAction={() => setModal1Open(false)}
         okAction={() => setModal1Open(false)}
-      ></ModalTwo> */}
+      ></ModalTwo>
 
       <button onClick={() => setModal1Open(true)}>Test</button>
 
