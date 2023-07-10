@@ -17,12 +17,18 @@ const ModalOne = ({
   remind = true,
   messageType = "LINE訊息",
 }) => {
-  const serviceList = [
+  const detailList = [
     { name: "服務單號", value: "9403092950" },
     { name: "訂單進度", value: "可取件" },
     { name: "客戶姓名", value: "王大錘" },
     { name: "客戶聯絡電話", value: "0977XXXXXX" },
     { name: "起單時間", value: "2023/06/29 10:10" },
+  ];
+
+  const serviceList = [
+    { name: "洗衣+烘乾-60分鐘(15kg)", charge: "100" },
+    { name: "只有洗衣-30分鐘(22kg)", charge: "200" },
+    { name: "只有烘乾-45分鐘(10kg)", charge: "90" },
   ];
 
   return (
@@ -112,28 +118,30 @@ const ModalOne = ({
 
             <div className="my-[12px] text-[16px]">服務項目:</div>
             <div className="pl-[40px] pb-[8px]">
-              <div className="flex flex-row items-center justify-between">
-                <span className="text-[14px]">洗衣+烘乾-60分鐘(15kg):</span>
-                <div className="flex flex-row items-center justify-center">
-                  <span className="font-bold text-[18px]">{linePay}</span>
-                  <span className="text-[14px] px-1">元</span>
-                </div>
-              </div>
-              <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
-
-              <div className="flex flex-row items-center justify-between">
-                <span className="text-[14px]">只有洗衣-30分鐘(22kg):</span>
-                <div className="flex flex-row items-center justify-center">
-                  <span className="font-bold text-[18px]">{cash}</span>
-                  <span className="text-[14px] px-1">元</span>
-                </div>
-              </div>
+              {serviceList.map((item, index) => {
+                return (
+                  <>
+                    <div className="flex flex-row items-center justify-between">
+                      <span className="text-[14px]">{item.name}:</span>
+                      <div className="flex flex-row items-center justify-center">
+                        <span className="font-bold text-[18px]">
+                          {item.charge}
+                        </span>
+                        <span className="text-[14px] px-1">元</span>
+                      </div>
+                    </div>
+                    {serviceList.length !== index + 1 && (
+                      <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
+                    )}
+                  </>
+                );
+              })}
             </div>
           </Card>
         </div>
 
         <div className="w-1/2 flex flex-row flex-wrap items-center justify-start pl-[10px]">
-          {serviceList.map((item) => (
+          {detailList.map((item) => (
             <div
               key={item.name}
               className="w-1/2 flex flex-col items-start justify-center pb-[24px]"

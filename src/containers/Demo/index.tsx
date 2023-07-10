@@ -63,12 +63,12 @@ const Demo = () => {
         okAction={() => setModal1Open(false)}
       ></SheetDetailModal>
 
-      <ModalTwo
+      {/* <ModalTwo
         title={"選擇服務項目"}
         isOpen={openModal}
         cancelAction={() => setModal1Open(false)}
         okAction={() => setModal1Open(false)}
-      ></ModalTwo>
+      ></ModalTwo> */}
 
       <button onClick={() => setModal1Open(true)}>Test</button>
 
