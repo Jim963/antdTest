@@ -1,7 +1,8 @@
 import { Modal, Button, Card } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
+import closeIcon from "../../assets/images/closeIcon.svg";
 
-const ModalOne = ({
+const SheetDetailModal = ({
   title,
   okText = "客戶 現金付款",
   cancelText = "發送 LINE Pay付款通知",
@@ -39,7 +40,11 @@ const ModalOne = ({
       centered
       closable={isCloseIcon}
       open={isOpen}
-      closeIcon={<CloseCircleFilled />}
+      closeIcon={
+        <span className="w-[28px] h-[28px]">
+          <img src={closeIcon} alt="" />
+        </span>
+      }
       onCancel={cancelAction}
       maskClosable={false}
       bodyStyle={{ padding: "12px 16px 20px 16px" }}
@@ -126,7 +131,7 @@ const ModalOne = ({
               <div className="pl-[40px] pb-[8px]">
                 {serviceList.map((item, index) => {
                   return (
-                    <>
+                    <div key={item.name}>
                       <div className="flex flex-row items-center justify-between">
                         <span className="text-[14px]">{item.name}:</span>
                         <div className="flex flex-row items-center justify-center">
@@ -139,7 +144,7 @@ const ModalOne = ({
                       {serviceList.length !== index + 1 && (
                         <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
                       )}
-                    </>
+                    </div>
                   );
                 })}
               </div>
@@ -207,4 +212,4 @@ const ModalOne = ({
   );
 };
 
-export default ModalOne;
+export default SheetDetailModal;

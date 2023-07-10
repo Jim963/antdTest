@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Modal, Button, Input, Select } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
+import closeIcon from "../../assets/images/closeIcon.svg";
 
 const ModalTwo = ({
   title,
@@ -82,7 +83,11 @@ const ModalTwo = ({
         title={showTitle()}
         footer={showFooter()}
         open={isOpen}
-        closeIcon={<CloseCircleFilled />}
+        closeIcon={
+          <span className="w-[28px] h-[28px]">
+            <img src={closeIcon} alt="" />
+          </span>
+        }
         onCancel={cancelAction}
         maskClosable={false}
       >
