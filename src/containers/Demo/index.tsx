@@ -5,7 +5,7 @@ import { AppDispatch } from "../../store";
 import { handleAlert } from "../../store/slices/alert";
 import ModalOne from "../../components/ModalOne";
 import ModalTwo from "../../components/ModalTwo";
-import CardOne from "../../components/CardOne";
+import DashboardCard from "../../components/DashboardCard";
 import AlertDisplay from "../../components/AlertDisplay";
 import { notification } from "antd";
 
@@ -63,59 +63,59 @@ const Demo = () => {
         okAction={() => setModal1Open(false)}
       ></ModalOne>
 
-      <ModalTwo
+      {/* <ModalTwo
         title={"選擇服務項目"}
         isOpen={openModal}
         cancelAction={() => setModal1Open(false)}
         okAction={() => setModal1Open(false)}
-      ></ModalTwo>
+      ></ModalTwo> */}
 
       <button onClick={() => setModal1Open(true)}>Test</button>
 
       <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">
-        <CardOne
+        <DashboardCard
           total={1200000}
           type="multi"
           title="本月營收"
           linePay={400000}
           cash={800000}
-        ></CardOne>
-        <CardOne
+        ></DashboardCard>
+        <DashboardCard
           total={50000}
           type="multi"
           title="本日營收"
           linePay={12000}
           cash={38000}
-        ></CardOne>
+        ></DashboardCard>
 
         <div className="flex flex-col items-between justify-between">
-          <CardOne
+          <DashboardCard
             title="本月來客數"
             total={38591}
             type="normal"
             unit="人"
-          ></CardOne>
-          <CardOne
+          ></DashboardCard>
+          <DashboardCard
             title="本日來客數"
             total={241}
             type="normal"
             unit="人"
-          ></CardOne>
+          ></DashboardCard>
         </div>
 
         <div className="flex flex-col items-center justify-between">
-          <CardOne
+          <DashboardCard
             title="三天內未取件數"
             total={51}
             type="normal"
             unit="件"
-          ></CardOne>
-          <CardOne
+          ></DashboardCard>
+          <DashboardCard
             title="三天以上未取件數"
             total={12}
             type="normal"
             unit="件"
-          ></CardOne>
+          ></DashboardCard>
         </div>
       </div>
 

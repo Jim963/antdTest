@@ -7,7 +7,7 @@ const ModalTwo = ({
   remind = true,
   okText = "確認，建立服務單",
   cancelText = "上一步",
-  isClose = true,
+  isCloseIcon = true,
   isOpen,
   okAction,
   cancelAction,
@@ -77,7 +77,7 @@ const ModalTwo = ({
     <>
       <Modal
         centered
-        closable={isClose}
+        closable={isCloseIcon}
         width="600px"
         title={showTitle()}
         footer={showFooter()}
