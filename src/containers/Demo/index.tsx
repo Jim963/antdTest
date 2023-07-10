@@ -8,14 +8,10 @@ import ModalTwo from "../../components/ModalTwo";
 import DashboardCard from "../../components/DashboardCard";
 import AlertDisplay from "../../components/AlertDisplay";
 import { notification } from "antd";
-
-//test
 import BarChart from "../../components/BarChart";
 
 const Demo = () => {
-  //store
   const dispatch = useDispatch<AppDispatch>();
-  //store
 
   //notification
   const [api, contextHolder] = notification.useNotification();
@@ -23,7 +19,8 @@ const Demo = () => {
   //notification
 
   //modal
-  const [openModal, setModal1Open] = useState(false);
+  const [openModal, setOpenModal1] = useState(false);
+  const [openModal2, setOpenModal2] = useState(false);
   //modal
 
   return (
@@ -59,18 +56,19 @@ const Demo = () => {
       <SheetDetailModal
         title={"服務單資訊"}
         isOpen={openModal}
-        cancelAction={() => setModal1Open(false)}
-        okAction={() => setModal1Open(false)}
+        cancelAction={() => setOpenModal1(false)}
+        okAction={() => setOpenModal1(false)}
       ></SheetDetailModal>
 
-      {/* <ModalTwo
+      <ModalTwo
         title={"選擇服務項目"}
-        isOpen={openModal}
-        cancelAction={() => setModal1Open(false)}
-        okAction={() => setModal1Open(false)}
-      ></ModalTwo> */}
+        isOpen={openModal2}
+        cancelAction={() => setOpenModal2(false)}
+        okAction={() => setOpenModal2(false)}
+      ></ModalTwo>
 
-      <button onClick={() => setModal1Open(true)}>Test</button>
+      <button onClick={() => setOpenModal1(true)}>Test</button>
+      <button onClick={() => setOpenModal2(true)}>testTwo</button>
 
       <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">
         <DashboardCard
