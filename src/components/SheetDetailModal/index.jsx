@@ -9,7 +9,7 @@ const ModalOne = ({
   cancelAction,
   unpaid = true,
   oriCharge = 100000,
-  extraCharge = true,
+  extraCharge = false,
   linePay = 100,
   cash = 80,
   isCloseIcon = true,
@@ -65,78 +65,85 @@ const ModalOne = ({
 
           <Card bodyStyle={{ padding: "20px" }} className={"bg-[#EFEFEF]"}>
             {/* border-0 border-solid border-b */}
-            <div className="flex flex-row items-center justify-between">
-              <span className="text-[16px] font-bold">服務單總金額:</span>
-              <div className="flex flex-row items-center justify-center">
-                <span className="font-bold text-[26px]">{oriCharge}</span>
-                <span className="text-[16px] px-1">元</span>
-              </div>
-            </div>
-
-            <div className="mt-[12px] pl-[40px] pb-[8px] border-0 border-solid border-[#C4C4C4] border-b">
-              {extraCharge && (
-                <>
-                  <div className="flex flex-row items-center justify-between">
-                    <span className="text-[14px]">原始金額:</span>
-                    <div className="flex flex-row items-center justify-center">
-                      <span className="font-bold text-[18px]">{oriCharge}</span>
-                      <span className="text-[14px] px-1">元</span>
-                    </div>
-                  </div>
-                  <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
-
-                  <div className="flex flex-row items-center justify-between ">
-                    <span className="text-[14px]">補增款項:</span>
-                    <div className="flex flex-row items-center justify-center">
-                      <span className="font-bold text-[18px]">{"20"}</span>
-                      <span className="text-[14px] px-1">元</span>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-
-            <div className="my-[12px] text-[16px]">已付金額:</div>
-            <div className="pl-[40px] pb-[8px] border-0 border-solid border-[#C4C4C4] border-b">
+            <>
               <div className="flex flex-row items-center justify-between">
-                <span className="text-[14px]">Line Pay:</span>
+                <span className="text-[16px] font-bold">服務單總金額:</span>
                 <div className="flex flex-row items-center justify-center">
-                  <span className="font-bold text-[18px]">{linePay}</span>
-                  <span className="text-[14px] px-1">元</span>
+                  <span className="font-bold text-[26px]">{oriCharge}</span>
+                  <span className="text-[16px] px-1">元</span>
                 </div>
               </div>
-              <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
-
-              <div className="flex flex-row items-center justify-between ">
-                <span className="text-[14px]">現金:</span>
-                <div className="flex flex-row items-center justify-center">
-                  <span className="font-bold text-[18px]">{cash}</span>
-                  <span className="text-[14px] px-1">元</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="my-[12px] text-[16px]">服務項目:</div>
-            <div className="pl-[40px] pb-[8px]">
-              {serviceList.map((item, index) => {
-                return (
+              <div className="mt-[12px] pl-[40px] border-0 border-solid border-[#C4C4C4] border-b">
+                {extraCharge && (
                   <>
                     <div className="flex flex-row items-center justify-between">
-                      <span className="text-[14px]">{item.name}:</span>
+                      <span className="text-[14px]">原始金額:</span>
                       <div className="flex flex-row items-center justify-center">
                         <span className="font-bold text-[18px]">
-                          {item.charge}
+                          {oriCharge}
                         </span>
                         <span className="text-[14px] px-1">元</span>
                       </div>
                     </div>
-                    {serviceList.length !== index + 1 && (
-                      <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
-                    )}
+                    <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
+
+                    <div className="flex flex-row items-center justify-between ">
+                      <span className="text-[14px]">補增款項:</span>
+                      <div className="flex flex-row items-center justify-center">
+                        <span className="font-bold text-[18px]">{"20"}</span>
+                        <span className="text-[14px] px-1">元</span>
+                      </div>
+                    </div>
                   </>
-                );
-              })}
-            </div>
+                )}
+              </div>
+            </>
+
+            <>
+              <div className="my-[12px] text-[16px]">已付金額:</div>
+              <div className="pl-[40px] pb-[8px] border-0 border-solid border-[#C4C4C4] border-b">
+                <div className="flex flex-row items-center justify-between">
+                  <span className="text-[14px]">Line Pay:</span>
+                  <div className="flex flex-row items-center justify-center">
+                    <span className="font-bold text-[18px]">{linePay}</span>
+                    <span className="text-[14px] px-1">元</span>
+                  </div>
+                </div>
+                <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
+
+                <div className="flex flex-row items-center justify-between ">
+                  <span className="text-[14px]">現金:</span>
+                  <div className="flex flex-row items-center justify-center">
+                    <span className="font-bold text-[18px]">{cash}</span>
+                    <span className="text-[14px] px-1">元</span>
+                  </div>
+                </div>
+              </div>
+            </>
+
+            <>
+              <div className="my-[12px] text-[16px]">服務項目:</div>
+              <div className="pl-[40px] pb-[8px]">
+                {serviceList.map((item, index) => {
+                  return (
+                    <>
+                      <div className="flex flex-row items-center justify-between">
+                        <span className="text-[14px]">{item.name}:</span>
+                        <div className="flex flex-row items-center justify-center">
+                          <span className="font-bold text-[18px]">
+                            {item.charge}
+                          </span>
+                          <span className="text-[14px] px-1">元</span>
+                        </div>
+                      </div>
+                      {serviceList.length !== index + 1 && (
+                        <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
+                      )}
+                    </>
+                  );
+                })}
+              </div>
+            </>
           </Card>
         </div>
 
