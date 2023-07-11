@@ -46,8 +46,16 @@ const ServiceModal = ({
     );
   };
 
-  const addFinalService = () => {
+  const addService = () => {
     setFinalService([...finalService, { name: undefined, amount: undefined }]);
+  };
+
+  const deleteService = (deleteIndex) => {
+    setFinalService(
+      finalService.filter((item, index) => {
+        return index !== deleteIndex;
+      })
+    );
   };
   return (
     <Modal
@@ -64,7 +72,7 @@ const ServiceModal = ({
     >
       <div className="text-[22px] font-bold pb-[20px]">{title}</div>
 
-      <div className="flex flex-row items-start justify-center">
+      <div className="flex flex-row items-stretch justify-center">
         <div className="w-1/2 pr-[20px]">
           <Card
             bodyStyle={{ padding: "20px" }}
@@ -74,7 +82,7 @@ const ServiceModal = ({
               return (
                 <div
                   key={index}
-                  className="flex flex-row items-center justify-between mb-[12px]"
+                  className="flex flex-row items-center justify-start mb-[12px]"
                 >
                   <div className="w-[235px]">
                     {/* <span className="text-[16px]">服務項目:</span> */}
@@ -107,11 +115,16 @@ const ServiceModal = ({
                     />
                   </div>
 
-                  <div className="ml-[16px]">
-                    <CloseCircleOutlined
-                      style={{ fontSize: "20px", color: "#999899" }}
-                    ></CloseCircleOutlined>
-                  </div>
+                  {index > 0 && (
+                    <div
+                      className="ml-[16px]"
+                      onClick={() => deleteService(index)}
+                    >
+                      <CloseCircleOutlined
+                        style={{ fontSize: "20px", color: "#999899" }}
+                      ></CloseCircleOutlined>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -122,7 +135,7 @@ const ServiceModal = ({
                 ghost
                 type="primary"
                 className={"h-[36px] rounded-[4px]"}
-                onClick={addFinalService}
+                onClick={addService}
               >
                 <div className="flex flex-row items-center">
                   <PlusOutlined style={{ fontSize: "24px" }} />
@@ -133,7 +146,7 @@ const ServiceModal = ({
           </Card>
         </div>
 
-        <div className="w-1/2 flex flex-row flex-wrap items-center justify-start pl-[10px]">
+        <div className="relative w-1/2 flex flex-row flex-wrap items-start justify-start pl-[10px]">
           {detailList.map((item) => (
             <div
               key={item.name}
@@ -146,10 +159,10 @@ const ServiceModal = ({
             </div>
           ))}
 
-          <div className="flex flex-col items-center justify-center pt-[16px] pb-[20px]">
+          <div className="absolute bottom-0 flex flex-col items-center justify-center pt-[16px] pb-[20px]">
             <div className="flex flex-row items-center justify-center">
               {cancelAction && (
-                <div className="w-[200px] mx-3">
+                <div className="w-[200px] mr-2">
                   <Button
                     block
                     ghost
@@ -162,7 +175,7 @@ const ServiceModal = ({
                 </div>
               )}
               {okAction && (
-                <div className="w-[200px] mx-3">
+                <div className="w-[200px] ml-2">
                   <Button
                     block
                     type="primary"
