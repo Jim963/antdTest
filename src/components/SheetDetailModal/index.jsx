@@ -40,11 +40,7 @@ const SheetDetailModal = ({
       centered
       closable={isCloseIcon}
       open={isOpen}
-      closeIcon={
-        <span className="w-[28px] h-[28px]">
-          <img src={closeIcon} alt="" />
-        </span>
-      }
+      closeIcon={<CloseCircleFilled style={{ fontSize: "28px" }} />}
       onCancel={cancelAction}
       maskClosable={false}
       bodyStyle={{ padding: "12px 16px 20px 16px" }}

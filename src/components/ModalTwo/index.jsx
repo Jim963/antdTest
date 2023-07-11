@@ -83,11 +83,7 @@ const ModalTwo = ({
         title={showTitle()}
         footer={showFooter()}
         open={isOpen}
-        closeIcon={
-          <span className="w-[28px] h-[28px]">
-            <img src={closeIcon} alt="" />
-          </span>
-        }
+        closeIcon={<CloseCircleFilled style={{ fontSize: "28px" }} />}
         onCancel={cancelAction}
         maskClosable={false}
       >
