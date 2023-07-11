@@ -107,9 +107,11 @@ const ServiceModal = ({
                     />
                   </div>
 
-                  <CloseCircleOutlined
-                    style={{ fontSize: "20px", color: "#999899" }}
-                  ></CloseCircleOutlined>
+                  <div className="ml-[16px]">
+                    <CloseCircleOutlined
+                      style={{ fontSize: "20px", color: "#999899" }}
+                    ></CloseCircleOutlined>
+                  </div>
                 </div>
               );
             })}
