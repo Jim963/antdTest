@@ -5,6 +5,7 @@ import { AppDispatch } from "../../store";
 import { handleAlert } from "../../store/slices/alert";
 import SheetDetailModal from "../../components/SheetDetailModal";
 import ModalTwo from "../../components/ModalTwo";
+import StatusModal from "../../components/StatusModal";
 import DashboardCard from "../../components/DashboardCard";
 import AlertDisplay from "../../components/AlertDisplay";
 import { notification } from "antd";
@@ -21,6 +22,7 @@ const Demo = () => {
   //modal
   const [openModal, setOpenModal1] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
+  const [openStatus, setOpenStatus] = useState(false);
   //modal
 
   return (
@@ -67,8 +69,19 @@ const Demo = () => {
         okAction={() => setOpenModal2(false)}
       ></ModalTwo>
 
+      <StatusModal
+        title={"尚未收到 LINE Pay款項"}
+        subtitle={"您可以再次確認客戶 LINE Pay付款資訊，或使用現金收款"}
+        status={"success"}
+        isOpen={openStatus}
+        cancelAction={() => setOpenStatus(false)}
+        okAction={() => setOpenStatus(false)}
+        okGhostAction={() => setOpenStatus(false)}
+      ></StatusModal>
+
       <button onClick={() => setOpenModal1(true)}>Test</button>
       <button onClick={() => setOpenModal2(true)}>testTwo</button>
+      <button onClick={() => setOpenStatus(true)}>testStatus</button>
 
       <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">
         <DashboardCard
