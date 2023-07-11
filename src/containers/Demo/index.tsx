@@ -6,6 +6,7 @@ import { handleAlert } from "../../store/slices/alert";
 import SheetDetailModal from "../../components/SheetDetailModal";
 import ModalTwo from "../../components/ModalTwo";
 import StatusModal from "../../components/StatusModal";
+import ServiceModal from "../../components/ServiceModal";
 import DashboardCard from "../../components/DashboardCard";
 import AlertDisplay from "../../components/AlertDisplay";
 import { notification } from "antd";
@@ -23,6 +24,7 @@ const Demo = () => {
   const [openModal, setOpenModal1] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
   const [openStatus, setOpenStatus] = useState(false);
+  const [openService, setOpenService] = useState(false);
   //modal
 
   return (
@@ -79,9 +81,17 @@ const Demo = () => {
         // okGhostAction={() => setOpenStatus(false)}
       ></StatusModal>
 
+      <ServiceModal
+        title="選擇服務項目"
+        isOpen={openService}
+        cancelAction={() => setOpenService(false)}
+        okAction={() => setOpenService(false)}
+      ></ServiceModal>
+
       <button onClick={() => setOpenModal1(true)}>Test</button>
       <button onClick={() => setOpenModal2(true)}>testTwo</button>
       <button onClick={() => setOpenStatus(true)}>testStatus</button>
+      <button onClick={() => setOpenService(true)}>testService</button>
 
       <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">
         <DashboardCard
