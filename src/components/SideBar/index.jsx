@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import LogoImg from "../../assets/images/logo.png";
 import goIcon from "../../assets/images/goIcon.svg";
+import orangeGoICon from "../../assets/images/orangeGoIcon.svg";
 
 const SideBar = () => {
   const pageList = [
@@ -21,7 +22,21 @@ const SideBar = () => {
             src={LogoImg}
             alt=""
           />
-          <div className="w-[130px] xl:w-[190px] h-[80px] bg-[#FFF2E7] rounded-[8px]"></div>
+          <div className="box-border w-[130px] xl:w-[190px] h-[80px] bg-[#FFF2E7] rounded-[8px] py-[12px] px-[16px]">
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-col items-center justify-start">
+                <span className="text-[14px]">未收件服務單:</span>
+                <div className="flex flex-row items-center">
+                  <span className="text-[28px] text-[#F87700] font-bold">
+                    32
+                  </span>
+                  <span className="ml-[8px] text-[16px]">件</span>
+                </div>
+              </div>
+
+              <img src={orangeGoICon} alt="" />
+            </div>
+          </div>
           <div className="h-[1px] w-full my-[24px] bg-[#D9D9D9]"></div>
 
           {pageList.map((item) => {
