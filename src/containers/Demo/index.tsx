@@ -71,12 +71,12 @@ const Demo = () => {
 
       <StatusModal
         title={"尚未收到 LINE Pay款項"}
-        subtitle={"您可以再次確認客戶 LINE Pay付款資訊，或使用現金收款"}
-        status={"success"}
+        // subtitle={"您可以再次確認客戶 LINE Pay付款資訊，或使用現金收款"}
+        status={"loading"}
         isOpen={openStatus}
         cancelAction={() => setOpenStatus(false)}
-        okAction={() => setOpenStatus(false)}
-        okGhostAction={() => setOpenStatus(false)}
+        // okAction={() => setOpenStatus(false)}
+        // okGhostAction={() => setOpenStatus(false)}
       ></StatusModal>
 
       <button onClick={() => setOpenModal1(true)}>Test</button>
