@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Modal, Button, Card, Select } from "antd";
-import { CloseCircleFilled, PlusOutlined } from "@ant-design/icons";
+import {
+  CloseCircleFilled,
+  CloseCircleOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 
 const ServiceModal = ({
   title = "選擇服務項目",
@@ -73,11 +77,10 @@ const ServiceModal = ({
                   className="flex flex-row items-center justify-between mb-[12px]"
                 >
                   <div className="w-[235px]">
-                    {index === 0 && (
-                      <span className="text-[16px]">服務項目:</span>
-                    )}
+                    {/* <span className="text-[16px]">服務項目:</span> */}
+
                     <Select
-                      className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[8px] py-[3px]"
+                      className="w-full text-[16px] font-bold border border-solid border-[#d9d9d9] rounded-[8px] py-[3px]"
                       placeholder={<span>請使用下拉選項</span>}
                       bordered={false}
                       options={serviceList}
@@ -87,9 +90,9 @@ const ServiceModal = ({
                   </div>
 
                   <div className="w-[80px] mx-[12px]">
-                    {index === 0 && <span className="text-[16px]">數量:</span>}
+                    {/* <span className="text-[16px]">數量:</span> */}
                     <Select
-                      className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[8px] py-[3px]"
+                      className="w-full text-[16px] font-bold  border border-solid border-[#d9d9d9] rounded-[8px] py-[3px]"
                       bordered={false}
                       options={[
                         { value: "1", label: "1" },
@@ -103,6 +106,10 @@ const ServiceModal = ({
                       }
                     />
                   </div>
+
+                  <CloseCircleOutlined
+                    style={{ fontSize: "20px", color: "#999899" }}
+                  ></CloseCircleOutlined>
                 </div>
               );
             })}
