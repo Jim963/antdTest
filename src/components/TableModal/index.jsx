@@ -1,12 +1,23 @@
-import { Modal, Table, Tag, Space } from "antd";
+import { Modal, Tabs, Table, Tag, Space, Button } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
-const TableModal = ({
-  title,
-  isOpen,
-  okAction,
-  cancelAction,
-  isCloseIcon = true,
-}) => {
+const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
+  const tabItems = [
+    {
+      key: "1",
+      label: `服務單報表`,
+      //   children: `Content of Tab Pane 1`,
+    },
+    {
+      key: "2",
+      label: `簡訊發送報表`,
+      //   children: `Content of Tab Pane 2`,
+    },
+    {
+      key: "3",
+      label: `LINE 發送報表`,
+      //   children: `Content of Tab Pane 3`,
+    },
+  ];
   const columns = [
     {
       title: "門市名稱",
@@ -36,19 +47,19 @@ const TableModal = ({
       },
     },
     {
-      title: "Age",
+      title: "服務單號",
       dataIndex: "age",
       key: "age",
       className: "",
     },
     {
-      title: "Address",
+      title: "客戶姓名",
       dataIndex: "address",
       key: "address",
       className: "",
     },
     {
-      title: "Tags",
+      title: "客戶聯絡電話",
       key: "tags",
       dataIndex: "tags",
       className: "",
@@ -69,7 +80,7 @@ const TableModal = ({
       ),
     },
     {
-      title: "Action",
+      title: "服務項目",
       key: "action",
       render: (_, record) => (
         <Space size="middle">
@@ -165,6 +176,31 @@ const TableModal = ({
       tags: ["cool", "teacher"],
     },
   ];
+
+  const okAction = () => {
+    console.log("okAction");
+  };
+  const tabMoreContent = () => {
+    return (
+      <div className="flex flex-row items-center justify-center">
+        <span>總計：3筆</span>
+        <div className="w-[110px] ml-[35px]">
+          <Button
+            block
+            type="primary"
+            className={"h-[32px]"}
+            onClick={okAction}
+          >
+            <span className="allCenter text-[14px]">會出報表(.csv)</span>
+          </Button>
+        </div>
+      </div>
+    );
+  };
+
+  const tabChange = (e) => {
+    console.log(e, "看看");
+  };
   return (
     <>
       <Modal
@@ -179,6 +215,12 @@ const TableModal = ({
         maskClosable={false}
         bodyStyle={{ padding: "12px 16px 20px 16px" }}
       >
+        <Tabs
+          defaultActiveKey="1"
+          items={tabItems}
+          tabBarExtraContent={tabMoreContent()}
+          onChange={tabChange}
+        ></Tabs>
         <Table columns={columns} dataSource={data}></Table>
       </Modal>
     </>
