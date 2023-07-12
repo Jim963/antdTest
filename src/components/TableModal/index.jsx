@@ -9,10 +9,23 @@ const TableModal = ({
 }) => {
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "門市名稱",
+      dataIndex: "storeName",
       key: "name",
-      render: (text) => <a>{text}</a>,
+      className: "w-[110px]",
+      render: (text) => {
+        let emptyArr = [];
+        let newParagraph = text.split("");
+        console.log(newParagraph);
+
+        while (newParagraph.length > 5) {}
+
+        return (
+          <div style={{ wordWrap: "break-word", wordBreak: "break-word" }}>
+            {text}
+          </div>
+        );
+      },
     },
     {
       title: "Age",
@@ -58,77 +71,77 @@ const TableModal = ({
   const data = [
     {
       key: "1",
-      name: "John Brown",
+      storeName: "一二三四五六",
       age: 32,
       address: "New York No. 1 Lake Park",
       tags: ["nice", "developer"],
     },
     {
       key: "2",
-      name: "Jim Green",
+      storeName: "一二三四五",
       age: 42,
       address: "London No. 1 Lake Park",
       tags: ["loser"],
     },
     {
       key: "3",
-      name: "Joe Black",
+      storeName: "一二三四五",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
       key: "4",
-      name: "Joe Black",
+      storeName: "一二三四五六",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
-      key: "5",
-      name: "Joe Black",
+      key: "五四三二一",
+      storeName: "Joe Black",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
       key: "6",
-      name: "Joe Black",
+      storeName: "公司名五個字",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
       key: "7",
-      name: "Joe Black",
+      storeName: "dude that dope",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
       key: "8",
-      name: "Joe Black",
+      storeName: "一二三四五六",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
       key: "9",
-      name: "Joe Black",
+      storeName: "七六五四三二一",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
       key: "10",
-      name: "Joe Black",
+      storeName: "一二三",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
       key: "11",
-      name: "Joe Black",
+      storeName: "四五六七",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
@@ -139,7 +152,7 @@ const TableModal = ({
       <Modal
         title={null}
         footer={null}
-        width={"screen"}
+        width={"100%"}
         centered
         closable={isCloseIcon}
         open={isOpen}
