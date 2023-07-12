@@ -183,17 +183,14 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
   const tabMoreContent = () => {
     return (
       <div className="flex flex-row items-center justify-center">
-        <span>總計：3筆</span>
-        <div className="w-[110px] ml-[35px]">
-          <Button
-            block
-            type="primary"
-            className={"h-[32px]"}
-            onClick={okAction}
-          >
-            <span className="allCenter text-[14px]">會出報表(.csv)</span>
-          </Button>
-        </div>
+        <span className="text-[16px] text-[#484848]">總計：3筆</span>
+        <Button
+          type="primary"
+          className={"h-[32px] p-0 w-[110px] ml-[35px]"}
+          onClick={okAction}
+        >
+          <span className="allCenter text-[14px]">會出報表(.csv)</span>
+        </Button>
       </div>
     );
   };
@@ -216,6 +213,8 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
         bodyStyle={{ padding: "12px 16px 20px 16px" }}
       >
         <Tabs
+          size="large"
+          tabBarStyle={{ color: "#999", fontSize: "18px" }}
           defaultActiveKey="1"
           items={tabItems}
           tabBarExtraContent={tabMoreContent()}
