@@ -1,5 +1,9 @@
 import { Modal, Button, Spin } from "antd";
-import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
+import {
+  CloseCircleFilled,
+  CheckCircleFilled,
+  WarningFilled,
+} from "@ant-design/icons";
 
 const StatusModal = ({
   title,
@@ -69,6 +73,14 @@ const StatusModal = ({
           <CloseCircleFilled
             style={{ fontSize: "80px", color: "#EB3125" }}
           ></CloseCircleFilled>
+        );
+        break;
+
+      case "warning":
+        return (
+          <WarningFilled
+            style={{ fontSize: "80px", color: "#F87700" }}
+          ></WarningFilled>
         );
         break;
       case "loading":
