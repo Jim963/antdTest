@@ -15,14 +15,18 @@ const TableModal = ({
       className: "w-[110px]",
       render: (text) => {
         let emptyArr = [];
-        let newParagraph = text.split("");
-        console.log(newParagraph);
-
-        while (newParagraph.length > 5) {}
+        let restWord = text;
+        while (restWord.length > 0) {
+          emptyArr.push(restWord.slice(0, 5));
+          restWord = restWord.slice(5);
+          console.log(emptyArr, "watch it");
+        }
 
         return (
           <div style={{ wordWrap: "break-word", wordBreak: "break-word" }}>
-            {text}
+            {emptyArr.map((item) => (
+              <span>{item}</span>
+            ))}
           </div>
         );
       },
@@ -31,16 +35,19 @@ const TableModal = ({
       title: "Age",
       dataIndex: "age",
       key: "age",
+      className: "",
     },
     {
       title: "Address",
       dataIndex: "address",
       key: "address",
+      className: "",
     },
     {
       title: "Tags",
       key: "tags",
       dataIndex: "tags",
+      className: "",
       render: (_, { tags }) => (
         <>
           {tags.map((tag) => {
@@ -71,7 +78,7 @@ const TableModal = ({
   const data = [
     {
       key: "1",
-      storeName: "一二三四五六",
+      storeName: "一二三四五六12345678909876543",
       age: 32,
       address: "New York No. 1 Lake Park",
       tags: ["nice", "developer"],
@@ -142,6 +149,13 @@ const TableModal = ({
     {
       key: "11",
       storeName: "四五六七",
+      age: 32,
+      address: "Sydney No. 1 Lake Park",
+      tags: ["cool", "teacher"],
+    },
+    {
+      key: "12",
+      storeName: "098765432",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
