@@ -23,7 +23,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       title: "門市名稱",
       dataIndex: "storeName",
       key: "name",
-      className: "w-[110px]",
+      className: "",
       render: (text) => {
         let emptyArr = [];
         let restWord = text;
@@ -93,7 +93,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
   const data = [
     {
       key: "1",
-      storeName: "一二三四五六12345678909876543",
+      storeName: "一二三四五六1234",
       age: 32,
       address: "New York No. 1 Lake Park",
       tags: ["nice", "developer"],
@@ -128,14 +128,14 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
     },
     {
       key: "6",
-      storeName: "公司名五個字",
+      storeName: "公司名五個字:3",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
     },
     {
       key: "7",
-      storeName: "dude that dope",
+      storeName: "超過五個字拉拉",
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
@@ -212,9 +212,14 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
         maskClosable={false}
         bodyStyle={{ padding: "12px 16px 20px 16px" }}
       >
+        <div className="text-[22px] font-bold pb-[20px]">{title}</div>
+
         <Tabs
           size="large"
           tabBarStyle={{ color: "#999", fontSize: "18px" }}
+          pagination={{
+            position: ["bottomCenter"],
+          }}
           defaultActiveKey="1"
           items={tabItems}
           tabBarExtraContent={tabMoreContent()}
