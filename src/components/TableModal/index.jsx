@@ -19,13 +19,17 @@ const TableModal = ({
         while (restWord.length > 0) {
           emptyArr.push(restWord.slice(0, 5));
           restWord = restWord.slice(5);
-          console.log(emptyArr, "watch it");
         }
 
         return (
           <div style={{ wordWrap: "break-word", wordBreak: "break-word" }}>
             {emptyArr.map((item) => (
-              <span>{item}</span>
+              <div
+                key={item}
+                className="flex flex-col items-start justify-center"
+              >
+                <span>{item}</span>
+              </div>
             ))}
           </div>
         );
