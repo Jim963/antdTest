@@ -7,6 +7,7 @@ import SheetDetailModal from "../../components/SheetDetailModal";
 import ModalTwo from "../../components/ModalTwo";
 import StatusModal from "../../components/StatusModal";
 import ServiceModal from "../../components/ServiceModal";
+import TableModal from "../../components/TableModal";
 import DashboardCard from "../../components/DashboardCard";
 import AlertDisplay from "../../components/AlertDisplay";
 import { notification } from "antd";
@@ -25,6 +26,7 @@ const Demo = () => {
   const [openModal2, setOpenModal2] = useState(false);
   const [openStatus, setOpenStatus] = useState(false);
   const [openService, setOpenService] = useState(false);
+  const [openTable, setOpenTable] = useState(false);
   //modal
 
   return (
@@ -88,10 +90,18 @@ const Demo = () => {
         okAction={() => setOpenService(false)}
       ></ServiceModal>
 
+      <TableModal
+        title="TableModal"
+        isOpen={openTable}
+        okAction={() => setOpenTable(false)}
+        cancelAction={() => setOpenTable(false)}
+      ></TableModal>
+
       <button onClick={() => setOpenModal1(true)}>Test</button>
       <button onClick={() => setOpenModal2(true)}>testTwo</button>
       <button onClick={() => setOpenStatus(true)}>testStatus</button>
       <button onClick={() => setOpenService(true)}>testService</button>
+      <button onClick={() => setOpenTable(true)}>testTable</button>
 
       <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">
         <DashboardCard
