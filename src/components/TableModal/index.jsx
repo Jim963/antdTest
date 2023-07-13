@@ -59,7 +59,6 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       key: "address",
       className: "",
     },
-    Table.SELECTION_COLUMN,
     {
       title: "客戶聯絡電話",
       key: "tags",
@@ -214,6 +213,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
         title={null}
         footer={null}
         width={"100%"}
+        height={"95%"}
         centered
         closable={isCloseIcon}
         open={isOpen}
@@ -238,6 +238,9 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
         <Table
           columns={columns}
           dataSource={data}
+          scroll={{
+            y: 400,
+          }}
           expandable={{
             expandedRowRender: (record) => (
               <p
