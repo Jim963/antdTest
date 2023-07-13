@@ -52,12 +52,14 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       key: "age",
       className: "",
     },
+    Table.EXPAND_COLUMN,
     {
       title: "客戶姓名",
       dataIndex: "address",
       key: "address",
       className: "",
     },
+    Table.SELECTION_COLUMN,
     {
       title: "客戶聯絡電話",
       key: "tags",
@@ -97,6 +99,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       age: 32,
       address: "New York No. 1 Lake Park",
       tags: ["nice", "developer"],
+      description: "Hide in bush , teemo on duty!",
     },
     {
       key: "2",
@@ -104,6 +107,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       age: 42,
       address: "London No. 1 Lake Park",
       tags: ["loser"],
+      description: "Hide in bush , teemo on duty!",
     },
     {
       key: "3",
@@ -111,6 +115,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
+      description: "Hide in bush , teemo on duty!",
     },
     {
       key: "4",
@@ -118,6 +123,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
+      description: "Hide in bush , teemo on duty!",
     },
     {
       key: "五四三二一",
@@ -125,6 +131,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
+      description: "Hide in bush , teemo on duty!",
     },
     {
       key: "6",
@@ -132,6 +139,9 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       age: 32,
       address: "Sydney No. 1 Lake Park",
       tags: ["cool", "teacher"],
+      description: (
+        <div className="w-[50px] h-[50px] bg-blue-200 rounded-full"></div>
+      ),
     },
     {
       key: "7",
@@ -225,7 +235,21 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
           tabBarExtraContent={tabMoreContent()}
           onChange={tabChange}
         ></Tabs>
-        <Table columns={columns} dataSource={data}></Table>
+        <Table
+          columns={columns}
+          dataSource={data}
+          expandable={{
+            expandedRowRender: (record) => (
+              <p
+                style={{
+                  margin: 0,
+                }}
+              >
+                {record.description}
+              </p>
+            ),
+          }}
+        ></Table>
       </Modal>
     </>
   );
