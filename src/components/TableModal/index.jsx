@@ -235,6 +235,24 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
           tabBarExtraContent={tabMoreContent()}
           onChange={tabChange}
         ></Tabs>
+
+        <div className="pt-[28px]">
+          <span className="text-[18px] font-bold">總覽</span>
+          <div className="flex flex-col items-start justify-center bg-[#E7F0F8] mt-[8px] p-[20px_24px]">
+            <span className="text-[14px]">簡訊發送量:</span>
+            <div>
+              <span className="text-[20px]">666</span>
+              <span className="text-[16px] ml-[4px]">元</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-[28px] pb-[24px]">
+          <span className="text-[18px] font-bold">查詢</span>
+          <div className="flex flex-col items-start justify-center bg-[#F9F9F9] mt-[8px] p-[24px]">
+            <span className="text-[14px]">發送時間:</span>
+          </div>
+        </div>
         <Table
           columns={columns}
           dataSource={data}
