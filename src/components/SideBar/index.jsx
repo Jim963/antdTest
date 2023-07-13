@@ -1,13 +1,21 @@
 import { Button } from "antd";
 import LogoImg from "../../assets/images/logo.png";
 import goIcon from "../../assets/images/goIcon.svg";
+import searchIcon from "../../assets/images/searchIcon.svg";
+import tableIcon from "../../assets/images/tableIcon.svg";
+import sheetIcon from "../../assets/images/sheetIcon.svg";
 import orangeGoICon from "../../assets/images/orangeGoIcon.svg";
 
 const SideBar = () => {
   const pageList = [
-    { name: "所有店家/會員資訊", route: "" },
-    { name: "查詢店家/服務單", route: "" },
-    { name: "營業/會員報表", route: "" },
+    { name: "查詢門市/服務單", icon: searchIcon, route: "" },
+    { name: "門市/會員資訊", icon: sheetIcon, route: "" },
+    { name: "營業/會員報表", icon: tableIcon, route: "" },
+  ];
+
+  const pageList_admin = [
+    { name: "查詢服務單", icon: searchIcon, route: "" },
+    { name: "營業報表", icon: tableIcon, route: "" },
   ];
 
   const newStore = () => {
@@ -45,8 +53,11 @@ const SideBar = () => {
                 key={item.name}
                 className="w-full flex flex-row items-center justify-between text-[16px] mb-[20px]"
               >
-                <span> {item.name}</span>
-                <img src={goIcon} alt="" />
+                <div className="flex flex-row items-center justify-center">
+                  <img className="mr-[4px]" src={item.icon} alt="" />
+                  <span> {item.name}</span>
+                </div>
+                <img src={goIcon} />
               </div>
             );
           })}
