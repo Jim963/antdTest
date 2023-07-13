@@ -238,9 +238,9 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
         <Table
           columns={columns}
           dataSource={data}
-          scroll={{
-            y: 400,
-          }}
+          //   scroll={{
+          //     y: 400,
+          //   }}
           expandable={{
             expandedRowRender: (record) => (
               <p
