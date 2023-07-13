@@ -270,6 +270,10 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
               </p>
             ),
           }}
+          pagination={{
+            // showSizeChanger: true,
+            showQuickJumper: true,
+          }}
         ></Table>
       </Modal>
     </>
