@@ -1,4 +1,4 @@
-import { Modal, Tabs, Table, Tag, Space, Button } from "antd";
+import { Modal, Tabs, Table, Tag, Space, Button, DatePicker } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
   const tabItems = [
@@ -251,6 +251,13 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
           <span className="text-[18px] font-bold">查詢</span>
           <div className="flex flex-col items-start justify-center bg-[#F9F9F9] mt-[8px] p-[24px]">
             <span className="text-[14px]">發送時間:</span>
+            <div className="flex flex-row items-center justify-center">
+              <DatePicker></DatePicker>
+
+              <span className="mx-4">至</span>
+
+              <DatePicker></DatePicker>
+            </div>
           </div>
         </div>
         <Table
