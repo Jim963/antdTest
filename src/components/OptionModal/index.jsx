@@ -1,24 +1,23 @@
 import { useState } from "react";
 import { Modal, Button, Input, Select } from "antd";
-import { CloseCircleFilled } from "@ant-design/icons";
+import {
+  CloseCircleFilled,
+  MinusCircleOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 
 const OptionModal = ({
+  type = "account",
   title,
-  remind = true,
-  okText = "確認，建立服務單",
+  okText = "綁定",
   cancelText = "上一步",
   isCloseIcon = true,
   isOpen,
   okAction,
   cancelAction,
 }) => {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [name, setName] = useState("");
-  const [serviceType, setServiceType] = useState("");
-  const [amount, setAmount] = useState("");
-
   const showTitle = () => {
-    return <span className="text-[22px] pt-[12px] px-[20px]">{title}</span>;
+    return <div className="text-[22px] pt-[12px] px-[16px]">{title}</div>;
   };
   const showFooter = () => {
     return (
@@ -44,40 +43,28 @@ const OptionModal = ({
             </div>
           )}
         </div>
-
-        {remind && (
-          <div className="text-[14px] pt-[12px]">
-            點選<span className="font-bold px-1">確認建立訂單</span>
-            後，系統將發送付款通知給該客戶
-          </div>
-        )}
       </div>
     );
   };
 
-  const phoneChange = (e) => {
-    const { value } = e?.target;
-    setPhoneNumber(value);
+  const [optionData, setOptionData] = useState([
+    { account: undefined, price: undefined, service: "" },
+  ]);
+
+  const addOption = () => {
+    setOptionData([...optionData, { name: undefined, amount: undefined }]);
   };
 
-  const nameChange = (e) => {
-    const { value } = e?.target;
-    setName(value);
+  const optionChange = (e) => {
+    console.log(e, "optionChange");
   };
 
-  const serviceChange = (value) => {
-    setServiceType(value);
-  };
-
-  const amountChange = (value) => {
-    setAmount(value);
-  };
   return (
     <>
       <Modal
         centered
         closable={isCloseIcon}
-        width="600px"
+        width="auto"
         title={showTitle()}
         footer={showFooter()}
         open={isOpen}
@@ -85,62 +72,66 @@ const OptionModal = ({
         onCancel={cancelAction}
         maskClosable={false}
       >
-        <div className="flex flex-row flex-wrap items-start justify-between pt-[20px] pb-[24px] px-[20px]">
-          <div className="w-[236px] flex flex-col items-start justify-center">
-            <span className="text-[16px]">客戶姓名:</span>
+        <div className="p-[20px_16px_24px_16px]">
+          {type === "account" &&
+            optionData.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className="flex flex-row flex-wrap items-center justify-start"
+                >
+                  <div className="w-[250px] flex flex-col items-start justify-center">
+                    {/* <span className="text-[16px] mb-[5px]">服務品項名稱:</span> */}
+                    <Input
+                      className="text-[16px] font-bold py-[9px]"
+                      placeholder="請輸入品項名稱"
+                      allowClear
+                      onChange={optionChange}
+                      value={item.service}
+                    />
+                  </div>
 
-            <Input
-              className="text-[16px] font-bold py-[9px] mt-[5px]"
-              placeholder="請輸入客戶姓名"
-              allowClear
-              onChange={nameChange}
-            />
-          </div>
+                  <div className="w-[187px] flex flex-col items-start justify-center ml-[20px]">
+                    {/* <span className="text-[16px] mb-[5px]">金額:</span> */}
+                    <Input
+                      className="text-[16px] font-bold py-[9px]"
+                      placeholder="請輸入金額"
+                      allowClear
+                      onChange={optionChange}
+                      value={item.price}
+                    />
+                  </div>
 
-          <div className="w-[236px]">
-            <div className="flex flex-col items-start justify-center">
-              <span className="text-[16px]">客戶聯絡電話:</span>
-              <span className="text-[18px] font-bold pt-[8px]">0987654321</span>
-            </div>
-          </div>
+                  <div className="flex flex-row items-center  ml-[12px]">
+                    <MinusCircleOutlined
+                      style={{ fontSize: "20px", color: "#D2D2D2" }}
+                    />
+                    <span className="text-[14px] text-[#D2D2D2] ml-1">
+                      刪除
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
         </div>
 
-        <div className="flex flex-row flex-wrap items-start justify-between px-[20px] pb-[18px]">
-          <div className="w-[236px] flex flex-col items-start justify-center">
-            <span className="text-[16px]">服務項目:</span>
-
-            <Select
-              className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[6px] py-[5px]"
-              placeholder={<span>請使用下拉選項</span>}
-              bordered={false}
-              options={[
-                { value: "124", label: "Test Option" },
-                { value: "valueTwo", label: "Test Option Two" },
-              ]}
-              onChange={serviceChange}
-            />
-          </div>
-
-          <div className="w-[236px]">
-            <div className="flex flex-col items-start justify-center">
-              <span className="text-[16px]">數量:</span>
-
-              <Select
-                className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[6px] py-[5px]"
-                placeholder={<span>請使用下拉選項</span>}
-                bordered={false}
-                options={[
-                  { value: "1", label: "1" },
-                  { value: "2", label: "2" },
-                ]}
-                onChange={amountChange}
-              />
+        <div className="w-[150px] bg-white rounded-[4px] mt-[24px]">
+          <Button
+            block
+            ghost
+            type="primary"
+            className={"h-[36px] rounded-[4px]"}
+            onClick={addOption}
+          >
+            <div className="flex flex-row items-center">
+              <PlusOutlined style={{ fontSize: "24px" }} />
+              <span className="ml-[8px]"> 新增服務項目</span>
             </div>
-          </div>
+          </Button>
         </div>
 
-        <div className="flex flex-row flex-wrap items-center justify-center px-[20px]">
-          <div className="w-full flex flex-col items-start justify-center pt-[20px] pb-[18px]">
+        {/* <div className="flex flex-row flex-wrap items-center justify-center px-[16px]">
+          <div className="w-[457px] flex flex-col items-start justify-center pt-[20px] pb-[18px]">
             <span className="text-[16px]">客戶聯絡電話:</span>
 
             <Input
@@ -149,10 +140,10 @@ const OptionModal = ({
               allowClear
               maxLength="10"
               showCount
-              onChange={phoneChange}
+              onChange={optionChange}
             />
           </div>
-        </div>
+        </div> */}
       </Modal>
     </>
   );
