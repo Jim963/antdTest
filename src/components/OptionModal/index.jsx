@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Modal, Button, Input, Select } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
-import closeIcon from "../../assets/images/closeIcon.svg";
 
-const ModalTwo = ({
+const OptionModal = ({
   title,
   remind = true,
   okText = "確認，建立服務單",
@@ -73,7 +72,6 @@ const ModalTwo = ({
   const amountChange = (value) => {
     setAmount(value);
   };
-
   return (
     <>
       <Modal
@@ -160,4 +158,4 @@ const ModalTwo = ({
   );
 };
 
-export default ModalTwo;
+export default OptionModal;

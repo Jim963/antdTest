@@ -3,11 +3,14 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { handleAlert } from "../../store/slices/alert";
+//Modal
 import SheetDetailModal from "../../components/SheetDetailModal";
-import ModalTwo from "../../components/ModalTwo";
+import FormModal from "../../components/FormModal";
 import StatusModal from "../../components/StatusModal";
 import ServiceModal from "../../components/ServiceModal";
 import TableModal from "../../components/TableModal";
+import OptionModal from "../../components/OptionModal";
+//Modal
 import DashboardCard from "../../components/DashboardCard";
 import AlertDisplay from "../../components/AlertDisplay";
 import { notification } from "antd";
@@ -22,11 +25,12 @@ const Demo = () => {
   //notification
 
   //modal
-  const [openModal, setOpenModal1] = useState(false);
-  const [openModal2, setOpenModal2] = useState(false);
+  const [openDetail, steOpenDetail] = useState(false);
+  const [openForm, setOpenForm] = useState(false);
   const [openStatus, setOpenStatus] = useState(false);
   const [openService, setOpenService] = useState(false);
   const [openTable, setOpenTable] = useState(false);
+  const [openOption, setOpenOption] = useState(false);
   //modal
 
   return (
@@ -61,17 +65,17 @@ const Demo = () => {
 
       <SheetDetailModal
         title={"服務單資訊"}
-        isOpen={openModal}
-        cancelAction={() => setOpenModal1(false)}
-        okAction={() => setOpenModal1(false)}
+        isOpen={openDetail}
+        cancelAction={() => steOpenDetail(false)}
+        okAction={() => steOpenDetail(false)}
       ></SheetDetailModal>
 
-      <ModalTwo
+      <FormModal
         title={"選擇服務項目"}
-        isOpen={openModal2}
-        cancelAction={() => setOpenModal2(false)}
-        okAction={() => setOpenModal2(false)}
-      ></ModalTwo>
+        isOpen={openForm}
+        cancelAction={() => setOpenForm(false)}
+        okAction={() => setOpenForm(false)}
+      ></FormModal>
 
       <StatusModal
         title={"尚未收到 LINE Pay款項"}
@@ -97,11 +101,32 @@ const Demo = () => {
         cancelAction={() => setOpenTable(false)}
       ></TableModal>
 
-      <button onClick={() => setOpenModal1(true)}>Test</button>
-      <button onClick={() => setOpenModal2(true)}>testTwo</button>
-      <button onClick={() => setOpenStatus(true)}>testStatus</button>
-      <button onClick={() => setOpenService(true)}>testService</button>
-      <button onClick={() => setOpenTable(true)}>testTable</button>
+      <OptionModal
+        title={"綁定店長"}
+        isOpen={openOption}
+        cancelAction={() => setOpenOption(false)}
+        okAction={() => setOpenOption(false)}
+      ></OptionModal>
+
+      <button className="mx-2" onClick={() => steOpenDetail(true)}>
+        DetailModal
+      </button>
+      <button className="mx-2" onClick={() => setOpenForm(true)}>
+        FormModal
+      </button>
+      <button className="mx-2" onClick={() => setOpenStatus(true)}>
+        StatusModal
+      </button>
+      <button className="mx-2" onClick={() => setOpenService(true)}>
+        ServiceModal
+      </button>
+      <button className="mx-2" onClick={() => setOpenTable(true)}>
+        TableModal
+      </button>
+
+      <button className="mx-2" onClick={() => setOpenOption(true)}>
+        OptionModal
+      </button>
 
       <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">
         <DashboardCard
