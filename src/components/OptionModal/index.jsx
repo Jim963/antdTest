@@ -48,15 +48,38 @@ const OptionModal = ({
   };
 
   const [optionData, setOptionData] = useState([
-    { account: undefined, price: undefined, service: "" },
+    { account: undefined, price: undefined, service: undefined },
   ]);
 
   const addOption = () => {
-    setOptionData([...optionData, { name: undefined, amount: undefined }]);
+    setOptionData([
+      ...optionData,
+      { account: undefined, price: undefined, service: undefined },
+    ]);
   };
 
-  const optionChange = (e) => {
-    console.log(e, "optionChange");
+  const deleteOption = (deleteIndex) => {
+    setOptionData(
+      optionData.filter((item, index) => {
+        return index !== deleteIndex;
+      })
+    );
+  };
+
+  const optionChange = (e, key, index) => {
+    const { value } = e.target;
+    setOptionData(
+      optionData.map((item, innIndex) => {
+        if (index === innIndex) {
+          return {
+            ...item,
+            [key]: value,
+          };
+        } else {
+          return item;
+        }
+      })
+    );
   };
 
   return (
@@ -78,31 +101,40 @@ const OptionModal = ({
               return (
                 <div
                   key={index}
-                  className="flex flex-row flex-wrap items-center justify-start"
+                  className="flex flex-row flex-wrap items-center justify-start mb-[12px]"
                 >
                   <div className="w-[250px] flex flex-col items-start justify-center">
-                    {/* <span className="text-[16px] mb-[5px]">服務品項名稱:</span> */}
+                    {index === 0 && (
+                      <span className="text-[16px] mb-[5px]">
+                        服務品項名稱:
+                      </span>
+                    )}
                     <Input
                       className="text-[16px] font-bold py-[9px]"
                       placeholder="請輸入品項名稱"
                       allowClear
-                      onChange={optionChange}
+                      onChange={(e) => optionChange(e, "service", index)}
                       value={item.service}
                     />
                   </div>
 
                   <div className="w-[187px] flex flex-col items-start justify-center ml-[20px]">
-                    {/* <span className="text-[16px] mb-[5px]">金額:</span> */}
+                    {index === 0 && (
+                      <span className="text-[16px] mb-[5px]">金額:</span>
+                    )}
                     <Input
                       className="text-[16px] font-bold py-[9px]"
                       placeholder="請輸入金額"
                       allowClear
-                      onChange={optionChange}
+                      onChange={(e) => optionChange(e, "price", index)}
                       value={item.price}
                     />
                   </div>
 
-                  <div className="flex flex-row items-center  ml-[12px]">
+                  <div
+                    className="flex flex-row items-center  ml-[12px]"
+                    onClick={() => deleteOption(index)}
+                  >
                     <MinusCircleOutlined
                       style={{ fontSize: "20px", color: "#D2D2D2" }}
                     />
@@ -113,21 +145,21 @@ const OptionModal = ({
                 </div>
               );
             })}
-        </div>
 
-        <div className="w-[150px] bg-white rounded-[4px] mt-[24px]">
-          <Button
-            block
-            ghost
-            type="primary"
-            className={"h-[36px] rounded-[4px]"}
-            onClick={addOption}
-          >
-            <div className="flex flex-row items-center">
-              <PlusOutlined style={{ fontSize: "24px" }} />
-              <span className="ml-[8px]"> 新增服務項目</span>
-            </div>
-          </Button>
+          <div className="w-[150px] bg-white rounded-[4px] mt-[24px]">
+            <Button
+              block
+              ghost
+              type="primary"
+              className={"h-[36px] rounded-[4px]"}
+              onClick={addOption}
+            >
+              <div className="flex flex-row items-center">
+                <PlusOutlined style={{ fontSize: "24px" }} />
+                <span className="ml-[8px]"> 新增服務項目</span>
+              </div>
+            </Button>
+          </div>
         </div>
 
         {/* <div className="flex flex-row flex-wrap items-center justify-center px-[16px]">
