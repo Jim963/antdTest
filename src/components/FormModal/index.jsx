@@ -12,13 +12,55 @@ const FormModal = ({
   okAction,
   cancelAction,
 }) => {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [name, setName] = useState("");
-  const [serviceType, setServiceType] = useState("");
-  const [amount, setAmount] = useState("");
+  const [answer, setAnswer] = useState({});
+
+  const formGroup = [
+    {
+      title: "服務項目",
+      type: "select",
+      width: "half",
+      options: [
+        { value: "1", label: "項目一" },
+        { value: "2", label: "項目二" },
+      ],
+      keyName: "serviceOption",
+    },
+    {
+      title: "數量",
+      type: "select",
+      width: "half",
+      options: [
+        { value: "1", label: "1" },
+        { value: "2", label: "2" },
+      ],
+      keyName: "amount",
+    },
+    {
+      title: "客戶聯絡電話",
+      type: "input",
+      placeholder: "請輸入電話",
+      maxLength: "10",
+      width: "full",
+      keyName: "customerPhone",
+    },
+    {
+      title: "店長密碼",
+      type: "input",
+      placeholder: "請輸入密碼",
+      width: "half",
+      keyName: "password",
+    },
+    {
+      title: "確認店長密碼",
+      type: "input",
+      placeholder: "請輸入密碼",
+      width: "half",
+      keyName: "confirmPassword",
+    },
+  ];
 
   const showTitle = () => {
-    return <span className="text-[22px] pt-[12px] px-[20px]">{title}</span>;
+    return <div className="text-[22px] pt-[12px] px-[20px]">{title}</div>;
   };
   const showFooter = () => {
     return (
@@ -55,22 +97,13 @@ const FormModal = ({
     );
   };
 
-  const phoneChange = (e) => {
+  const inputChange = (e, keyName) => {
     const { value } = e?.target;
-    setPhoneNumber(value);
+    setAnswer({ ...answer, [keyName]: value });
   };
 
-  const nameChange = (e) => {
-    const { value } = e?.target;
-    setName(value);
-  };
-
-  const serviceChange = (value) => {
-    setServiceType(value);
-  };
-
-  const amountChange = (value) => {
-    setAmount(value);
+  const selectChange = (value, keyName) => {
+    setAnswer({ ...answer, [keyName]: value });
   };
 
   return (
@@ -86,73 +119,38 @@ const FormModal = ({
         onCancel={cancelAction}
         maskClosable={false}
       >
-        <div className="flex flex-row flex-wrap items-start justify-between pt-[20px] pb-[24px] px-[20px]">
-          <div className="w-[236px] flex flex-col items-start justify-center">
-            <span className="text-[16px]">客戶姓名:</span>
+        <div className="flex flex-row flex-wrap items-start justify-between px-[16px] pb-[18px]">
+          {formGroup.map((item, index) => {
+            return (
+              <div
+                key={item.title}
+                className={`flex flex-col items-start justify-center mb-[24px] ${
+                  item.width === "full" ? "w-full" : "w-[250px]"
+                }`}
+              >
+                <span className="text-[16px]">{item.title}：</span>
 
-            <Input
-              className="text-[16px] font-bold py-[9px] mt-[5px]"
-              placeholder="請輸入客戶姓名"
-              allowClear
-              onChange={nameChange}
-            />
-          </div>
-
-          <div className="w-[236px]">
-            <div className="flex flex-col items-start justify-center">
-              <span className="text-[16px]">客戶聯絡電話:</span>
-              <span className="text-[18px] font-bold pt-[8px]">0987654321</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-row flex-wrap items-start justify-between px-[20px] pb-[18px]">
-          <div className="w-[236px] flex flex-col items-start justify-center">
-            <span className="text-[16px]">服務項目:</span>
-
-            <Select
-              className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[6px] py-[5px]"
-              placeholder={<span>請使用下拉選項</span>}
-              bordered={false}
-              options={[
-                { value: "124", label: "Test Option" },
-                { value: "valueTwo", label: "Test Option Two" },
-              ]}
-              onChange={serviceChange}
-            />
-          </div>
-
-          <div className="w-[236px]">
-            <div className="flex flex-col items-start justify-center">
-              <span className="text-[16px]">數量:</span>
-
-              <Select
-                className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[6px] py-[5px]"
-                placeholder={<span>請使用下拉選項</span>}
-                bordered={false}
-                options={[
-                  { value: "1", label: "1" },
-                  { value: "2", label: "2" },
-                ]}
-                onChange={amountChange}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-row flex-wrap items-center justify-center px-[20px]">
-          <div className="w-full flex flex-col items-start justify-center pt-[20px] pb-[18px]">
-            <span className="text-[16px]">客戶聯絡電話:</span>
-
-            <Input
-              className="text-[16px] font-bold py-[9px] mt-[5px]"
-              placeholder="請輸入電話號碼"
-              allowClear
-              maxLength="10"
-              showCount
-              onChange={phoneChange}
-            />
-          </div>
+                {item.type === "select" ? (
+                  <Select
+                    className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[6px] py-[5px]"
+                    placeholder={<span>請使用下拉選項</span>}
+                    bordered={false}
+                    options={item.options}
+                    onChange={(value) => selectChange(value, item.keyName)}
+                  />
+                ) : (
+                  <Input
+                    className="text-[16px] font-bold py-[9px] mt-[5px]"
+                    placeholder={item.placeholder}
+                    allowClear
+                    maxLength={item.maxLength}
+                    showCount
+                    onChange={(e) => inputChange(e, keyName)}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
       </Modal>
     </>

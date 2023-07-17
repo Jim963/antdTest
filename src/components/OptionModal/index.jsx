@@ -7,7 +7,7 @@ import {
 } from "@ant-design/icons";
 
 const OptionModal = ({
-  type = "account",
+  type = "service",
   title,
   okText = "完成建立門市",
   cancelText = "上一步",
@@ -196,21 +196,6 @@ const OptionModal = ({
             </Button>
           </div>
         </div>
-
-        {/* <div className="flex flex-row flex-wrap items-center justify-center px-[16px]">
-          <div className="w-[457px] flex flex-col items-start justify-center pt-[20px] pb-[18px]">
-            <span className="text-[16px]">客戶聯絡電話:</span>
-
-            <Input
-              className="text-[16px] font-bold py-[9px] mt-[5px]"
-              placeholder="請輸入電話號碼"
-              allowClear
-              maxLength="10"
-              showCount
-              onChange={optionChange}
-            />
-          </div>
-        </div> */}
       </Modal>
     </>
   );
