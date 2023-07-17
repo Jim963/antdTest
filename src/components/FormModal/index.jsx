@@ -64,7 +64,7 @@ const FormModal = ({
   };
   const showFooter = () => {
     return (
-      <div className="flex flex-col items-center justify-center pt-[30px] pb-[20px]">
+      <div className="flex flex-col items-center justify-center pt-[6px] pb-[20px]">
         <div className="flex flex-row items-center justify-center">
           {cancelAction && (
             <div className="w-[200px] mx-3">
@@ -119,7 +119,7 @@ const FormModal = ({
         onCancel={cancelAction}
         maskClosable={false}
       >
-        <div className="flex flex-row flex-wrap items-start justify-between px-[16px] pb-[18px]">
+        <div className="flex flex-row flex-wrap items-start justify-between p-[20px_16px_18px_16px]">
           {formGroup.map((item, index) => {
             return (
               <div
