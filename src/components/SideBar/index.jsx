@@ -23,7 +23,7 @@ const SideBar = () => {
   };
   return (
     <>
-      <div className="w-[180px] xl:w-[240px] max-h-[1200px]">
+      <div className="relative w-[180px] xl:w-[240px] max-h-[1200px]">
         <div className="flex flex-col items-start justify-start px-[24px] pt-[54px]">
           <img
             className="w-[120px] xl:w-[180px] h-[38px] xl:h-[56px] mb-[50px]"
