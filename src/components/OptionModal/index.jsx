@@ -9,7 +9,7 @@ import {
 const OptionModal = ({
   type = "account",
   title,
-  okText = "綁定",
+  okText = "完成建立門市",
   cancelText = "上一步",
   isCloseIcon = true,
   isOpen,
@@ -59,11 +59,13 @@ const OptionModal = ({
   };
 
   const deleteOption = (deleteIndex) => {
-    setOptionData(
-      optionData.filter((item, index) => {
-        return index !== deleteIndex;
-      })
-    );
+    if (optionData.length > 1) {
+      setOptionData(
+        optionData.filter((item, index) => {
+          return index !== deleteIndex;
+        })
+      );
+    }
   };
 
   const optionChange = (e, key, index) => {
@@ -87,7 +89,7 @@ const OptionModal = ({
       <Modal
         centered
         closable={isCloseIcon}
-        width="auto"
+        width="602px"
         title={showTitle()}
         footer={showFooter()}
         open={isOpen}
@@ -103,12 +105,18 @@ const OptionModal = ({
                   key={index}
                   className="flex flex-row flex-wrap items-center justify-start mb-[12px]"
                 >
-                  <div className="w-[250px] flex flex-col items-start justify-center">
-                    {index === 0 && (
-                      <span className="text-[16px] mb-[5px]">
+                  {index === 0 && (
+                    <>
+                      <div className="w-[250px] text-[16px] mb-[5px]">
                         服務品項名稱:
-                      </span>
-                    )}
+                      </div>
+                      <div className="w-[187px] text-[16px] mb-[5px] ml-[20px]">
+                        金額:
+                      </div>
+                    </>
+                  )}
+
+                  <div className="w-[250px] flex flex-col items-start justify-center">
                     <Input
                       className="text-[16px] font-bold py-[9px]"
                       placeholder="請輸入品項名稱"
@@ -119,9 +127,6 @@ const OptionModal = ({
                   </div>
 
                   <div className="w-[187px] flex flex-col items-start justify-center ml-[20px]">
-                    {index === 0 && (
-                      <span className="text-[16px] mb-[5px]">金額:</span>
-                    )}
                     <Input
                       className="text-[16px] font-bold py-[9px]"
                       placeholder="請輸入金額"
@@ -132,15 +137,20 @@ const OptionModal = ({
                   </div>
 
                   <div
-                    className="flex flex-row items-center  ml-[12px]"
+                    className={`flex flex-row items-center  ml-[12px] ${
+                      optionData.length > 1
+                        ? "text-[#EB3125]"
+                        : "text-[#D2D2D2]"
+                    }`}
                     onClick={() => deleteOption(index)}
                   >
                     <MinusCircleOutlined
-                      style={{ fontSize: "20px", color: "#D2D2D2" }}
+                      style={{
+                        fontSize: "20px",
+                        color: optionData.length > 1 ? "#EB3125" : "#D2D2D2",
+                      }}
                     />
-                    <span className="text-[14px] text-[#D2D2D2] ml-1">
-                      刪除
-                    </span>
+                    <span className="text-[14px] ml-1">刪除</span>
                   </div>
                 </div>
               );
