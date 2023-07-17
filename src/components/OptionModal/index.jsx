@@ -98,63 +98,86 @@ const OptionModal = ({
         maskClosable={false}
       >
         <div className="p-[20px_16px_24px_16px]">
-          {type === "account" &&
-            optionData.map((item, index) => {
-              return (
+          {optionData.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="flex flex-row flex-wrap items-center justify-start mb-[12px]"
+              >
+                {index === 0 && (
+                  <>
+                    {type === "service" ? (
+                      <>
+                        <div className="w-[250px] text-[16px] mb-[5px]">
+                          服務品項名稱:
+                        </div>
+                        <div className="w-[187px] text-[16px] mb-[5px] ml-[20px]">
+                          金額:
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="w-[457px] text-[16px] mb-[5px]">
+                          店長帳號/手機號碼：
+                        </div>
+                      </>
+                    )}
+                  </>
+                )}
+
+                {type === "service" ? (
+                  <>
+                    <div className="w-[250px] flex flex-col items-start justify-center">
+                      <Input
+                        className="text-[16px] font-bold py-[9px]"
+                        placeholder="請輸入品項名稱"
+                        allowClear
+                        onChange={(e) => optionChange(e, "service", index)}
+                        value={item.service}
+                      />
+                    </div>
+
+                    <div className="w-[187px] flex flex-col items-start justify-center ml-[20px]">
+                      <Input
+                        className="text-[16px] font-bold py-[9px]"
+                        placeholder="請輸入金額"
+                        allowClear
+                        onChange={(e) => optionChange(e, "price", index)}
+                        value={item.price}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-[457px] flex flex-col items-start justify-center">
+                      <Input
+                        className="text-[16px] font-bold py-[9px]"
+                        placeholder="請輸入帳號/手機"
+                        allowClear
+                        onChange={(e) => optionChange(e, "account", index)}
+                        value={item.account}
+                      />
+                    </div>
+                  </>
+                )}
+
                 <div
-                  key={index}
-                  className="flex flex-row flex-wrap items-center justify-start mb-[12px]"
+                  className={`flex flex-row items-center  ml-[12px] ${
+                    optionData.length > 1 ? "text-[#EB3125]" : "text-[#D2D2D2]"
+                  }`}
+                  onClick={() => deleteOption(index)}
                 >
-                  {index === 0 && (
-                    <>
-                      <div className="w-[250px] text-[16px] mb-[5px]">
-                        服務品項名稱:
-                      </div>
-                      <div className="w-[187px] text-[16px] mb-[5px] ml-[20px]">
-                        金額:
-                      </div>
-                    </>
-                  )}
-
-                  <div className="w-[250px] flex flex-col items-start justify-center">
-                    <Input
-                      className="text-[16px] font-bold py-[9px]"
-                      placeholder="請輸入品項名稱"
-                      allowClear
-                      onChange={(e) => optionChange(e, "service", index)}
-                      value={item.service}
-                    />
-                  </div>
-
-                  <div className="w-[187px] flex flex-col items-start justify-center ml-[20px]">
-                    <Input
-                      className="text-[16px] font-bold py-[9px]"
-                      placeholder="請輸入金額"
-                      allowClear
-                      onChange={(e) => optionChange(e, "price", index)}
-                      value={item.price}
-                    />
-                  </div>
-
-                  <div
-                    className={`flex flex-row items-center  ml-[12px] ${
-                      optionData.length > 1
-                        ? "text-[#EB3125]"
-                        : "text-[#D2D2D2]"
-                    }`}
-                    onClick={() => deleteOption(index)}
-                  >
-                    <MinusCircleOutlined
-                      style={{
-                        fontSize: "20px",
-                        color: optionData.length > 1 ? "#EB3125" : "#D2D2D2",
-                      }}
-                    />
-                    <span className="text-[14px] ml-1">刪除</span>
-                  </div>
+                  <MinusCircleOutlined
+                    style={{
+                      fontSize: "20px",
+                      color: optionData.length > 1 ? "#EB3125" : "#D2D2D2",
+                    }}
+                  />
+                  <span className="text-[14px] ml-1">刪除</span>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
 
           <div className="w-[150px] bg-white rounded-[4px] mt-[24px]">
             <Button
@@ -166,7 +189,9 @@ const OptionModal = ({
             >
               <div className="flex flex-row items-center">
                 <PlusOutlined style={{ fontSize: "24px" }} />
-                <span className="ml-[8px]"> 新增服務項目</span>
+                <span className="ml-[8px]">
+                  {type === "service" ? "新增服務品項" : "加入其他店長"}
+                </span>
               </div>
             </Button>
           </div>
