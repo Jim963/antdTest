@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Modal, Button, Input, Select } from "antd";
-import { CloseCircleFilled } from "@ant-design/icons";
+import { CloseCircleFilled, RightOutlined } from "@ant-design/icons";
 
 const InfoModal = ({
   title = "門市資訊",
@@ -11,6 +11,7 @@ const InfoModal = ({
   okAction,
   cancelAction,
 }) => {
+  const [isLinePayKey, setIsLinePayKey] = useState(false);
   const infoGroup = [
     {
       title: "門市名稱",
@@ -34,7 +35,7 @@ const InfoModal = ({
       title: "門市 LINE Pay Key",
       width: "short",
       keyName: "storeLinePayKey",
-      content: [{ name: "****************************", linkText: "顯示" }],
+      content: [{ name: "48294-kdn92-fj8492-fiel1-fjeie2", linkText: "隱藏" }],
     },
     {
       title: "門市營業時間",
@@ -58,6 +59,7 @@ const InfoModal = ({
       content: [
         { name: "洗衣+烘乾-60分鐘(15kg)", charge: "60" },
         { name: "只有洗衣-30分鐘(22kg)", charge: "60" },
+        { name: "只有烘衣-60分鐘(600kg)", charge: "3000" },
       ],
     },
   ];
@@ -106,12 +108,12 @@ const InfoModal = ({
         onCancel={cancelAction}
         maskClosable={false}
       >
-        <div className="flex flex-row flex-wrap items-start justify-between p-[14px_16px_18px_16px]">
+        <div className="box-border w-full flex flex-row flex-wrap items-start justify-between p-[14px_16px_18px_16px]">
           {infoGroup.map((item, index) => {
             return (
               <div
                 key={item.title}
-                className={`border-box w-1/2 flex flex-col items-start justify-center mb-[24px] ${
+                className={`box-border w-1/2 flex flex-col items-start justify-center mb-[24px] ${
                   index % 2 == 0 ? "pr-[17px]" : "pl-[17px]"
                 }`}
               >
@@ -127,13 +129,31 @@ const InfoModal = ({
                             : "justify-start"
                         }`}
                       >
-                        <div>{contentItem.name}</div>
+                        {contentItem.linkText && !isLinePayKey ? (
+                          <div>＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</div>
+                        ) : (
+                          <div>{contentItem.name}</div>
+                        )}
 
                         {contentItem.charge && (
-                          <div className="">{contentItem.charge} 元</div>
+                          <div>{contentItem.charge} 元</div>
+                        )}
+
+                        {/* control link */}
+                        {contentItem.linkText && (
+                          <div
+                            className="flex flex-row items-center"
+                            onClick={() => setIsLinePayKey(!isLinePayKey)}
+                          >
+                            <div className="text-[#275682] text-[14px] pl-[10px]">
+                              {isLinePayKey ? contentItem.linkText : "顯示"}
+                            </div>
+                            <RightOutlined style={{ color: "#275682" }} />
+                          </div>
                         )}
                       </div>
 
+                      {/* control bottom border */}
                       {InnerIndex + 1 < item.content.length &&
                         contentItem.charge && (
                           <div className="w-full mt-[8px] border-0 border-dashed border-[#C4C4C4] border-b"></div>
