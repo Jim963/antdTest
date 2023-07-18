@@ -1,26 +1,52 @@
 import { Modal, Button, Card, Input } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
-import closeIcon from "../../assets/images/closeIcon.svg";
+
+interface Props {
+  title: string;
+  okText?: string;
+  cancelText?: string;
+  okAction?: () => void;
+  cancelAction?: () => void;
+  unpaid: boolean;
+  extraCharge?: boolean;
+  payExtraCharge?: boolean;
+  oriCharge: number | string;
+  linePay: number | string;
+  cash: number | string;
+  isCloseIcon?: boolean;
+  isOpen: boolean;
+  remind: boolean;
+  messageType: string;
+}
+
+interface DetailItem {
+  name: string;
+  value: string;
+}
+
+interface serviceItem {
+  name: string;
+  charge: number | string;
+}
 
 const SheetDetailModal = ({
   title,
-  okText = "客戶 現金付款",
-  cancelText = undefined,
+  okText,
+  cancelText,
   okAction,
   cancelAction,
-  unpaid = true,
-  oriCharge = 100000,
-  extraCharge = true,
-  payExtraCharge = true,
-  linePay = 100,
-  cash = 80,
+  unpaid,
+  extraCharge,
+  payExtraCharge,
+  oriCharge,
+  linePay,
+  cash,
   isCloseIcon = true,
   isOpen,
-  remind = true,
-  messageType = "payment",
-  // "LINE Pay付款訊息"
-}) => {
-  const detailList = [
+  remind,
+  messageType,
+}: Props) => {
+  const detailList: DetailItem[] = [
     { name: "服務單號", value: "9403092950" },
     { name: "訂單進度", value: "可取件" },
     { name: "客戶姓名", value: "王大錘" },
@@ -28,7 +54,7 @@ const SheetDetailModal = ({
     { name: "起單時間", value: "2023/06/29 10:10" },
   ];
 
-  const serviceList = [
+  const serviceList: serviceItem[] = [
     { name: "洗衣+烘乾-60分鐘(15kg)", charge: "100" },
     { name: "只有洗衣-30分鐘(22kg)", charge: "200" },
     { name: "只有烘乾-45分鐘(10kg)", charge: "90" },

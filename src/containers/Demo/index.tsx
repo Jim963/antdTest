@@ -66,7 +66,16 @@ const Demo = () => {
 
       <SheetDetailModal
         title={"服務單資訊"}
+        okText="客戶 現金付款"
         isOpen={openDetail}
+        unpaid={true}
+        extraCharge={true}
+        payExtraCharge={true}
+        oriCharge={100000}
+        linePay={100}
+        cash={80}
+        remind={true}
+        messageType="payment"
         cancelAction={() => steOpenDetail(false)}
         okAction={() => steOpenDetail(false)}
       ></SheetDetailModal>
