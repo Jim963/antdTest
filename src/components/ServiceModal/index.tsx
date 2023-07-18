@@ -6,22 +6,43 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 
+interface Props {
+  title: string;
+  okText?: string;
+  cancelText?: string;
+  isCloseIcon?: boolean;
+  isOpen: boolean;
+  okAction?: () => void;
+  cancelAction?: () => void;
+  remind: boolean;
+}
+
+interface DetailItem {
+  name: string;
+  value: string;
+}
+
+interface serviceItem {
+  label: string;
+  value: string;
+}
+
 const ServiceModal = ({
-  title = "選擇服務項目",
+  title,
   okText = "確認，建立服務單",
   cancelText = "上一步",
   okAction,
   cancelAction,
   isCloseIcon = true,
   isOpen,
-  remind = true,
-}) => {
-  const detailList = [
+  remind,
+}: Props) => {
+  const detailList: DetailItem[] = [
     { name: "客戶姓名", value: "王大錘" },
     { name: "客戶聯絡電話", value: "0977XXXXXX" },
   ];
 
-  const serviceList = [
+  const serviceList: serviceItem[] = [
     { label: "洗衣+烘乾-60分鐘(15kg)", value: "W+D-60" },
     { label: "只有洗衣-30分鐘(22kg)", value: "W-30" },
     { label: "只有烘乾-45分鐘(10kg)", value: "D-45" },
@@ -31,7 +52,11 @@ const ServiceModal = ({
     { name: undefined, amount: undefined },
   ]);
 
-  const serviceChange = (value, key, index) => {
+  const serviceChange = (
+    value: undefined | string,
+    key: string,
+    index: number
+  ) => {
     setFinalService(
       finalService.map((item, innIndex) => {
         if (index === innIndex) {
@@ -50,9 +75,9 @@ const ServiceModal = ({
     setFinalService([...finalService, { name: undefined, amount: undefined }]);
   };
 
-  const deleteService = (deleteIndex) => {
+  const deleteService = (deleteIndex: number) => {
     setFinalService(
-      finalService.filter((item, index) => {
+      finalService.filter((_item, index) => {
         return index !== deleteIndex;
       })
     );

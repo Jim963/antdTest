@@ -93,6 +93,7 @@ const Demo = () => {
         isOpen={openService}
         cancelAction={() => setOpenService(false)}
         okAction={() => setOpenService(false)}
+        remind={true}
       ></ServiceModal>
 
       <TableModal
