@@ -1,4 +1,3 @@
-import React from "react";
 import BasicLayout from "../layout/BasicLayout";
 import Login from "../containers/Login";
 import Demo from "../containers/Demo";

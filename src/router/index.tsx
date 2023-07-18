@@ -1,4 +1,3 @@
-import * as React from "react";
 import { RouteObject, Navigate } from "react-router-dom";
 import pathData from "./pathData";
 
