@@ -138,8 +138,8 @@ const EditModal = ({
     const target = answer[keyName];
     console.log(value, keyName, changeIndex, target);
     if (target && Array.isArray(target)) {
-      setAnswer((pre) => ({
-        ...pre,
+      setAnswer(() => ({
+        ...answer,
         [keyName]: target.map((option, index) => {
           if (index === changeIndex) {
             return value;
