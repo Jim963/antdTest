@@ -114,7 +114,6 @@ const Demo = () => {
         title="門市資訊"
         isOpen={openInfo}
         cancelAction={() => setOpenInfo(false)}
-        okText="確認"
         cancelText="編輯"
       ></InfoModal>
 

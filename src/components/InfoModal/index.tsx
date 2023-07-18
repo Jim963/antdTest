@@ -1,18 +1,35 @@
-import { useState } from "react";
-import { Modal, Button, Input, Select } from "antd";
+import React, { useState } from "react";
+import { Modal, Button } from "antd";
 import { CloseCircleFilled, RightOutlined } from "@ant-design/icons";
 
+interface Props {
+  title?: string;
+  okText?: string;
+  cancelText?: string;
+  isCloseIcon?: boolean;
+  isOpen: boolean;
+  okAction?: () => void;
+  cancelAction?: () => void;
+}
+
+interface Info {
+  title: string;
+  width: string;
+  keyName: string;
+  content: { name: string; linkText?: string; charge?: string | number }[];
+}
+
 const InfoModal = ({
-  title = "門市資訊",
+  title,
   okText,
-  cancelText = "編輯",
+  cancelText,
   isCloseIcon = true,
   isOpen,
   okAction,
   cancelAction,
-}) => {
-  const [isLinePayKey, setIsLinePayKey] = useState(false);
-  const infoGroup = [
+}: Props) => {
+  const [isLinePayKey, setIsLinePayKey] = useState<boolean>(false);
+  const infoGroup: Info[] = [
     {
       title: "門市名稱",
       width: "short",
