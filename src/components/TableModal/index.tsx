@@ -1,7 +1,35 @@
 import { Modal, Tabs, Table, Tag, Space, Button, DatePicker } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
-const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
-  const tabItems = [
+import type { ColumnsType } from "antd/es/table";
+
+interface Props {
+  title: string;
+  isOpen: boolean;
+  isCloseIcon?: boolean;
+  cancelAction?: () => void;
+}
+
+interface Tab {
+  key: string;
+  label: string;
+}
+
+interface DataItem {
+  key: string;
+  storeName: string;
+  age: number;
+  address: string;
+  tags: string[];
+  description?: string | React.ReactNode;
+}
+
+const TableModal = ({
+  title,
+  isOpen,
+  cancelAction,
+  isCloseIcon = true,
+}: Props) => {
+  const tabItems: Tab[] = [
     {
       key: "1",
       label: `服務單報表`,
@@ -18,13 +46,13 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       //   children: `Content of Tab Pane 3`,
     },
   ];
-  const columns = [
+  const columns: ColumnsType<DataItem> = [
     {
       title: "門市名稱",
       dataIndex: "storeName",
       key: "name",
       className: "",
-      render: (text) => {
+      render: (text: any) => {
         let emptyArr = [];
         let restWord = text;
         while (restWord.length > 0) {
@@ -85,13 +113,13 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a>Invite {record.name}</a>
+          <a>Invite {record.storeName}</a>
           <a>Delete</a>
         </Space>
       ),
     },
   ];
-  const data = [
+  const data: DataItem[] = [
     {
       key: "1",
       storeName: "一二三四五六1234",
@@ -204,8 +232,8 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
     );
   };
 
-  const tabChange = (e) => {
-    console.log(e, "看看");
+  const tabChange = (e: string) => {
+    console.log(e, "Tab Changed");
   };
   return (
     <>
@@ -213,7 +241,6 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
         title={null}
         footer={null}
         width={"100%"}
-        height={"95%"}
         centered
         closable={isCloseIcon}
         open={isOpen}
@@ -227,9 +254,6 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
         <Tabs
           size="large"
           tabBarStyle={{ color: "#999", fontSize: "18px" }}
-          pagination={{
-            position: ["bottomCenter"],
-          }}
           defaultActiveKey="1"
           items={tabItems}
           tabBarExtraContent={tabMoreContent()}
@@ -280,6 +304,7 @@ const TableModal = ({ title, isOpen, cancelAction, isCloseIcon = true }) => {
           pagination={{
             // showSizeChanger: true,
             showQuickJumper: true,
+            position: ["bottomCenter"],
           }}
         ></Table>
       </Modal>

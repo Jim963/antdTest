@@ -115,7 +115,6 @@ const Demo = () => {
       <TableModal
         title="營業報表"
         isOpen={openTable}
-        okAction={() => setOpenTable(false)}
         cancelAction={() => setOpenTable(false)}
       ></TableModal>
 
