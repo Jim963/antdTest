@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Modal, Button } from "antd";
 import { CloseCircleFilled, RightOutlined } from "@ant-design/icons";
 
@@ -113,77 +113,71 @@ const InfoModal = ({
   };
 
   return (
-    <>
-      <Modal
-        centered
-        closable={isCloseIcon}
-        width="880px"
-        title={showTitle()}
-        footer={showFooter()}
-        open={isOpen}
-        closeIcon={<CloseCircleFilled style={{ fontSize: "28px" }} />}
-        onCancel={cancelAction}
-        maskClosable={false}
-      >
-        <div className="box-border w-full flex flex-row flex-wrap items-start justify-between p-[14px_16px_18px_16px]">
-          {infoGroup.map((item, index) => {
-            return (
-              <div
-                key={item.title}
-                className={`box-border w-1/2 flex flex-col items-start justify-center mb-[24px] ${
-                  index % 2 == 0 ? "pr-[17px]" : "pl-[17px]"
-                }`}
-              >
-                <span className="text-[16px]">{item.title}：</span>
-                {item.content.map((contentItem, InnerIndex) => {
-                  return (
-                    <div className="w-full" key={contentItem.name}>
-                      <div
-                        className={`w-full flex flex-row items-center text-[18px] font-bold mt-[8px] ${
-                          contentItem.charge
-                            ? "justify-between"
-                            : "justify-start"
-                        }`}
-                      >
-                        {contentItem.linkText && !isLinePayKey ? (
-                          <div>＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</div>
-                        ) : (
-                          <div>{contentItem.name}</div>
-                        )}
+    <Modal
+      centered
+      closable={isCloseIcon}
+      width="880px"
+      title={showTitle()}
+      footer={showFooter()}
+      open={isOpen}
+      closeIcon={<CloseCircleFilled style={{ fontSize: "28px" }} />}
+      onCancel={cancelAction}
+      maskClosable={false}
+    >
+      <div className="box-border w-full flex flex-row flex-wrap items-start justify-between p-[14px_16px_18px_16px]">
+        {infoGroup.map((item, index) => {
+          return (
+            <div
+              key={item.title}
+              className={`box-border w-1/2 flex flex-col items-start justify-center mb-[24px] ${
+                index % 2 == 0 ? "pr-[17px]" : "pl-[17px]"
+              }`}
+            >
+              <span className="text-[16px]">{item.title}：</span>
+              {item.content.map((contentItem, InnerIndex) => {
+                return (
+                  <div className="w-full" key={contentItem.name}>
+                    <div
+                      className={`w-full flex flex-row items-center text-[18px] font-bold mt-[8px] ${
+                        contentItem.charge ? "justify-between" : "justify-start"
+                      }`}
+                    >
+                      {contentItem.linkText && !isLinePayKey ? (
+                        <div>＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</div>
+                      ) : (
+                        <div>{contentItem.name}</div>
+                      )}
 
-                        {/* charge */}
-                        {contentItem.charge && (
-                          <div>{contentItem.charge} 元</div>
-                        )}
+                      {/* charge */}
+                      {contentItem.charge && <div>{contentItem.charge} 元</div>}
 
-                        {/* link */}
-                        {contentItem.linkText && (
-                          <div
-                            className="flex flex-row items-center"
-                            onClick={() => setIsLinePayKey(!isLinePayKey)}
-                          >
-                            <div className="text-[#275682] text-[14px] pl-[10px]">
-                              {isLinePayKey ? contentItem.linkText : "顯示"}
-                            </div>
-                            <RightOutlined style={{ color: "#275682" }} />
+                      {/* link */}
+                      {contentItem.linkText && (
+                        <div
+                          className="flex flex-row items-center"
+                          onClick={() => setIsLinePayKey(!isLinePayKey)}
+                        >
+                          <div className="text-[#275682] text-[14px] pl-[10px]">
+                            {isLinePayKey ? contentItem.linkText : "顯示"}
                           </div>
-                        )}
-                      </div>
-
-                      {/* bottom border */}
-                      {InnerIndex + 1 < item.content.length &&
-                        contentItem.charge && (
-                          <div className="w-full mt-[8px] border-0 border-dashed border-[#C4C4C4] border-b"></div>
-                        )}
+                          <RightOutlined style={{ color: "#275682" }} />
+                        </div>
+                      )}
                     </div>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
-      </Modal>
-    </>
+
+                    {/* bottom border */}
+                    {InnerIndex + 1 < item.content.length &&
+                      contentItem.charge && (
+                        <div className="w-full mt-[8px] border-0 border-dashed border-[#C4C4C4] border-b"></div>
+                      )}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+    </Modal>
   );
 };
 

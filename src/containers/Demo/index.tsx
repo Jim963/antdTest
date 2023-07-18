@@ -10,6 +10,7 @@ import ServiceModal from "../../components/ServiceModal";
 import TableModal from "../../components/TableModal";
 import OptionModal from "../../components/OptionModal";
 import InfoModal from "../../components/InfoModal";
+import EditModal from "../../components/EditModal";
 //Modal
 import DashboardCard from "../../components/DashboardCard";
 import AlertDisplay from "../../components/AlertDisplay";
@@ -32,6 +33,7 @@ const Demo = () => {
   const [openTable, setOpenTable] = useState(false);
   const [openOption, setOpenOption] = useState(false);
   const [openInfo, setOpenInfo] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
   //modal
 
   return (
@@ -135,6 +137,15 @@ const Demo = () => {
         cancelText="編輯"
       ></InfoModal>
 
+      <EditModal
+        title="編輯門市資訊"
+        isOpen={openEdit}
+        okAction={() => setOpenEdit(false)}
+        cancelAction={() => setOpenEdit(false)}
+        okText="完成"
+        cancelText="取消"
+      ></EditModal>
+
       <button className="mx-2" onClick={() => steOpenDetail(true)}>
         DetailModal
       </button>
@@ -157,6 +168,10 @@ const Demo = () => {
 
       <button className="mx-2" onClick={() => setOpenInfo(true)}>
         InfoModal
+      </button>
+
+      <button className="mx-2" onClick={() => setOpenEdit(true)}>
+        EditModal
       </button>
 
       <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">

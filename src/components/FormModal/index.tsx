@@ -168,7 +168,7 @@ const FormModal = ({
                     placeholder={item.placeholder}
                     allowClear
                     maxLength={item.maxLength}
-                    showCount
+                    showCount={item.maxLength ? true : false}
                     onChange={(e) => inputChange(e, item.keyName)}
                   />
                 )}
