@@ -1,20 +1,41 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Modal, Button, Input, Select } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 
+interface Props {
+  title: string;
+  okText?: string;
+  cancelText?: string;
+  isCloseIcon?: boolean;
+  isOpen: boolean;
+  remind: boolean;
+  okAction?: () => void;
+  cancelAction?: () => void;
+}
+
+interface FormItem {
+  title: string;
+  type: string;
+  width: "half" | "full";
+  options?: { label: string; value: string }[];
+  keyName: string;
+  placeholder?: string;
+  maxLength?: number;
+}
+
 const FormModal = ({
   title,
-  remind = true,
-  okText = "確認，建立服務單",
-  cancelText = "上一步",
+  remind,
+  okText,
+  cancelText,
   isCloseIcon = true,
   isOpen,
   okAction,
   cancelAction,
-}) => {
+}: Props) => {
   const [answer, setAnswer] = useState({});
 
-  const formGroup = [
+  const formGroup: FormItem[] = [
     {
       title: "服務項目",
       type: "select",
@@ -39,7 +60,7 @@ const FormModal = ({
       title: "客戶聯絡電話",
       type: "input",
       placeholder: "請輸入電話",
-      maxLength: "10",
+      maxLength: 10,
       width: "full",
       keyName: "customerPhone",
     },
@@ -97,12 +118,15 @@ const FormModal = ({
     );
   };
 
-  const inputChange = (e, keyName) => {
+  const inputChange = (e: ChangeEvent<HTMLInputElement>, keyName: any) => {
     const { value } = e?.target;
     setAnswer({ ...answer, [keyName]: value });
   };
 
-  const selectChange = (value, keyName) => {
+  const selectChange = (
+    value: ChangeEvent<HTMLSelectElement>,
+    keyName: string
+  ) => {
     setAnswer({ ...answer, [keyName]: value });
   };
 
@@ -120,7 +144,7 @@ const FormModal = ({
         maskClosable={false}
       >
         <div className="flex flex-row flex-wrap items-start justify-between p-[20px_16px_18px_16px]">
-          {formGroup.map((item, index) => {
+          {formGroup.map((item) => {
             return (
               <div
                 key={item.title}
@@ -145,7 +169,7 @@ const FormModal = ({
                     allowClear
                     maxLength={item.maxLength}
                     showCount
-                    onChange={(e) => inputChange(e, keyName)}
+                    onChange={(e) => inputChange(e, item.keyName)}
                   />
                 )}
               </div>

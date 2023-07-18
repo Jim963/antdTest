@@ -83,6 +83,9 @@ const Demo = () => {
       <FormModal
         title={"選擇服務項目"}
         isOpen={openForm}
+        okText="確認，建立服務單"
+        cancelText="上一步"
+        remind={true}
         cancelAction={() => setOpenForm(false)}
         okAction={() => setOpenForm(false)}
       ></FormModal>
