@@ -1,21 +1,32 @@
-import { useState } from "react";
-import { Modal, Button, Input, Select } from "antd";
+import { ChangeEvent, useState } from "react";
+import { Modal, Button, Input } from "antd";
 import {
   CloseCircleFilled,
   MinusCircleOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
 
+interface Props {
+  type: string;
+  title: string;
+  okText?: string;
+  cancelText?: string;
+  isCloseIcon?: boolean;
+  isOpen: boolean;
+  okAction?: () => void;
+  cancelAction?: () => void;
+}
+
 const OptionModal = ({
-  type = "service",
+  type,
   title,
-  okText = "完成建立門市",
-  cancelText = "上一步",
+  okText,
+  cancelText,
   isCloseIcon = true,
   isOpen,
   okAction,
   cancelAction,
-}) => {
+}: Props) => {
   const showTitle = () => {
     return <div className="text-[22px] pt-[12px] px-[16px]">{title}</div>;
   };
@@ -58,17 +69,21 @@ const OptionModal = ({
     ]);
   };
 
-  const deleteOption = (deleteIndex) => {
+  const deleteOption = (deleteIndex: number) => {
     if (optionData.length > 1) {
       setOptionData(
-        optionData.filter((item, index) => {
+        optionData.filter((_item, index) => {
           return index !== deleteIndex;
         })
       );
     }
   };
 
-  const optionChange = (e, key, index) => {
+  const optionChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    key: string,
+    index: number
+  ) => {
     const { value } = e.target;
     setOptionData(
       optionData.map((item, innIndex) => {

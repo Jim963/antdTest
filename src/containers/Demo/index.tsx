@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
@@ -104,8 +103,11 @@ const Demo = () => {
       ></TableModal>
 
       <OptionModal
+        type="service"
         title={"綁定店長"}
         isOpen={openOption}
+        okText="完成建立門市"
+        cancelText="上一步"
         cancelAction={() => setOpenOption(false)}
         okAction={() => setOpenOption(false)}
       ></OptionModal>
