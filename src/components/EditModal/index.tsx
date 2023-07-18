@@ -163,7 +163,10 @@ const EditModal = ({
                   onChange={(e) => inputChange(e, item.keyName)}
                 />
               ) : (
-                <TextArea className=""></TextArea>
+                <TextArea
+                  className="text-[16px] font-bold py-[9px] mt-[5px]"
+                  rows={3}
+                ></TextArea>
               )}
             </div>
           );
