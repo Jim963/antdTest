@@ -15,7 +15,7 @@ export const defaultOptions = {
       fontSize: 14,
       color: "#484848",
     },
-    formatter: (params) => {
+    formatter: (params: any) => {
       return params;
     },
   },
@@ -56,7 +56,7 @@ export const linePayOption = {
     show: true,
     position: "bottom",
     distance: 13,
-    formatter: (params) => {
+    formatter: (params: any) => {
       return params.name;
     },
   },

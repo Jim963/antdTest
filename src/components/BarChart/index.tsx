@@ -9,11 +9,11 @@ import {
 import { CanvasRenderer } from "echarts/renderers";
 import { ConfigProvider, Card } from "antd";
 import { defaultOptions, linePayOption, cashOption } from "./options";
-import {
-  singleBarChartData as rawData,
-  xAxisData,
-  randomData,
-} from "./dataStore";
+import { xAxisData, randomData } from "./dataStore";
+
+interface Props {
+  title: string;
+}
 
 echarts.use([
   BarChart,
@@ -24,7 +24,7 @@ echarts.use([
   CanvasRenderer,
 ]);
 
-const BarChartTest = ({ title = "測試標題" }) => {
+const BarChartTest = ({ title }: Props) => {
   //   const xAxisData = rawData.map((item) => item.month);
   //   const colorPicker = ["#2596be", "#f8af6a", "#103560", "#e28743"];
   //   const chartData = rawData.map((item, i) => {
