@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { Modal, Button, Select, Input } from "antd";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
 interface Props {
   title?: string;
@@ -10,7 +11,9 @@ interface Props {
   cancelAction?: () => void;
 }
 
-interface Answer {
+type Answer = {
+  [keyName: string]: any[] | string | undefined;
+} & {
   title?: string;
   storeName?: string;
   storeAddress?: string;
@@ -19,16 +22,16 @@ interface Answer {
   businessTime?: string;
   storeLeaders?: string[];
   serviceOptions?: {
-    name: string;
-    charge: number | string;
+    service?: string;
+    price?: number | string;
   }[];
-}
+};
 
 interface FormItem {
   title: string;
   type: string;
   width: "half" | "full";
-  options?: { label: string; value: string }[];
+  options?: { label?: string; value?: string }[];
   keyName: string;
   placeholder?: string;
   maxLength?: number;
@@ -43,17 +46,22 @@ const EditModal = ({
   cancelAction,
 }: Props) => {
   const { TextArea } = Input;
-  const [answer, setAnswer] = useState<Answer>({});
+  const [answer, setAnswer] = useState<Answer>({
+    serviceOptions: [{ service: undefined, price: undefined }],
+    storeLeaders: ["98765", "3456789", "jimtest"],
+  });
   const formGroup: FormItem[] = [
     {
       title: "門市名稱",
       type: "input",
+      placeholder: "請輸入門市名稱",
       width: "half",
       keyName: "storeName",
     },
     {
       title: "門市地址",
       type: "input",
+      placeholder: "請輸入門市地址",
       width: "half",
       keyName: "storeAddress",
     },
@@ -112,17 +120,37 @@ const EditModal = ({
     );
   };
 
-  const inputChange = (e: ChangeEvent<HTMLInputElement>, keyName: any) => {
+  const inputChange = (e: ChangeEvent<HTMLInputElement>, keyName: string) => {
     const { value } = e?.target;
     setAnswer({ ...answer, [keyName]: value });
   };
 
-  const selectChange = (
-    value: ChangeEvent<HTMLSelectElement>,
-    keyName: string
-  ) => {
+  const selectChange = (value: string, keyName: string) => {
     setAnswer({ ...answer, [keyName]: value });
   };
+
+  const optionChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    keyName: string,
+    changeIndex: number
+  ) => {
+    const { value } = e?.target;
+    const target = answer[keyName];
+    console.log(value, keyName, changeIndex, target);
+    if (target && Array.isArray(target)) {
+      setAnswer((pre) => ({
+        ...pre,
+        [keyName]: target.map((option, index) => {
+          if (index === changeIndex) {
+            return value;
+          } else {
+            return option;
+          }
+        }),
+      }));
+    }
+  };
+
   return (
     <Modal
       centered
@@ -171,6 +199,27 @@ const EditModal = ({
             </div>
           );
         })}
+
+        <div className="w-[385px] flex flex-col items-center justify-center">
+          <div className="w-full text-[16px] mb-[5px]">
+            店長姓名與聯絡電話：
+          </div>
+          {answer.storeLeaders?.map((leaderItem, leaderIndex) => {
+            return (
+              <div
+                key={leaderItem}
+                className="w-full flex flex-col items-start justify-center"
+              >
+                <Input
+                  className="text-[16px] font-bold py-[9px]"
+                  placeholder="請輸入帳號/手機"
+                  onChange={(e) => optionChange(e, "storeLeaders", leaderIndex)}
+                  value={leaderItem}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Modal>
   );
