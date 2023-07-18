@@ -5,19 +5,33 @@ import {
   WarningFilled,
 } from "@ant-design/icons";
 
+interface Props {
+  title: string;
+  status: "success" | "warning" | "failed" | "loading";
+  subtitle?: string;
+  payment: number | string;
+  okTextGhost?: string;
+  okText?: string;
+  cancelText?: string;
+  isOpen: boolean;
+  okAction?: () => void;
+  cancelAction?: () => void;
+  okGhostAction?: () => void;
+}
+
 const StatusModal = ({
   title,
   status,
   subtitle,
-  payment = "120",
-  okTextGhost = "使用現金收款",
-  okText = "在確認一次",
-  cancelText = "取消",
+  payment,
+  okTextGhost,
+  okText,
+  cancelText,
   isOpen,
   okAction,
   cancelAction,
   okGhostAction,
-}) => {
+}: Props) => {
   const showFooter = () => {
     return (
       <div className="flex flex-col items-center justify-center pt-[48px] pb-[20px]">
@@ -29,9 +43,9 @@ const StatusModal = ({
                 ghost
                 type="primary"
                 className={"h-[48px]"}
-                onClick={cancelAction}
+                onClick={okGhostAction}
               >
-                <span className="allCenter text-[16px]">{cancelText}</span>
+                <span className="allCenter text-[16px]">{okTextGhost}</span>
               </Button>
             </div>
           )}
