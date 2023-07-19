@@ -20,8 +20,8 @@ type Answer = {
   storePhone?: string;
   linePayKey?: string;
   businessTime?: string;
-  storeManagers?: string[];
-  serviceOptions?: {
+  storeManagers: any[];
+  serviceOptions: {
     service?: string;
     price?: number | string;
   }[];
@@ -48,7 +48,7 @@ const EditModal = ({
   const { TextArea } = Input;
   const [answer, setAnswer] = useState<Answer>({
     serviceOptions: [{ service: undefined, price: undefined }],
-    storeManagers: ["98765", "3456789", "jimtest"],
+    storeManagers: ["98765", "3456789", "jimTest"],
   });
   const formGroup: FormItem[] = [
     {
@@ -136,9 +136,8 @@ const EditModal = ({
   ) => {
     const { value } = e?.target;
     const target = answer[keyName];
-    console.log(value, keyName, changeIndex, target);
     if (target && Array.isArray(target)) {
-      setAnswer(() => ({
+      setAnswer({
         ...answer,
         [keyName]: target.map((option, index) => {
           if (index === changeIndex) {
@@ -147,7 +146,17 @@ const EditModal = ({
             return option;
           }
         }),
-      }));
+      });
+    }
+  };
+
+  const deleteOption = (deleteIndex: number, keyName: string) => {
+    const target = answer[keyName];
+    if (Array.isArray(target) && target.length > 1) {
+      setAnswer({
+        ...answer,
+        [keyName]: target.filter((_, index) => index !== deleteIndex),
+      });
     }
   };
 
@@ -204,23 +213,45 @@ const EditModal = ({
           <div className="w-full text-[16px] mb-[5px]">
             店長姓名與聯絡電話：
           </div>
-          {answer.storeManagers?.map((managerItem, managerIndex) => {
-            return (
-              <div
-                key={managerIndex}
-                className="w-full flex flex-col items-start justify-center"
-              >
-                <Input
-                  className="text-[16px] font-bold py-[9px]"
-                  placeholder="請輸入帳號/手機"
-                  onChange={(e) =>
-                    optionChange(e, "storeManagers", managerIndex)
-                  }
-                  value={managerItem}
-                />
-              </div>
-            );
-          })}
+          <div className="w-full flex flex-col items-start justify-center">
+            {answer.storeManagers?.map((managerItem, managerIndex) => {
+              return (
+                <div
+                  key={managerIndex + "input"}
+                  className="flex flex-row items-center justify-center"
+                >
+                  <Input
+                    className="text-[16px] font-bold py-[9px]"
+                    placeholder="請輸入帳號/手機"
+                    onChange={(e) =>
+                      optionChange(e, "storeManagers", managerIndex)
+                    }
+                    value={managerItem}
+                  />
+
+                  <div
+                    className={`flex flex-row items-center  ml-[12px] ${
+                      answer.storeManagers.length > 1
+                        ? "text-[#EB3125]"
+                        : "text-[#D2D2D2]"
+                    }`}
+                    onClick={() => deleteOption(managerIndex, "storeManagers")}
+                  >
+                    <MinusCircleOutlined
+                      style={{
+                        fontSize: "20px",
+                        color:
+                          answer.storeManagers.length > 1
+                            ? "#EB3125"
+                            : "#D2D2D2",
+                      }}
+                    />
+                    <span className="text-[14px] ml-1">刪除</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </Modal>
