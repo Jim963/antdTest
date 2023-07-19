@@ -20,7 +20,7 @@ type Answer = {
   storePhone?: string;
   linePayKey?: string;
   businessTime?: string;
-  storeLeaders?: string[];
+  storeManagers?: string[];
   serviceOptions?: {
     service?: string;
     price?: number | string;
@@ -48,7 +48,7 @@ const EditModal = ({
   const { TextArea } = Input;
   const [answer, setAnswer] = useState<Answer>({
     serviceOptions: [{ service: undefined, price: undefined }],
-    storeLeaders: ["98765", "3456789", "jimtest"],
+    storeManagers: ["98765", "3456789", "jimtest"],
   });
   const formGroup: FormItem[] = [
     {
@@ -204,17 +204,19 @@ const EditModal = ({
           <div className="w-full text-[16px] mb-[5px]">
             店長姓名與聯絡電話：
           </div>
-          {answer.storeLeaders?.map((leaderItem, leaderIndex) => {
+          {answer.storeManagers?.map((managerItem, managerIndex) => {
             return (
               <div
-                key={leaderItem}
+                key={managerItem}
                 className="w-full flex flex-col items-start justify-center"
               >
                 <Input
                   className="text-[16px] font-bold py-[9px]"
                   placeholder="請輸入帳號/手機"
-                  onChange={(e) => optionChange(e, "storeLeaders", leaderIndex)}
-                  value={leaderItem}
+                  onChange={(e) =>
+                    optionChange(e, "storeManagers", managerIndex)
+                  }
+                  value={managerItem}
                 />
               </div>
             );
