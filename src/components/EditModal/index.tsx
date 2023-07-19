@@ -207,7 +207,7 @@ const EditModal = ({
           {answer.storeManagers?.map((managerItem, managerIndex) => {
             return (
               <div
-                key={managerItem}
+                key={managerIndex}
                 className="w-full flex flex-col items-start justify-center"
               >
                 <Input
