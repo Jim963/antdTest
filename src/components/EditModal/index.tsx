@@ -209,11 +209,9 @@ const EditModal = ({
           );
         })}
 
-        <div className="w-[385px] flex flex-col items-center justify-center">
-          <div className="w-full text-[16px] mb-[5px]">
-            店長姓名與聯絡電話：
-          </div>
-          <div className="w-full flex flex-col items-start justify-center">
+        <div className="flex flex-col items-start justify-center">
+          <div className="text-[16px] mb-[5px]">店長姓名與聯絡電話：</div>
+          <div className="flex flex-col items-start justify-center">
             {answer.storeManagers?.map((managerItem, managerIndex) => {
               return (
                 <div
@@ -221,7 +219,7 @@ const EditModal = ({
                   className="flex flex-row items-center justify-center"
                 >
                   <Input
-                    className="text-[16px] font-bold py-[9px]"
+                    className="w-[385px] text-[16px] font-bold py-[9px]"
                     placeholder="請輸入帳號/手機"
                     onChange={(e) =>
                       optionChange(e, "storeManagers", managerIndex)
