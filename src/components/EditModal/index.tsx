@@ -226,7 +226,7 @@ const EditModal = ({
               return (
                 <div
                   key={managerIndex + "input"}
-                  className="flex flex-row items-center justify-center"
+                  className="flex flex-row items-center justify-center mb-[12px]"
                 >
                   <Input
                     className="w-[385px] text-[16px] font-bold py-[9px]"
