@@ -1,6 +1,8 @@
 import { useRoutes } from "react-router-dom";
 import routes from "./router/index";
 import { getUserToken } from "./utils/handleUserToken";
+import FixedBtnRow from "./components/FixedBtnRow";
+import { FloatButton } from "antd";
 
 function App() {
   const userToken = getUserToken();
@@ -8,7 +10,13 @@ function App() {
   const routeElement = useRoutes(routes(userToken));
 
   return (
-    <div className="App w-screen h-screen text-[#484848]">{routeElement}</div>
+    <>
+      <div className="App w-screen min-h-screen text-[#484848]">
+        {routeElement}
+      </div>
+
+      <FixedBtnRow></FixedBtnRow>
+    </>
   );
 }
 
