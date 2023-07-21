@@ -21,7 +21,7 @@ const Demo = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   //notification
-  const [api, contextHolder] = notification.useNotification();
+  const [api, alertContext] = notification.useNotification();
   console.log(api, "useNotification");
   //notification
 
@@ -39,7 +39,7 @@ const Demo = () => {
   return (
     <>
       {/* notification */}
-      {contextHolder}
+      {alertContext}
       {/* notification */}
 
       <AlertDisplay></AlertDisplay>
