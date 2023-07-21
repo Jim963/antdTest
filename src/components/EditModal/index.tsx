@@ -48,7 +48,7 @@ const EditModal = ({
   const { TextArea } = Input;
   const [answer, setAnswer] = useState<Answer>({
     serviceOptions: [{ service: undefined, price: undefined }],
-    storeManagers: ["98765", "3456789", "jimTest"],
+    storeManagers: ["name+phone-1"],
   });
   const formGroup: FormItem[] = [
     {
@@ -130,19 +130,26 @@ const EditModal = ({
   };
 
   const addOption = (keyName: string) => {
-    const target = answer[keyName];
-    if (target && Array.isArray(target)) {
-      setAnswer({
-        ...answer,
-        [keyName]: [...target, undefined],
-      });
+    let target;
+    let addValue;
+    if (keyName === "storeManagers") {
+      target = answer.storeManagers;
+      addValue = [...target, undefined];
+    } else {
+      target = answer.serviceOptions;
+      addValue = [...target, { service: undefined, price: undefined }];
     }
+    setAnswer({
+      ...answer,
+      [keyName]: addValue,
+    });
   };
 
   const optionChange = (
     e: ChangeEvent<HTMLInputElement>,
     keyName: string,
-    changeIndex: number
+    changeIndex: number,
+    typeKey?: string
   ) => {
     const { value } = e?.target;
     const target = answer[keyName];
@@ -151,7 +158,7 @@ const EditModal = ({
         ...answer,
         [keyName]: target.map((option, index) => {
           if (index === changeIndex) {
-            return value;
+            return typeKey ? { ...option, [typeKey]: value } : value;
           } else {
             return option;
           }
@@ -212,12 +219,15 @@ const EditModal = ({
               ) : (
                 <TextArea
                   className="text-[16px] font-bold py-[9px] mt-[5px]"
+                  placeholder={"請輸入營業時間"}
                   rows={3}
                 ></TextArea>
               )}
             </div>
           );
         })}
+
+        {/* storeManager area */}
 
         <div className="flex flex-col items-start justify-center">
           <div className="text-[16px] mb-[5px]">店長姓名與聯絡電話：</div>
@@ -270,7 +280,81 @@ const EditModal = ({
               >
                 <div className="flex flex-row items-center">
                   <PlusOutlined style={{ fontSize: "24px" }} />
-                  <span className="ml-[8px]">Test</span>
+                  <span className="ml-[8px]">新增其他店長</span>
+                </div>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* service area */}
+        <div className="flex flex-col items-start justify-center mt-[32px]">
+          <div className="flex flex-row">
+            <div className="w-[250px] text-[16px] mb-[5px]">服務品項名稱:</div>
+            <div className="w-[125px] text-[16px] mb-[5px] ml-[12px]">
+              金額:
+            </div>
+          </div>
+
+          <div className="flex flex-col items-start justify-center">
+            {answer.serviceOptions?.map((optionItem, optionIndex) => {
+              return (
+                <div
+                  key={optionIndex + "serviceInput"}
+                  className="flex flex-row items-center justify-center mb-[12px]"
+                >
+                  <Input
+                    className="w-[250px] text-[16px] font-bold py-[9px]"
+                    placeholder="請輸入品項名稱"
+                    onChange={(e) =>
+                      optionChange(e, "serviceOptions", optionIndex, "service")
+                    }
+                    value={optionItem.service}
+                  />
+
+                  <Input
+                    className="w-[125px] text-[16px] font-bold py-[9px] ml-[12px]"
+                    placeholder="請輸入金額"
+                    onChange={(e) =>
+                      optionChange(e, "serviceOptions", optionIndex, "price")
+                    }
+                    value={optionItem.price}
+                  />
+
+                  <div
+                    className={`flex flex-row items-center  ml-[12px] ${
+                      answer.serviceOptions.length > 1
+                        ? "text-[#EB3125]"
+                        : "text-[#D2D2D2]"
+                    }`}
+                    onClick={() => deleteOption(optionIndex, "serviceOptions")}
+                  >
+                    <MinusCircleOutlined
+                      style={{
+                        fontSize: "20px",
+                        color:
+                          answer.serviceOptions.length > 1
+                            ? "#EB3125"
+                            : "#D2D2D2",
+                      }}
+                    />
+                    <span className="text-[14px] ml-1">刪除</span>
+                  </div>
+                </div>
+              );
+            })}
+
+            <div className="w-[150px] bg-white rounded-[4px] mt-[24px]">
+              <Button
+                block
+                ghost
+                type="primary"
+                className={"h-[36px] rounded-[4px]"}
+                onClick={() => addOption("serviceOptions")}
+              >
+                <div className="flex flex-row items-center">
+                  <PlusOutlined style={{ fontSize: "24px" }} />
+                  <span className="ml-[8px]">新增服務品項</span>
                 </div>
               </Button>
             </div>
