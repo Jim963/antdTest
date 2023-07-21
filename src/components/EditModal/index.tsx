@@ -129,6 +129,16 @@ const EditModal = ({
     setAnswer({ ...answer, [keyName]: value });
   };
 
+  const addOption = (keyName: string) => {
+    const target = answer[keyName];
+    if (target && Array.isArray(target)) {
+      setAnswer({
+        ...answer,
+        [keyName]: [...target, undefined],
+      });
+    }
+  };
+
   const optionChange = (
     e: ChangeEvent<HTMLInputElement>,
     keyName: string,
@@ -249,6 +259,21 @@ const EditModal = ({
                 </div>
               );
             })}
+
+            <div className="w-[150px] bg-white rounded-[4px] mt-[24px]">
+              <Button
+                block
+                ghost
+                type="primary"
+                className={"h-[36px] rounded-[4px]"}
+                onClick={() => addOption("storeManagers")}
+              >
+                <div className="flex flex-row items-center">
+                  <PlusOutlined style={{ fontSize: "24px" }} />
+                  <span className="ml-[8px]">Test</span>
+                </div>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
