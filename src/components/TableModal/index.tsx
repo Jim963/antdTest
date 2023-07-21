@@ -1,6 +1,8 @@
 import { Modal, Tabs, Table, Tag, Space, Button, DatePicker } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
+import zhTW from "antd/es/date-picker/locale/zh_TW";
+import "dayjs/locale/zh-tw";
 
 interface Props {
   title: string;
@@ -276,7 +278,7 @@ const TableModal = ({
           <div className="flex flex-col items-start justify-center bg-[#F9F9F9] mt-[8px] p-[24px]">
             <span className="text-[14px]">發送時間:</span>
             <div className="flex flex-row items-center justify-center">
-              <DatePicker></DatePicker>
+              <DatePicker locale={zhTW}></DatePicker>
 
               <span className="mx-4">至</span>
 
