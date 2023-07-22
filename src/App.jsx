@@ -13,9 +13,8 @@ function App() {
     <>
       <div className="App w-screen min-h-screen text-[#484848]">
         {routeElement}
+        <FixedBtnRow></FixedBtnRow>
       </div>
-
-      <FixedBtnRow></FixedBtnRow>
     </>
   );
 }
