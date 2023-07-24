@@ -81,28 +81,40 @@ const FormModal = ({
   ];
 
   const showTitle = () => {
-    return <div className="text-[22px] pt-[12px] px-[20px]">{title}</div>;
+    return (
+      <div className="text-[20px] xl:text-[22px] pt-[12px] px-[20px]">
+        {title}
+      </div>
+    );
   };
   const showFooter = () => {
     return (
       <div className="flex flex-col items-center justify-center pt-[6px] pb-[20px]">
         <div className="flex flex-row items-center justify-center">
           {cancelAction && (
-            <div className="w-[200px] mx-3">
-              <Button block className={"h-[48px]"} onClick={cancelAction}>
-                <span className="allCenter text-[16px]">{cancelText}</span>
+            <div className="w-[172px] xl:w-[200px] mx-3">
+              <Button
+                block
+                className={"h-[44px] xl:h-[48px]"}
+                onClick={cancelAction}
+              >
+                <span className="allCenter text-[14px] xl:text-[16px]">
+                  {cancelText}
+                </span>
               </Button>
             </div>
           )}
           {okAction && (
-            <div className="w-[200px] mx-3">
+            <div className="w-[172px] xl:w-[200px] mx-3">
               <Button
                 block
                 type="primary"
-                className={"h-[48px]"}
+                className={"h-[44px] xl:h-[48px]"}
                 onClick={okAction}
               >
-                <span className="allCenter text-[16px]">{okText}</span>
+                <span className="allCenter text-[14px] xl:text-[16px]">
+                  {okText}
+                </span>
               </Button>
             </div>
           )}
@@ -133,13 +145,13 @@ const FormModal = ({
   return (
     <>
       <Modal
+        className="min-w-[560px] xl:min-w-[600px]"
         centered
         closable={isCloseIcon}
-        width="600px"
         title={showTitle()}
         footer={showFooter()}
         open={isOpen}
-        closeIcon={<CloseCircleFilled style={{ fontSize: "28px" }} />}
+        closeIcon={<CloseCircleFilled className={"text-[28px]"} />}
         onCancel={cancelAction}
         maskClosable={false}
       >
@@ -149,14 +161,16 @@ const FormModal = ({
               <div
                 key={item.title}
                 className={`flex flex-col items-start justify-center mb-[24px] ${
-                  item.width === "full" ? "w-full" : "w-[250px]"
+                  item.width === "full" ? "w-full" : "w-[230px] xl:w-[250px]"
                 }`}
               >
-                <span className="text-[16px]">{item.title}：</span>
+                <span className="text-[14px] xl:text-[16px]">
+                  {item.title}：
+                </span>
 
                 {item.type === "select" ? (
                   <Select
-                    className="w-full text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[6px] py-[5px]"
+                    className="w-full text-[14px] xl:text-[16px] font-bold mt-[5px] border border-solid border-[#d9d9d9] rounded-[8px] py-[5px]"
                     placeholder={<span>請使用下拉選項</span>}
                     bordered={false}
                     options={item.options}
@@ -164,7 +178,7 @@ const FormModal = ({
                   />
                 ) : (
                   <Input
-                    className="text-[16px] font-bold py-[9px] mt-[5px]"
+                    className="text-[14px] xl:text-[16px] font-bold py-[9px] mt-[5px]"
                     placeholder={item.placeholder}
                     allowClear
                     maxLength={item.maxLength}
