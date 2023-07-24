@@ -29,22 +29,26 @@ const SideBar = () => {
   };
   return (
     <div className="relative w-[180px] xl:w-[240px] max-h-[1200px]">
-      <div className="flex flex-col items-start justify-start px-[24px] pt-[54px]">
+      <div className="flex flex-col items-center justify-start px-[8px] pt-[54px]">
         <img
-          className="w-[120px] xl:w-[180px] h-[38px] xl:h-[56px] mb-[50px]"
+          className="w-[120px] xl:w-[180px] h-[38px] xl:h-[56px] mb-[33px] xl:mb-[50px]"
           src={LogoImg}
         />
-        <div className="box-border w-[130px] xl:w-[190px] h-[80px] bg-[#FFF2E7] rounded-[8px] py-[12px] px-[16px]">
+        <div className="box-border w-[164px] xl:w-[190px] h-[72px] xl:h-[80px] bg-[#FFF2E7] rounded-[4px] xl:rounded-[8px] p-[12px_0_9px_12px] xl:p-[12px_0_9px_16px]">
           <div className="flex flex-row items-center justify-between">
-            <div className="flex flex-col items-center justify-start">
-              <span className="text-[14px]">未收件服務單:</span>
+            <div className="flex flex-col items-start justify-center">
+              <span className="text-[12px] xl:text-[14px]">未收件服務單:</span>
               <div className="flex flex-row items-center">
-                <span className="text-[28px] text-[#F87700] font-bold">32</span>
-                <span className="ml-[8px] text-[16px]">件</span>
+                <span className="text-[24px] xl:text-[28px] text-[#F87700] font-bold">
+                  32
+                </span>
+                <span className="ml-[4px] xl:ml-[8px] text-[14px] xl:text-[16px]">
+                  件
+                </span>
               </div>
             </div>
 
-            <img src={orangeGoICon} />
+            <img className="w-[24px] xl:w-[32px]" src={orangeGoICon} />
           </div>
         </div>
         <div className="h-[1px] w-full my-[24px] bg-[#D9D9D9]"></div>
