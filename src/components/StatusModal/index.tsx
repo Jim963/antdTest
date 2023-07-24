@@ -37,34 +37,44 @@ const StatusModal = ({
       <div className="flex flex-col items-center justify-center pt-[48px] pb-[20px]">
         <div className="flex flex-row items-center justify-center">
           {okGhostAction && (
-            <div className="w-[200px] mx-3">
+            <div className="w-[172px] xl:w-[200px] mx-3">
               <Button
                 block
                 ghost
                 type="primary"
-                className={"h-[48px]"}
+                className={"h-[44px] xl:h-[48px]"}
                 onClick={okGhostAction}
               >
-                <span className="allCenter text-[16px]">{okTextGhost}</span>
+                <span className="allCenter text-[14px] xl:text-[16px]">
+                  {okTextGhost}
+                </span>
               </Button>
             </div>
           )}
           {okAction && (
-            <div className="w-[200px] mx-3">
+            <div className="w-[172px] xl:w-[200px] mx-3">
               <Button
                 block
                 type="primary"
-                className={"h-[48px]"}
+                className={"h-[44px] xl:h-[48px]"}
                 onClick={okAction}
               >
-                <span className="allCenter text-[16px]">{okText}</span>
+                <span className="allCenter text-[14px] xl:text-[16px]">
+                  {okText}
+                </span>
               </Button>
             </div>
           )}
           {cancelAction && (
-            <div className="w-[200px] mx-3">
-              <Button block className={"h-[48px]"} onClick={cancelAction}>
-                <span className="allCenter text-[16px]">{cancelText}</span>
+            <div className="w-[172px] xl:w-[200px] mx-3">
+              <Button
+                block
+                className={"h-[44px] xl:h-[48px]"}
+                onClick={cancelAction}
+              >
+                <span className="allCenter text-[14px] xl:text-[16px]">
+                  {cancelText}
+                </span>
               </Button>
             </div>
           )}
@@ -105,9 +115,9 @@ const StatusModal = ({
   return (
     <>
       <Modal
+        className="min-w-[560px] xl:min-w-[600px]"
         centered
         closable={false}
-        width="600px"
         footer={showFooter()}
         open={isOpen}
         onCancel={cancelAction}
@@ -115,13 +125,15 @@ const StatusModal = ({
       >
         <div className="flex flex-col items-center justify-center">
           {status && <div className="my-[30px]">{statusIcon()}</div>}
-          <span className="text-[22px] font-bold">{title}</span>
+          <span className="text-[20px] xl:text-[22px] font-bold">{title}</span>
           {subtitle && <div className="text-[14px] pt-[12px]">{subtitle}</div>}
           {payment && (
             <div className="w-[320px] h-[68px] bg-[#FFE2AB] rounded-[4px] mt-[12px]">
               <div className="h-full flex flex-row items-center justify-center">
-                <span className="text-[28px]"> {payment}</span>
-                <span className="text-[20px] pl-[2px]">元</span>
+                <span className="text-navyBlue text-[24px] xl:text-[28px]">
+                  {payment}
+                </span>
+                <span className="text-[16px] xl:text-[20px] pl-[2px]">元</span>
               </div>
             </div>
           )}
