@@ -42,7 +42,7 @@ const CardOne = ({
                 總計
               </div>
               <div className="flex flex-row items-center justify-center">
-                <div className="text-[#275682] text-[20px] xl:text-[28px]">
+                <div className="text-navyBlue text-[20px] xl:text-[28px]">
                   {toCurrency(total)}
                 </div>
                 <div className="text-[14px] xl:text-[20px] ml-[4px]">
