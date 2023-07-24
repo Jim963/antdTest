@@ -157,7 +157,7 @@ const InfoModal = ({
                           className="flex flex-row items-center"
                           onClick={() => setIsLinePayKey(!isLinePayKey)}
                         >
-                          <div className="text-[#275682] text-[14px] pl-[10px]">
+                          <div className="text-navyBlue text-[14px] pl-[10px]">
                             {isLinePayKey ? contentItem.linkText : "顯示"}
                           </div>
                           <RightOutlined style={{ color: "#275682" }} />

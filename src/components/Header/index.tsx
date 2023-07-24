@@ -1,4 +1,3 @@
-import React from "react";
 import { Select } from "antd";
 
 const Header = () => {
@@ -8,7 +7,7 @@ const Header = () => {
       <div className="h-[135px] w-full">
         <div className="h-full flex flex-row items-center justify-between">
           <div className="flex flex-row items-center justify-center">
-            <span className="h-[40px] border-4 border-solid border-[#275682]"></span>
+            <span className="h-[40px] border-4 border-solid border-navyBlue"></span>
             <span className="text-[22px] xl:text-[32px] font-bold px-[8px]">
               Page Name
             </span>

@@ -7,7 +7,6 @@ export default {
         navyBlue: "#275682",
       },
       borderColor: {
-        navyBlue: "#275682",
         btnBorder: "#999",
       },
       fontSize: {

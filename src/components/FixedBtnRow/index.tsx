@@ -7,7 +7,7 @@ const FixedBtnRow = () => {
   };
   return (
     <>
-      <div className="fixed bottom-0 right-[35px] xl:right-[44px] h-[72px] xl:h-[80px] rounded-[12px_12px_0_0] bg-[#275682]">
+      <div className="fixed bottom-0 right-[35px] xl:right-[44px] h-[72px] xl:h-[80px] rounded-[12px_12px_0_0] bg-navyBlue">
         <div className="box-border h-full flex flex-row items-center justify-center p-[14px_28px] xl:p-[16px_20px]">
           <div className="text-[16px] xl:text-[18px] text-white ml-[9px] xl:ml-[20px]">
             客戶取件
