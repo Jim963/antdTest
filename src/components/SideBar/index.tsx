@@ -5,6 +5,7 @@ import searchIcon from "../../assets/images/searchIcon.svg";
 import tableIcon from "../../assets/images/tableIcon.svg";
 import sheetIcon from "../../assets/images/sheetIcon.svg";
 import orangeGoICon from "../../assets/images/orangeGoIcon.svg";
+import { PlusOutlined } from "@ant-design/icons";
 
 interface RouteItem {
   name: string;
@@ -19,17 +20,12 @@ const SideBar = () => {
     { name: "營業/會員報表", icon: tableIcon, route: "" },
   ];
 
-  const pageList_admin: RouteItem[] = [
-    { name: "查詢服務單", icon: searchIcon, route: "" },
-    { name: "營業報表", icon: tableIcon, route: "" },
-  ];
-
   const newStore = () => {
     console.log("build new store");
   };
   return (
-    <div className="relative w-[180px] xl:w-[240px] max-h-[1200px]">
-      <div className="flex flex-col items-center justify-start px-[8px] pt-[54px]">
+    <div className="flex flex-col items-center justify-between w-[180px] xl:w-[240px] max-h-[1200px] p-[54px_8px_40px_8px]">
+      <div className="flex flex-col items-center justify-start">
         <img
           className="w-[120px] xl:w-[180px] h-[38px] xl:h-[56px] mb-[33px] xl:mb-[50px]"
           src={LogoImg}
@@ -72,15 +68,20 @@ const SideBar = () => {
         })}
       </div>
 
-      <div className="absolute bottom-[40px] w-[160px] xl:w-[200px] mx-3">
+      <div className="w-[140px] xl:w-[200px]">
         <Button
           block
           ghost
-          className={"h-[48px]"}
+          className={"h-[44px] xl:h-[48px]"}
           type="primary"
           onClick={newStore}
         >
-          <span className="allCenter text-[16px]">建立新店家</span>
+          <div className="flex flex-row items-center allCenter">
+            <PlusOutlined className={"text-[20px] xl:text-[24px]"} />
+            <span className="text-[14px] xl:text-[18px] ml-[4px] xl:ml-[8px]">
+              建立門市/店長
+            </span>
+          </div>
         </Button>
       </div>
     </div>
