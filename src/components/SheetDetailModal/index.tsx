@@ -195,7 +195,7 @@ const SheetDetailModal = ({
                   <span className="text-[16px]">{item.name}:</span>
                   <span
                     className={`text-[18px] font-bold pt-[8px] ${
-                      item.name === "訂單進度" && "text-[#275682]"
+                      item.name === "訂單進度" && "text-navyBlue"
                     }`}
                   >
                     {item.value}

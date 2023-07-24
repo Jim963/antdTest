@@ -160,7 +160,7 @@ const InfoModal = ({
                           <div className="text-navyBlue text-[14px] pl-[10px]">
                             {isLinePayKey ? contentItem.linkText : "顯示"}
                           </div>
-                          <RightOutlined style={{ color: "#275682" }} />
+                          <RightOutlined className={"text-navyBlue"} />
                         </div>
                       )}
                     </div>
