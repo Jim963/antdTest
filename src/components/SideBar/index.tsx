@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Button } from "antd";
 import LogoImg from "../../assets/images/logo.png";
 import goIcon from "../../assets/images/goIcon.svg";
+import goActive from "../../assets/images/goActive.svg";
+import activeHome from "../../assets/images/activeHome.svg";
 import searchIcon from "../../assets/images/searchIcon.svg";
 import tableIcon from "../../assets/images/tableIcon.svg";
 import sheetIcon from "../../assets/images/sheetIcon.svg";
@@ -10,11 +13,14 @@ import { PlusOutlined } from "@ant-design/icons";
 interface RouteItem {
   name: string;
   icon: string;
+  activeIcon?: string;
   route: string;
 }
 
 const SideBar = () => {
+  const [active, setActive] = useState<string>("首頁");
   const pageList: RouteItem[] = [
+    { name: "首頁", icon: searchIcon, activeIcon: activeHome, route: "/" },
     { name: "查詢門市/服務單", icon: searchIcon, route: "" },
     { name: "門市/會員資訊", icon: sheetIcon, route: "" },
     { name: "營業/會員報表", icon: tableIcon, route: "" },
@@ -53,16 +59,23 @@ const SideBar = () => {
           return (
             <div
               key={item.name}
-              className="w-full flex flex-row items-center justify-between text-[14px] xl:text-[16px] mb-[20px] ml-[4px] xl:ml-[8px]"
+              className={`w-full flex flex-row items-center justify-between text-[14px] xl:text-[16px] p-[6px_0_6px_4px] mb-[20px] ml-[4px] xl:ml-[8px] rounded-[4px] ${
+                active === item.name && "bg-navyBlue"
+              }`}
             >
               <div className="flex flex-row items-center justify-center">
                 <img
                   className="w-[20px] xl:w-[24px] xl:mr-[4px]"
-                  src={item.icon}
+                  src={active === item.name ? item.activeIcon : item.icon}
                 />
-                <span> {item.name}</span>
+                <span className={`${active === item.name && "text-white"}`}>
+                  {item.name}
+                </span>
               </div>
-              <img className="w-[24px] xl:w-[32px]" src={goIcon} />
+              <img
+                className="w-[24px] xl:w-[32px]"
+                src={active === item.name ? goActive : goIcon}
+              />
             </div>
           );
         })}
