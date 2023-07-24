@@ -57,13 +57,16 @@ const SideBar = () => {
           return (
             <div
               key={item.name}
-              className="w-full flex flex-row items-center justify-between text-[16px] mb-[20px]"
+              className="w-full flex flex-row items-center justify-between text-[14px] xl:text-[16px] mb-[20px] ml-[4px] xl:ml-[8px]"
             >
               <div className="flex flex-row items-center justify-center">
-                <img className="mr-[4px]" src={item.icon} alt="" />
+                <img
+                  className="w-[20px] xl:w-[24px] xl:mr-[4px]"
+                  src={item.icon}
+                />
                 <span> {item.name}</span>
               </div>
-              <img src={goIcon} />
+              <img className="w-[24px] xl:w-[32px]" src={goIcon} />
             </div>
           );
         })}
