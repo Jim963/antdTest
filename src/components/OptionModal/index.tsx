@@ -206,7 +206,7 @@ const OptionModal = ({
             );
           })}
 
-          <div className="w-[150px] bg-white rounded-[4px] mt-[24px]">
+          <div className="w-[136px] xl:w-[150px] bg-white rounded-[4px] mt-[24px]">
             <Button
               block
               ghost
