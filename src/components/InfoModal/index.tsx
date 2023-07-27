@@ -82,28 +82,40 @@ const InfoModal = ({
   ];
 
   const showTitle = () => {
-    return <div className="text-[22px] pt-[12px] px-[16px]">{title}</div>;
+    return (
+      <div className="text-[20px] xl:text-[22px] pt-[12px] px-[16px]">
+        {title}
+      </div>
+    );
   };
   const showFooter = () => {
     return (
       <div className="flex flex-col items-center justify-center pt-[6px] pb-[20px]">
         <div className="flex flex-row items-center justify-center">
           {cancelAction && (
-            <div className="w-[200px] mx-3">
-              <Button block className={"h-[48px]"} onClick={cancelAction}>
-                <span className="allCenter text-[16px]">{cancelText}</span>
+            <div className="w-[172px] xl:w-[200px] mx-3">
+              <Button
+                block
+                className={"h-[44px] xl:h-[48px]"}
+                onClick={cancelAction}
+              >
+                <span className="allCenter text-[14px] xl:text-[16px]">
+                  {cancelText}
+                </span>
               </Button>
             </div>
           )}
           {okAction && (
-            <div className="w-[200px] mx-3">
+            <div className="w-[172px] xl:w-[200px] mx-3">
               <Button
                 block
                 type="primary"
-                className={"h-[48px]"}
+                className={"h-[44px] xl:h-[48px]"}
                 onClick={okAction}
               >
-                <span className="allCenter text-[16px]">{okText}</span>
+                <span className="allCenter text-[14px] xl:text-[16px]">
+                  {okText}
+                </span>
               </Button>
             </div>
           )}
@@ -114,9 +126,9 @@ const InfoModal = ({
 
   return (
     <Modal
+      className="min-w-[860px] xl:min-w-[880px]"
       centered
       closable={isCloseIcon}
-      width="880px"
       title={showTitle()}
       footer={showFooter()}
       open={isOpen}
@@ -133,7 +145,7 @@ const InfoModal = ({
                 index % 2 == 0 ? "pr-[17px]" : "pl-[17px]"
               }`}
             >
-              <span className="text-[16px]">{item.title}：</span>
+              <span className="text-[14px] xl:text-[16px]">{item.title}：</span>
               {item.content.map((contentItem, InnerIndex) => {
                 return (
                   <div className="w-full" key={contentItem.name}>
