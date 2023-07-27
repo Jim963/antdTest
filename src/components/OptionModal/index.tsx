@@ -211,12 +211,12 @@ const OptionModal = ({
               block
               ghost
               type="primary"
-              className={"h-[36px] rounded-[4px]"}
+              className={"h-[36px] rounded-[4px] p-0"}
               onClick={addOption}
             >
-              <div className="flex flex-row items-center">
+              <div className="allCenter flex flex-row items-center">
                 <PlusOutlined className="text-[24px]" />
-                <span className="ml-[8px]">
+                <span className="text-[14px] xl:text-[16px] ml-[8px]">
                   {type === "service" ? "新增服務品項" : "加入其他店長"}
                 </span>
               </div>
