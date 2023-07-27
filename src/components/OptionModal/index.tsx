@@ -215,7 +215,7 @@ const OptionModal = ({
               onClick={addOption}
             >
               <div className="allCenter flex flex-row items-center">
-                <PlusOutlined className="text-[24px]" />
+                <PlusOutlined className="text-[20px] xl:text-[24px]" />
                 <span className="text-[14px] xl:text-[16px] ml-[8px]">
                   {type === "service" ? "新增服務品項" : "加入其他店長"}
                 </span>
