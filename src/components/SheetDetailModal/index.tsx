@@ -84,7 +84,7 @@ const SheetDetailModal = ({
           {unpaid && ( //有未繳金額才會出現
             <Card
               bodyStyle={{ padding: "20px" }}
-              className={"bg-[#F7BC58] mb-[15px]"}
+              className={"bg-[#FFECC7] mb-[15px]"}
             >
               <div className="flex flex-row items-center justify-between">
                 <span className="text-14px xl:text-[16px] font-bold">
