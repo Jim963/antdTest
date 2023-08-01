@@ -7,6 +7,7 @@ interface Props {
   cancelText?: string;
   okAction?: () => void;
   cancelAction?: () => void;
+  cancelSheet: boolean;
   unpaid: boolean;
   extraCharge?: boolean;
   payExtraCharge?: boolean;
@@ -35,6 +36,7 @@ const SheetDetailModal = ({
   cancelText,
   okAction,
   cancelAction,
+  cancelSheet = true,
   unpaid,
   extraCharge,
   payExtraCharge,
@@ -282,6 +284,12 @@ const SheetDetailModal = ({
                     通知該客戶前往付款
                   </div>
                 )}
+              </div>
+            )}
+
+            {cancelSheet && (
+              <div className="flex flex-row items-center justify-center text-[14px] xl:text-[16px] text-[#F44336] cursor-pointer pt-[24px]">
+                取消服務單
               </div>
             )}
           </div>

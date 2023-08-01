@@ -69,6 +69,7 @@ const Demo = () => {
       <SheetDetailModal
         title={"服務單資訊"}
         okText="客戶 現金付款"
+        cancelText="測試"
         isOpen={openDetail}
         unpaid={true}
         extraCharge={true}
