@@ -62,6 +62,7 @@ const SheetDetailModal = ({
 
   return (
     <Modal
+      className="xl:min-w-[940px]"
       title={null}
       footer={null}
       width="940px"
@@ -73,7 +74,9 @@ const SheetDetailModal = ({
       maskClosable={false}
       bodyStyle={{ padding: "12px 16px 20px 16px" }}
     >
-      <div className="text-[22px] font-bold pb-[20px]">{title}</div>
+      <div className="text-[20px] xl:text-[22px] font-bold pb-[20px]">
+        {title}
+      </div>
 
       <div className="flex flex-row items-stretch justify-center">
         <div className="w-1/2 pr-[30px]">
