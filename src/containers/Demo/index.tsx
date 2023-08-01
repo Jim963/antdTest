@@ -72,7 +72,7 @@ const Demo = () => {
         isOpen={openDetail}
         unpaid={true}
         extraCharge={true}
-        payExtraCharge={true}
+        payExtraCharge={false}
         oriCharge={100000}
         linePay={100}
         cash={80}

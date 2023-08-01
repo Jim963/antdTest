@@ -62,10 +62,9 @@ const SheetDetailModal = ({
 
   return (
     <Modal
-      className="xl:min-w-[940px]"
+      className="min-w-[860px] xl:min-w-[940px]"
       title={null}
       footer={null}
-      width="940px"
       centered
       closable={isCloseIcon}
       open={isOpen}
@@ -86,10 +85,14 @@ const SheetDetailModal = ({
               className={"bg-[#F7BC58] mb-[15px]"}
             >
               <div className="flex flex-row items-center justify-between">
-                <span className="text-[16px] font-bold">缺繳金額:</span>
+                <span className="text-14px xl:text-[16px] font-bold">
+                  缺繳金額:
+                </span>
                 <div className="flex flex-row items-center justify-center">
-                  <span className="font-bold text-[26px]">{oriCharge}</span>
-                  <span className="text-[16px] px-1">元</span>
+                  <span className="font-bold text-[24px] xl:text-[26px] text-navyBlue">
+                    {oriCharge}
+                  </span>
+                  <span className="text-[14px] xl:text-[16px] px-1">元</span>
                 </div>
               </div>
             </Card>
@@ -99,10 +102,14 @@ const SheetDetailModal = ({
             {/* border-0 border-solid border-b */}
             <>
               <div className="flex flex-row items-center justify-between">
-                <span className="text-[16px] font-bold">服務單總金額:</span>
+                <span className="text-[14px] xl:text-[16px] font-bold">
+                  服務單總金額:
+                </span>
                 <div className="flex flex-row items-center justify-center">
-                  <span className="font-bold text-[26px]">{oriCharge}</span>
-                  <span className="text-[16px] px-1">元</span>
+                  <span className="font-bold text-[24px] xl:text-[26px] text-navyBlue">
+                    {oriCharge}
+                  </span>
+                  <span className="text-[14px] xl:text-[16px] px-1">元</span>
                 </div>
               </div>
               <div className="mt-[12px] pl-[40px] border-0 border-solid border-[#C4C4C4] border-b">
@@ -111,10 +118,12 @@ const SheetDetailModal = ({
                     <div className="flex flex-row items-center justify-between">
                       <span className="text-[14px]">原始金額:</span>
                       <div className="flex flex-row items-center justify-center">
-                        <span className="font-bold text-[18px]">
+                        <span className="font-bold text-[16px] xl:text-[18px]">
                           {oriCharge}
                         </span>
-                        <span className="text-[14px] px-1">元</span>
+                        <span className="text-[12px] xl:text-[14px] px-1">
+                          元
+                        </span>
                       </div>
                     </div>
                     <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
@@ -122,8 +131,12 @@ const SheetDetailModal = ({
                     <div className="flex flex-row items-center justify-between ">
                       <span className="text-[14px]">補增款項:</span>
                       <div className="flex flex-row items-center justify-center">
-                        <span className="font-bold text-[18px]">{"20"}</span>
-                        <span className="text-[14px] px-1">元</span>
+                        <span className="font-bold text-[16px] xl:text-[18px]">
+                          {"20"}
+                        </span>
+                        <span className="text-[12px] xl:text-[14px] px-1">
+                          元
+                        </span>
                       </div>
                     </div>
                   </>
@@ -132,13 +145,17 @@ const SheetDetailModal = ({
             </>
 
             <>
-              <div className="my-[12px] text-[16px]">已付金額:</div>
+              <div className="my-[12px] text-[14px] xl:text-[16px] font-bold">
+                已付金額:
+              </div>
               <div className="pl-[40px] pb-[8px] border-0 border-solid border-[#C4C4C4] border-b">
                 <div className="flex flex-row items-center justify-between">
                   <span className="text-[14px]">Line Pay:</span>
                   <div className="flex flex-row items-center justify-center">
-                    <span className="font-bold text-[18px]">{linePay}</span>
-                    <span className="text-[14px] px-1">元</span>
+                    <span className="font-bold text-[16px] xl:text-[18px]">
+                      {linePay}
+                    </span>
+                    <span className="text-[12px] xl:text-[14px] px-1">元</span>
                   </div>
                 </div>
                 <div className="my-[4px] border-[0.5px] border-dashed border-[#C4C4C4]"></div>
@@ -146,15 +163,19 @@ const SheetDetailModal = ({
                 <div className="flex flex-row items-center justify-between ">
                   <span className="text-[14px]">現金:</span>
                   <div className="flex flex-row items-center justify-center">
-                    <span className="font-bold text-[18px]">{cash}</span>
-                    <span className="text-[14px] px-1">元</span>
+                    <span className="font-bold text-[16px] xl:text-[18px]">
+                      {cash}
+                    </span>
+                    <span className="text-[12px] xl:text-[14px] px-1">元</span>
                   </div>
                 </div>
               </div>
             </>
 
             <>
-              <div className="my-[12px] text-[16px]">服務項目:</div>
+              <div className="my-[12px] text-[14px] xl:text-[16px] font-bold">
+                服務項目:
+              </div>
               <div className="pl-[40px] pb-[8px]">
                 {serviceList.map((item, index) => {
                   return (
@@ -162,10 +183,12 @@ const SheetDetailModal = ({
                       <div className="flex flex-row items-center justify-between">
                         <span className="text-[14px]">{item.name}:</span>
                         <div className="flex flex-row items-center justify-center">
-                          <span className="font-bold text-[18px]">
+                          <span className="font-bold text-[16px] xl:text-[18px]">
                             {item.charge}
                           </span>
-                          <span className="text-[14px] px-1">元</span>
+                          <span className="text-[12px] xl:text-[14px] px-1">
+                            元
+                          </span>
                         </div>
                       </div>
                       {serviceList.length !== index + 1 && (
@@ -183,7 +206,7 @@ const SheetDetailModal = ({
           <div className="w-full flex flex-row flex-wrap items-enter justify-start">
             {payExtraCharge ? (
               <>
-                <span className="text-[16px]">補增金額:</span>
+                <span className="text-[14px] xl:text-[16px]">補增金額:</span>
                 <Input
                   className="text-[16px] border border-solid border-[#d9d9d9] rounded-[6px] py-[6px] mt-[8px]"
                   placeholder="請輸入補增金額"
@@ -195,7 +218,9 @@ const SheetDetailModal = ({
                   key={item.name}
                   className="w-1/2 flex flex-col items-start justify-center pb-[24px]"
                 >
-                  <span className="text-[16px]">{item.name}:</span>
+                  <span className="text-[14px] xl:text-[16px]">
+                    {item.name}:
+                  </span>
                   <span
                     className={`text-[18px] font-bold pt-[8px] ${
                       item.name === "訂單進度" && "text-navyBlue"
@@ -211,34 +236,38 @@ const SheetDetailModal = ({
           <div className="w-full flex flex-col items-center justify-center pt-[16px] pb-[20px]">
             <div className="w-full flex flex-row items-center justify-center">
               {cancelText && (
-                <div className="w-[200px] mx-2">
+                <div className="w-[172px] xl:w-[200px] mx-2">
                   <Button
                     block
                     ghost
                     type="primary"
-                    className={"h-[48px]"}
+                    className={"h-[44px] xl:h-[48px]"}
                     onClick={cancelAction}
                   >
-                    <span className="allCenter text-[16px]">{cancelText}</span>
+                    <span className="allCenter text-[14px] xl:text-[16px]">
+                      {cancelText}
+                    </span>
                   </Button>
                 </div>
               )}
               {okText && (
-                <div className="w-[200px] mx-2">
+                <div className="w-[172px] xl:w-[200px] mx-2">
                   <Button
                     block
                     type="primary"
-                    className={"h-[48px]"}
+                    className={"h-[44px] xl:h-[48px]"}
                     onClick={okAction}
                   >
-                    <span className="allCenter text-[16px]">{okText}</span>
+                    <span className="allCenter text-[14px] xl:text-[16px]">
+                      {okText}
+                    </span>
                   </Button>
                 </div>
               )}
             </div>
 
             {remind && (
-              <div className="text-[14px] pt-[12px]">
+              <div className="text-[12px] xl:text-[14px] pt-[12px]">
                 {messageType === "message" && (
                   <div>
                     客戶完成取件時，系統將發送
