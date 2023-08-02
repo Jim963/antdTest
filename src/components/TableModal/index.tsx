@@ -221,7 +221,7 @@ const TableModal = ({
   };
   const tabMoreContent = () => {
     return (
-      <div className="flex flex-row items-center justify-center">
+      <div className="flex flex-row items-between justify-between">
         <span className="text-[16px] text-[#484848]">總計：3筆</span>
         <Button
           type="primary"
