@@ -9,6 +9,7 @@ import tableIcon from "../../assets/images/tableIcon.svg";
 import sheetIcon from "../../assets/images/sheetIcon.svg";
 import orangeGoICon from "../../assets/images/orangeGoIcon.svg";
 import { PlusOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 interface RouteItem {
   name: string;
@@ -25,6 +26,8 @@ const SideBar = () => {
     { name: "門市/會員資訊", icon: sheetIcon, route: "" },
     { name: "營業/會員報表", icon: tableIcon, route: "" },
   ];
+
+  const go = useNavigate();
 
   const newStore = () => {
     console.log("build new store");
@@ -62,6 +65,7 @@ const SideBar = () => {
               className={`w-full flex flex-row items-center justify-between text-[14px] xl:text-[16px] p-[6px_0_6px_4px] mb-[20px] ml-[4px] xl:ml-[8px] rounded-[4px] ${
                 active === item.name && "bg-navyBlue"
               }`}
+              onClick={() => go("/tablePage")}
             >
               <div className="flex flex-row items-center justify-center">
                 <img
