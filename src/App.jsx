@@ -3,10 +3,11 @@ import routes from "./router/index";
 import { getUserToken } from "./utils/handleUserToken";
 import FixedBtnRow from "./components/FixedBtnRow";
 
-function App() {
+const App = () => {
   const userToken = getUserToken();
   console.log(userToken, "userToken");
   const routeElement = useRoutes(routes(userToken));
+  console.log(routes(userToken), "看一下路徑");
 
   return (
     <>
@@ -16,6 +17,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;

@@ -1,7 +1,8 @@
-import { RouteObject, Navigate } from "react-router-dom";
+import { RouteObject } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import pathData from "./pathData";
 
-const Router: (userToken?: string | null) => RouteObject[] = (userToken) =>
+const Router: (userToken: string | null) => RouteObject[] = (userToken) =>
   pathData.map((layoutRoute) => {
     return {
       ...layoutRoute,
