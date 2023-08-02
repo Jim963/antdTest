@@ -2,7 +2,6 @@ import { useRoutes } from "react-router-dom";
 import routes from "./router/index";
 import { getUserToken } from "./utils/handleUserToken";
 import FixedBtnRow from "./components/FixedBtnRow";
-import { FloatButton } from "antd";
 
 function App() {
   const userToken = getUserToken();

@@ -1,6 +1,7 @@
 import BasicLayout from "../layout/BasicLayout";
 import Login from "../containers/Login";
 import Demo from "../containers/Demo";
+import TablePage from "../containers/TablePage";
 import NotFound from "../containers/NotFound";
 
 interface Route {
@@ -20,7 +21,15 @@ const routesData: routeLayout[] = [
   {
     path: "/",
     element: <BasicLayout />,
-    children: [{ name: "Demo", path: "/", element: <Demo />, auth: false }],
+    children: [
+      { name: "Demo", path: "/", element: <Demo />, auth: false },
+      {
+        name: "TablePage",
+        path: "/tablePage",
+        element: <TablePage />,
+        auth: false,
+      },
+    ],
   },
   {
     path: "/login",
