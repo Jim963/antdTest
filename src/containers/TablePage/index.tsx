@@ -213,6 +213,7 @@ const TablePage = () => {
       <Tabs
         size="large"
         tabBarStyle={{ color: "#999", fontSize: "18px" }}
+        className={"w-full border-2"}
         defaultActiveKey="1"
         items={tabItems}
         onChange={tabChange}
