@@ -250,10 +250,14 @@ const TablePage = () => {
               key={income.name}
               className="flex flex-col items-start justify-center  p-[20px_24px]"
             >
-              <span className="text-[14px]">{income.name}：</span>
-              <div>
-                <span className="text-[20px]">{toCurrency(income.value)}</span>
-                <span className="text-[16px] ml-[4px]">元</span>
+              <span className="text-[12px] xl:text-[14px]">
+                {income.name}：
+              </span>
+              <div className="mt-[5px]">
+                <span className="text-[16px] xl:text-[20px] font-bold">
+                  {toCurrency(income.value)}
+                </span>
+                <span className="text-[14px] xl:text-[16px] ml-[4px]">元</span>
               </div>
             </div>
           ))}
@@ -265,10 +269,12 @@ const TablePage = () => {
               key={order.name}
               className="flex flex-col items-start justify-center  p-[20px_24px]"
             >
-              <span className="text-[14px]">{order.name}：</span>
-              <div>
-                <span className="text-[20px]">{toCurrency(order.value)}</span>
-                <span className="text-[16px] ml-[4px]">元</span>
+              <span className="text-[12px] xl:text-[14px]">{order.name}：</span>
+              <div className="mt-[5px]">
+                <span className="text-[16px] xl:text-[20px] font-bold">
+                  {toCurrency(order.value)}
+                </span>
+                <span className="text-[14px] xl:text-[16px] ml-[4px]">元</span>
               </div>
             </div>
           ))}
