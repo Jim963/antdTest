@@ -3,6 +3,7 @@ import type { ColumnsType } from "antd/es/table";
 import calendarIcon from "../../assets/images/calendar.svg";
 import zhTW from "antd/es/date-picker/locale/zh_TW";
 import "dayjs/locale/zh-tw";
+import { toCurrency } from "../../utils";
 
 interface Tab {
   key: string;
@@ -17,6 +18,13 @@ interface DataItem {
   tags: string[];
   description?: string | React.ReactNode;
 }
+
+interface incomeItem {
+  name: string;
+  value: string | number;
+}
+
+interface orderItem extends incomeItem {}
 
 const TablePage = () => {
   const tabItems: Tab[] = [
@@ -204,6 +212,18 @@ const TablePage = () => {
     },
   ];
 
+  const incomeList: incomeItem[] = [
+    { name: "總營收", value: "23000" },
+    { name: "LINE Pay收入", value: "15000" },
+    { name: "現金收入", value: "8000" },
+  ];
+
+  const orderList: orderItem[] = [
+    { name: "未取件數", value: "12" },
+    { name: "可取件數", value: "35" },
+    { name: "已收件數", value: "7" },
+  ];
+
   const okAction = () => {
     console.log("okAction");
   };
@@ -222,27 +242,36 @@ const TablePage = () => {
         onChange={tabChange}
       ></Tabs>
 
-      <div className="box-border w-full flex flex-row items-center justify-between px-[16px]">
-        <div className="font-bold">列表</div>
-        <div className="flex flex-row items-center justify-center">
-          <span className="text-[16px] text-[#484848]">總計：3筆</span>
-          <Button
-            type="primary"
-            className={"h-[32px] p-0 w-[110px] ml-[35px]"}
-            onClick={okAction}
-          >
-            <span className="allCenter text-[14px]">會出報表(.csv)</span>
-          </Button>
-        </div>
-      </div>
-      <div className="w-full pt-[28px]">
+      <div className="w-full pt-[28px] flex flex-col items-start justify-center">
         <span className="text-[18px] font-bold">總覽</span>
-        <div className="flex flex-col items-start justify-center bg-[#E7F0F8] mt-[8px] p-[20px_24px]">
-          <span className="text-[14px]">簡訊發送量:</span>
-          <div>
-            <span className="text-[20px]">666</span>
-            <span className="text-[16px] ml-[4px]">元</span>
-          </div>
+        <div className="w-full flex flex-row items-center justify-between bg-[#E7F0F8]  mt-[8px]">
+          {incomeList.map((income) => (
+            <div
+              key={income.name}
+              className="flex flex-col items-start justify-center  p-[20px_24px]"
+            >
+              <span className="text-[14px]">{income.name}：</span>
+              <div>
+                <span className="text-[20px]">{toCurrency(income.value)}</span>
+                <span className="text-[16px] ml-[4px]">元</span>
+              </div>
+            </div>
+          ))}
+
+          <div className="border border-solid border-[#D9D9D9] h-[44px]"></div>
+
+          {orderList.map((order) => (
+            <div
+              key={order.name}
+              className="flex flex-col items-start justify-center  p-[20px_24px]"
+            >
+              <span className="text-[14px]">{order.name}：</span>
+              <div>
+                <span className="text-[20px]">{toCurrency(order.value)}</span>
+                <span className="text-[16px] ml-[4px]">元</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -272,6 +301,20 @@ const TablePage = () => {
               <span className="allCenter text-[14px]">查詢</span>
             </Button>
           </div>
+        </div>
+      </div>
+
+      <div className="box-border w-full flex flex-row items-center justify-between px-[16px]">
+        <div className="font-bold">列表</div>
+        <div className="flex flex-row items-center justify-center">
+          <span className="text-[16px] text-[#484848]">總計：3筆</span>
+          <Button
+            type="primary"
+            className={"h-[32px] p-0 w-[110px] ml-[35px]"}
+            onClick={okAction}
+          >
+            <span className="allCenter text-[14px]">會出報表(.csv)</span>
+          </Button>
         </div>
       </div>
 
