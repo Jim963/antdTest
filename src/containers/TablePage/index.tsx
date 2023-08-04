@@ -43,8 +43,8 @@ const TablePage = () => {
         let emptyArr = [];
         let restWord = text;
         while (restWord.length > 0) {
-          emptyArr.push(restWord.slice(0, 5));
-          restWord = restWord.slice(5);
+          emptyArr.push(restWord.slice(0, 10));
+          restWord = restWord.slice(10);
         }
 
         return (
