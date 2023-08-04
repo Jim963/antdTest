@@ -7,7 +7,6 @@ const App = () => {
   const userToken = getUserToken();
   console.log(userToken, "userToken");
   const routeElement = useRoutes(routes(userToken));
-  console.log(routes(userToken), "看一下路徑");
 
   return (
     <>

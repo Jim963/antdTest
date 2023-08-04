@@ -22,9 +22,9 @@ const routesData: routeLayout[] = [
     path: "/",
     element: <BasicLayout />,
     children: [
-      { name: "Demo", path: "/demo", element: <Demo />, auth: false },
+      { name: "展示", path: "/demo", element: <Demo />, auth: false },
       {
-        name: "TablePage",
+        name: "Table頁面",
         path: "/tablePage",
         element: <TablePage />,
         auth: false,
@@ -40,5 +40,10 @@ const routesData: routeLayout[] = [
     element: <NotFound />,
   },
 ];
+
+export const routeChineseName = routesData[0].children?.map((item: Route) => ({
+  path: item.path,
+  chName: item.name,
+}));
 
 export default routesData;

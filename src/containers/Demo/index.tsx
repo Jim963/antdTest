@@ -81,6 +81,7 @@ const Demo = () => {
         messageType="payment"
         cancelAction={() => steOpenDetail(false)}
         okAction={() => steOpenDetail(false)}
+        cancelSheet={false}
       ></SheetDetailModal>
 
       <FormModal
@@ -147,33 +148,35 @@ const Demo = () => {
         cancelText="取消"
       ></EditModal>
 
-      <button className="mx-2" onClick={() => steOpenDetail(true)}>
-        DetailModal
-      </button>
-      <button className="mx-2" onClick={() => setOpenForm(true)}>
-        FormModal
-      </button>
-      <button className="mx-2" onClick={() => setOpenStatus(true)}>
-        StatusModal
-      </button>
-      <button className="mx-2" onClick={() => setOpenService(true)}>
-        ServiceModal
-      </button>
-      <button className="mx-2" onClick={() => setOpenTable(true)}>
-        TableModal
-      </button>
+      <div className="flex flex-row flex-wrap">
+        <button className="mx-2" onClick={() => steOpenDetail(true)}>
+          DetailModal
+        </button>
+        <button className="mx-2" onClick={() => setOpenForm(true)}>
+          FormModal
+        </button>
+        <button className="mx-2" onClick={() => setOpenStatus(true)}>
+          StatusModal
+        </button>
+        <button className="mx-2" onClick={() => setOpenService(true)}>
+          ServiceModal
+        </button>
+        <button className="mx-2" onClick={() => setOpenTable(true)}>
+          TableModal
+        </button>
 
-      <button className="mx-2" onClick={() => setOpenOption(true)}>
-        OptionModal
-      </button>
+        <button className="mx-2" onClick={() => setOpenOption(true)}>
+          OptionModal
+        </button>
 
-      <button className="mx-2" onClick={() => setOpenInfo(true)}>
-        InfoModal
-      </button>
+        <button className="mx-2" onClick={() => setOpenInfo(true)}>
+          InfoModal
+        </button>
 
-      <button className="mx-2" onClick={() => setOpenEdit(true)}>
-        EditModal
-      </button>
+        <button className="mx-2" onClick={() => setOpenEdit(true)}>
+          EditModal
+        </button>
+      </div>
 
       <div className="w-full flex flex-row items-stretch justify-between flex-wrap mb-[28px]">
         <DashboardCard
@@ -222,7 +225,9 @@ const Demo = () => {
         </div>
       </div>
 
-      <BarChart title="本月營收圖表"></BarChart>
+      <div className="w-full">
+        <BarChart title="本月營收圖表"></BarChart>
+      </div>
     </>
   );
 };

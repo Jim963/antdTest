@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react";
 import { Select } from "antd";
+import { useLocation } from "react-router-dom";
+import { routeChineseName } from "../../router/pathData";
 
 const Header = () => {
+  const { pathname } = useLocation();
+  const [pageName, setPageName] = useState("首頁");
+  useEffect(() => {
+    const routeObject = routeChineseName?.find(
+      (item) => item.path === pathname
+    );
+    routeObject && setPageName(routeObject?.chName);
+  }, [pathname]);
   const storeChange = () => {};
   return (
     <>
@@ -9,7 +20,7 @@ const Header = () => {
           <div className="flex flex-row items-center justify-center">
             <span className="h-[24px] xl:h-[32px] border-4 border-solid border-navyBlue"></span>
             <span className="text-[22px] xl:text-[32px] font-bold px-[8px]">
-              Page Name
+              {pageName}
             </span>
           </div>
 

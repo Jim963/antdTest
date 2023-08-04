@@ -209,7 +209,7 @@ const TablePage = () => {
     console.log(e, "Tab Changed");
   };
   return (
-    <div className="w-full flex flex-col items-start justify-center">
+    <div className="w-full flex flex-col items-start justify-center bg-white p-[10px]">
       <Tabs
         size="large"
         tabBarStyle={{ color: "#999", fontSize: "18px" }}
@@ -233,6 +233,7 @@ const TablePage = () => {
         </div>
       </div>
       <Table
+        className="w-full"
         columns={columns}
         dataSource={data}
         //   scroll={{
