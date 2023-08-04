@@ -1,5 +1,8 @@
 import { Tabs, Table, Tag, Space, Button, DatePicker } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import calendarIcon from "../../assets/images/calendar.svg";
+import zhTW from "antd/es/date-picker/locale/zh_TW";
+import "dayjs/locale/zh-tw";
 
 interface Tab {
   key: string;
@@ -232,6 +235,46 @@ const TablePage = () => {
           </Button>
         </div>
       </div>
+      <div className="w-full pt-[28px]">
+        <span className="text-[18px] font-bold">總覽</span>
+        <div className="flex flex-col items-start justify-center bg-[#E7F0F8] mt-[8px] p-[20px_24px]">
+          <span className="text-[14px]">簡訊發送量:</span>
+          <div>
+            <span className="text-[20px]">666</span>
+            <span className="text-[16px] ml-[4px]">元</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full pt-[28px] pb-[24px]">
+        <span className="text-[18px] font-bold">查詢</span>
+        <div className="flex flex-col items-start justify-center bg-[#F9F9F9] mt-[8px] p-[24px]">
+          <span className="text-[14px] mb-[8px]">發送時間:</span>
+          <div className="flex flex-row items-center justify-center">
+            <DatePicker
+              locale={zhTW}
+              suffixIcon={<img src={calendarIcon}></img>}
+            ></DatePicker>
+
+            <span className="mx-4">至</span>
+
+            <DatePicker
+              locale={zhTW}
+              suffixIcon={<img src={calendarIcon}></img>}
+            ></DatePicker>
+          </div>
+          <div className="w-full flex justify-end pt-[20px]">
+            <Button
+              type="primary"
+              className={"h-[32px] p-0 w-[80px] ml-[35px]"}
+              onClick={okAction}
+            >
+              <span className="allCenter text-[14px]">查詢</span>
+            </Button>
+          </div>
+        </div>
+      </div>
+
       <Table
         className="w-full"
         columns={columns}
