@@ -22,7 +22,7 @@ const routesData: routeLayout[] = [
     path: "/",
     element: <BasicLayout />,
     children: [
-      { name: "展示", path: "/demo", element: <Demo />, auth: false },
+      { name: "展示頁面", path: "/demo", element: <Demo />, auth: false },
       {
         name: "Table頁面",
         path: "/tablePage",
