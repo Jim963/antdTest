@@ -55,7 +55,7 @@ const TablePage = () => {
       title: "門市名稱",
       key: "storeName",
       dataIndex: "storeName",
-      className: "",
+      className: "text-[12px]",
       render: (text: any) => {
         let emptyArr = [];
         let restWord = text;
@@ -82,18 +82,19 @@ const TablePage = () => {
       title: "服務單號",
       key: "serviceNum",
       dataIndex: "serviceNum",
-      className: "",
+      className: "text-[12px]",
     },
     {
       title: "客戶姓名與聯絡電話",
       key: "customer",
       dataIndex: "customer",
-      className: "",
+      className: "text-[12px]",
     },
     {
       title: "服務進度",
       key: "serviceProgress",
       dataIndex: "serviceProgress",
+      className: "text-[12px]",
       render: (_, record) => (
         <span
           className={
@@ -115,7 +116,7 @@ const TablePage = () => {
       ),
       key: "sum",
       dataIndex: "sum",
-      className: "",
+      className: "text-[12px]",
       render: (_, record) => (
         <div className="flex flex-col items-start justify-center">
           <div className="flex flex-row items-center justify-center">
@@ -145,12 +146,13 @@ const TablePage = () => {
       title: "開單時間",
       key: "time",
       dataIndex: "time",
-      className: "",
+      className: "text-[12px]",
     },
     {
       title: "操作",
       key: "operation",
       dataIndex: "operation",
+      className: "text-[12px]",
     },
   ];
   const data: DataItem[] = [
