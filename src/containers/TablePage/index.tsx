@@ -1,4 +1,4 @@
-import { Tabs, Table, Tag, Space, Button, DatePicker, Divider } from "antd";
+import { Tabs, Table, Tag, Space, Button, DatePicker } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import calendarIcon from "../../assets/images/calendar.svg";
 import zhTW from "antd/es/date-picker/locale/zh_TW";
@@ -16,10 +16,12 @@ interface DataItem {
   serviceNum: number | string;
   customer: string;
   serviceProgress?: string | React.ReactNode;
-  sum: string[] | React.ReactNode;
   time: string | React.ReactNode;
   operation?: React.ReactNode;
   expand?: React.ReactNode;
+  linePay?: string | number;
+  cash?: string | number;
+  payStatus: string;
 }
 
 interface incomeItem {
@@ -114,6 +116,30 @@ const TablePage = () => {
       key: "sum",
       dataIndex: "sum",
       className: "",
+      render: (_, record) => (
+        <div className="flex flex-col items-start justify-center">
+          <div className="flex flex-row items-center justify-center">
+            <div className="font-bold">
+              ＄{Number(record.linePay) + Number(record.cash)}
+            </div>
+            <div>
+              ({record.linePay} / {record.cash})
+            </div>
+          </div>
+
+          <div
+            className={`p-1 ${
+              record.payStatus === "已付款"
+                ? "text-navyBlue bg-[#D9E6F2]"
+                : record.payStatus === "尚缺款項"
+                ? "text-[#F87700] bg-[#FFF2E7]"
+                : "text-[#999]"
+            }`}
+          >
+            {record.payStatus}
+          </div>
+        </div>
+      ),
     },
     {
       title: "開單時間",
@@ -130,17 +156,34 @@ const TablePage = () => {
   const data: DataItem[] = [
     {
       key: "1",
-      storeName: "一二三四五六1234",
+      storeName: "一二三四五六123409876",
       serviceNum: "000",
       customer: "客戶一(電話)",
       serviceProgress: "已開單",
-      sum: ["nice", "developer"],
       time: (
         <div>
           <div>1993/01/27</div> <div>10:00</div>
         </div>
       ),
-      operation: <div></div>,
+      operation: (
+        <div className="flex flex-col items-center justify-center">
+          <Button block ghost type="primary" className={"my-2"}>
+            客戶取件
+          </Button>
+          <Button block type="primary" className={"my-2"}>
+            店長收件
+          </Button>
+          <Button block className={"my-2"}>
+            詳情
+          </Button>
+          <Button block className={"text-[#F44336] border-[#F44336] my-2"}>
+            刪除服務單
+          </Button>
+        </div>
+      ),
+      linePay: "500",
+      cash: "50",
+      payStatus: "已付款",
       expand: <div>expand information</div>,
     },
     {
@@ -149,7 +192,6 @@ const TablePage = () => {
       serviceNum: "001",
       customer: "客戶二(電話)",
       serviceProgress: "已取消",
-      sum: ["cool", "teacher"],
       time: (
         <div>
           <div>1993/01/27</div> <div>10:00</div>
@@ -157,18 +199,23 @@ const TablePage = () => {
       ),
       operation: (
         <div className="flex flex-col items-center justify-center">
-          <Button block ghost type="primary">
+          <Button block ghost type="primary" className={"my-2"}>
             客戶取件
           </Button>
-          <Button block type="primary">
+          <Button block type="primary" className={"my-2"}>
             店長收件
           </Button>
-          <Button block>詳情</Button>
-          <Button block className={"text-[#F44336] border-[#F44336]"}>
+          <Button block className={"my-2"}>
+            詳情
+          </Button>
+          <Button block className={"text-[#F44336] border-[#F44336] my-2"}>
             刪除服務單
           </Button>
         </div>
       ),
+      linePay: "500",
+      cash: "50",
+      payStatus: "尚缺款項",
       expand: <div>nothing here</div>,
     },
   ];
