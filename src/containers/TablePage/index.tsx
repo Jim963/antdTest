@@ -167,16 +167,18 @@ const TablePage = () => {
       ),
       operation: (
         <div className="flex flex-col items-center justify-center">
-          <Button block ghost type="primary" className={"my-2"}>
+          <Button ghost type="primary" className={"w-[100px] h-[32px] my-2"}>
             客戶取件
           </Button>
-          <Button block type="primary" className={"my-2"}>
+          <Button type="primary" className={"w-[100px] h-[32px] my-2"}>
             店長收件
           </Button>
-          <Button block className={"my-2"}>
-            詳情
-          </Button>
-          <Button block className={"text-[#F44336] border-[#F44336] my-2"}>
+          <Button className={"w-[100px] h-[32px] my-2"}>詳情</Button>
+          <Button
+            className={
+              "w-[100px] h-[32px] text-[#F44336] border-[#F44336] my-2"
+            }
+          >
             刪除服務單
           </Button>
         </div>
@@ -199,16 +201,18 @@ const TablePage = () => {
       ),
       operation: (
         <div className="flex flex-col items-center justify-center">
-          <Button block ghost type="primary" className={"my-2"}>
+          <Button ghost type="primary" className={"w-[100px] h-[32px] my-2"}>
             客戶取件
           </Button>
-          <Button block type="primary" className={"my-2"}>
+          <Button type="primary" className={"w-[100px] h-[32px] my-2"}>
             店長收件
           </Button>
-          <Button block className={"my-2"}>
-            詳情
-          </Button>
-          <Button block className={"text-[#F44336] border-[#F44336] my-2"}>
+          <Button className={"w-[100px] h-[32px] my-2"}>詳情</Button>
+          <Button
+            className={
+              "w-[100px] h-[32px] text-[#F44336] border-[#F44336] my-2"
+            }
+          >
             刪除服務單
           </Button>
         </div>
@@ -231,16 +235,18 @@ const TablePage = () => {
       ),
       operation: (
         <div className="flex flex-col items-center justify-center">
-          <Button block ghost type="primary" className={"my-2"}>
+          <Button ghost type="primary" className={"w-[100px] h-[32px] my-2"}>
             客戶取件
           </Button>
-          <Button block type="primary" className={"my-2"}>
+          <Button type="primary" className={"w-[100px] h-[32px] my-2"}>
             店長收件
           </Button>
-          <Button block className={"my-2"}>
-            詳情
-          </Button>
-          <Button block className={"text-[#F44336] border-[#F44336] my-2"}>
+          <Button className={"w-[100px] h-[32px] my-2"}>詳情</Button>
+          <Button
+            className={
+              "w-[100px] h-[32px] text-[#F44336] border-[#F44336] my-2"
+            }
+          >
             刪除服務單
           </Button>
         </div>
@@ -328,6 +334,7 @@ const TablePage = () => {
           <div className="flex flex-row items-center justify-center">
             <DatePicker
               locale={zhTW}
+              className={"w-[192px] h-[40px]"}
               suffixIcon={<img src={calendarIcon}></img>}
             ></DatePicker>
 
@@ -335,6 +342,7 @@ const TablePage = () => {
 
             <DatePicker
               locale={zhTW}
+              className={"w-[192px] h-[40px]"}
               suffixIcon={<img src={calendarIcon}></img>}
             ></DatePicker>
           </div>
