@@ -1,4 +1,4 @@
-import { Tabs, Table, Tag, Space, Button, DatePicker } from "antd";
+import { Tabs, Table, Tag, Space, Button, DatePicker, Divider } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import calendarIcon from "../../assets/images/calendar.svg";
 import zhTW from "antd/es/date-picker/locale/zh_TW";
@@ -13,9 +13,12 @@ interface Tab {
 interface DataItem {
   key: string;
   storeName: string;
-  age: number;
-  address: string;
-  tags: string[];
+  serviceNum: number | string;
+  customer: string;
+  serviceProgress?: string | React.ReactNode;
+  sum: string[];
+  time: string;
+  operation?: React.ReactNode;
   description?: string | React.ReactNode;
 }
 
@@ -47,8 +50,8 @@ const TablePage = () => {
   const columns: ColumnsType<DataItem> = [
     {
       title: "門市名稱",
+      key: "storeName",
       dataIndex: "storeName",
-      key: "name",
       className: "",
       render: (text: any) => {
         let emptyArr = [];
@@ -74,32 +77,43 @@ const TablePage = () => {
     },
     {
       title: "服務單號",
-      dataIndex: "age",
-      key: "age",
+      key: "serviceNum",
+      dataIndex: "serviceNum",
       className: "",
     },
     Table.EXPAND_COLUMN,
     {
-      title: "客戶姓名",
-      dataIndex: "address",
-      key: "address",
+      title: "客戶姓名與聯絡電話",
+      key: "customer",
+      dataIndex: "customer",
       className: "",
     },
     {
-      title: "客戶聯絡電話",
-      key: "tags",
-      dataIndex: "tags",
+      title: "服務進度",
+      key: "serviceProgress",
+      dataIndex: "serviceProgress",
+      render: (_, record) => (
+        <Space size="middle">
+          <a>Invite {record.storeName}</a>
+          <a>Delete</a>
+        </Space>
+      ),
+    },
+    {
+      title: "總金額 (LINE Pay已付/現金已付)",
+      key: "sum",
+      dataIndex: "sum",
       className: "",
-      render: (_, { tags }) => (
+      render: (_, { sum }) => (
         <>
-          {tags.map((tag) => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
+          {sum.map((sumItem) => {
+            let color = sumItem.length > 5 ? "geekblue" : "green";
+            if (sumItem === "loser") {
               color = "volcano";
             }
             return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
+              <Tag color={color} key={sumItem}>
+                {sumItem.toUpperCase()}
               </Tag>
             );
           })}
@@ -107,8 +121,15 @@ const TablePage = () => {
       ),
     },
     {
-      title: "服務項目",
-      key: "action",
+      title: "開單時間",
+      key: "time",
+      dataIndex: "time",
+      className: "",
+    },
+    {
+      title: "操作",
+      key: "operation",
+      dataIndex: "operation",
       render: (_, record) => (
         <Space size="middle">
           <a>Invite {record.storeName}</a>
@@ -121,94 +142,25 @@ const TablePage = () => {
     {
       key: "1",
       storeName: "一二三四五六1234",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
-      description: "Hide in bush , teemo on duty!",
-    },
-    {
-      key: "2",
-      storeName: "一二三四五",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"],
-      description: "Hide in bush , teemo on duty!",
-    },
-    {
-      key: "3",
-      storeName: "一二三四五",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-      description: "Hide in bush , teemo on duty!",
-    },
-    {
-      key: "4",
-      storeName: "一二三四五六",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-      description: "Hide in bush , teemo on duty!",
-    },
-    {
-      key: "五四三二一",
-      storeName: "Joe Black",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-      description: "Hide in bush , teemo on duty!",
+      serviceNum: "",
+      customer: "",
+      serviceProgress: "",
+      sum: ["nice", "developer"],
+      time: "",
+      operation: <div></div>,
     },
     {
       key: "6",
       storeName: "公司名五個字:3",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
+      serviceNum: "",
+      customer: "",
+      serviceProgress: "",
+      sum: ["cool", "teacher"],
+      time: "",
+      operation: <div></div>,
       description: (
         <div className="w-[50px] h-[50px] bg-blue-200 rounded-full"></div>
       ),
-    },
-    {
-      key: "7",
-      storeName: "超過五個字拉拉",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-    {
-      key: "8",
-      storeName: "一二三四五六",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-    {
-      key: "9",
-      storeName: "七六五四三二一",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-    {
-      key: "10",
-      storeName: "一二三",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-    {
-      key: "11",
-      storeName: "四五六七",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-    {
-      key: "12",
-      storeName: "098765432",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
     },
   ];
 
