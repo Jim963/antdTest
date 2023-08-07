@@ -69,7 +69,7 @@ const SideBar = () => {
           return (
             <div
               key={item.name}
-              className={`w-full flex flex-row items-center justify-between text-[14px] xl:text-[16px] p-[6px_0_6px_4px] mb-[20px] ml-[4px] xl:ml-[8px] rounded-[4px] ${
+              className={`w-full flex flex-row items-center justify-between text-[14px] xl:text-[16px] p-[6px_0_6px_4px] mb-[20px] ml-[4px] xl:ml-[8px] rounded-[4px] cursor-pointer ${
                 active === item.name && "bg-navyBlue"
               }`}
               onClick={() => handleRoute(item)}
