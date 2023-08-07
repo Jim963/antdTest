@@ -128,12 +128,12 @@ const TablePage = () => {
           </div>
 
           <div
-            className={`p-1 ${
+            className={`px-2 rounded ${
               record.payStatus === "已付款"
                 ? "text-navyBlue bg-[#D9E6F2]"
                 : record.payStatus === "尚缺款項"
                 ? "text-[#F87700] bg-[#FFF2E7]"
-                : "text-[#999]"
+                : "text-[#999] bg-[#F8F8F8]"
             }`}
           >
             {record.payStatus}
@@ -216,6 +216,38 @@ const TablePage = () => {
       linePay: "500",
       cash: "50",
       payStatus: "尚缺款項",
+      expand: <div>nothing here</div>,
+    },
+    {
+      key: "3",
+      storeName: "公司名",
+      serviceNum: "002",
+      customer: "客戶三(電話)",
+      serviceProgress: "已取件",
+      time: (
+        <div>
+          <div>1993/01/27</div> <div>09:00</div>
+        </div>
+      ),
+      operation: (
+        <div className="flex flex-col items-center justify-center">
+          <Button block ghost type="primary" className={"my-2"}>
+            客戶取件
+          </Button>
+          <Button block type="primary" className={"my-2"}>
+            店長收件
+          </Button>
+          <Button block className={"my-2"}>
+            詳情
+          </Button>
+          <Button block className={"text-[#F44336] border-[#F44336] my-2"}>
+            刪除服務單
+          </Button>
+        </div>
+      ),
+      linePay: "500",
+      cash: "50",
+      payStatus: "已退款",
       expand: <div>nothing here</div>,
     },
   ];
