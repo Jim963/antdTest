@@ -43,7 +43,10 @@ const SideBar = () => {
           src={LogoImg}
           onClick={() => go("/demo")}
         />
-        <div className="box-border w-[164px] xl:w-[190px] h-[72px] xl:h-[80px] bg-[#FFF2E7] rounded-[4px] xl:rounded-[8px] p-[12px_0_9px_12px] xl:p-[12px_0_9px_16px]">
+        <div
+          className="box-border w-[164px] xl:w-[190px] h-[72px] xl:h-[80px] bg-[#FFF2E7] rounded-[4px] xl:rounded-[8px] p-[12px_0_9px_12px] xl:p-[12px_0_9px_16px] cursor-pointer"
+          onClick={() => go("/undone")}
+        >
           <div className="flex flex-row items-center justify-between">
             <div className="flex flex-col items-start justify-center">
               <span className="text-[12px] xl:text-[14px]">未收件服務單:</span>

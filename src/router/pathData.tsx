@@ -2,6 +2,7 @@ import BasicLayout from "../layout/BasicLayout";
 import Login from "../containers/Login";
 import Demo from "../containers/Demo";
 import TablePage from "../containers/TablePage";
+import Undone from "../containers/Undone";
 import NotFound from "../containers/NotFound";
 
 interface Route {
@@ -27,6 +28,12 @@ const routesData: routeLayout[] = [
         name: "Table頁面",
         path: "/tablePage",
         element: <TablePage />,
+        auth: false,
+      },
+      {
+        name: "未處理頁面",
+        path: "/undone",
+        element: <Undone />,
         auth: false,
       },
     ],
