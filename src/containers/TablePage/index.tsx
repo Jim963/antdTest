@@ -16,10 +16,10 @@ interface DataItem {
   serviceNum: number | string;
   customer: string;
   serviceProgress?: string | React.ReactNode;
-  sum: string[];
-  time: string;
+  sum: string[] | React.ReactNode;
+  time: string | React.ReactNode;
   operation?: React.ReactNode;
-  description?: string | React.ReactNode;
+  expand?: React.ReactNode;
 }
 
 interface incomeItem {
@@ -48,6 +48,7 @@ const TablePage = () => {
     },
   ];
   const columns: ColumnsType<DataItem> = [
+    Table.EXPAND_COLUMN,
     {
       title: "門市名稱",
       key: "storeName",
@@ -81,7 +82,6 @@ const TablePage = () => {
       dataIndex: "serviceNum",
       className: "",
     },
-    Table.EXPAND_COLUMN,
     {
       title: "客戶姓名與聯絡電話",
       key: "customer",
@@ -93,32 +93,27 @@ const TablePage = () => {
       key: "serviceProgress",
       dataIndex: "serviceProgress",
       render: (_, record) => (
-        <Space size="middle">
-          <a>Invite {record.storeName}</a>
-          <a>Delete</a>
-        </Space>
+        <span
+          className={
+            record.serviceProgress === "已取消"
+              ? "text-[#999]"
+              : "text-navyBlue"
+          }
+        >
+          {record.serviceProgress}
+        </span>
       ),
     },
     {
-      title: "總金額 (LINE Pay已付/現金已付)",
+      title: (
+        <div>
+          <div>總金額</div>
+          <div className="text-[#999] font-normal">(LINE Pay已付/現金已付)</div>
+        </div>
+      ),
       key: "sum",
       dataIndex: "sum",
       className: "",
-      render: (_, { sum }) => (
-        <>
-          {sum.map((sumItem) => {
-            let color = sumItem.length > 5 ? "geekblue" : "green";
-            if (sumItem === "loser") {
-              color = "volcano";
-            }
-            return (
-              <Tag color={color} key={sumItem}>
-                {sumItem.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
     },
     {
       title: "開單時間",
@@ -142,25 +137,32 @@ const TablePage = () => {
     {
       key: "1",
       storeName: "一二三四五六1234",
-      serviceNum: "",
-      customer: "",
-      serviceProgress: "",
+      serviceNum: "000",
+      customer: "客戶一(電話)",
+      serviceProgress: "已開單",
       sum: ["nice", "developer"],
-      time: "",
+      time: (
+        <div>
+          <div>1993/01/27</div> <div>10:00</div>
+        </div>
+      ),
       operation: <div></div>,
+      expand: <div>expand information</div>,
     },
     {
-      key: "6",
+      key: "2",
       storeName: "公司名五個字:3",
-      serviceNum: "",
-      customer: "",
-      serviceProgress: "",
+      serviceNum: "001",
+      customer: "客戶二(電話)",
+      serviceProgress: "已取消",
       sum: ["cool", "teacher"],
-      time: "",
-      operation: <div></div>,
-      description: (
-        <div className="w-[50px] h-[50px] bg-blue-200 rounded-full"></div>
+      time: (
+        <div>
+          <div>1993/01/27</div> <div>10:00</div>
+        </div>
       ),
+      operation: <div></div>,
+      expand: <div>nothing here</div>,
     },
   ];
 
@@ -290,7 +292,7 @@ const TablePage = () => {
                 margin: 0,
               }}
             >
-              {record.description}
+              {record.expand}
             </p>
           ),
         }}
