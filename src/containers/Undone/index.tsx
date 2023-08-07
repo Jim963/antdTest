@@ -168,22 +168,15 @@ const Undone = () => {
       expand: <div>nothing here</div>,
     },
   ];
-  const okAction = () => {
-    console.log("okAction");
-  };
+
   return (
     <div className="w-full flex flex-col items-start justify-center bg-white p-[10px]">
       <div className="box-border w-full flex flex-row items-center justify-between px-[16px]">
         <div className="font-bold">列表</div>
         <div className="flex flex-row items-center justify-center">
-          <span className="text-[16px] text-[#484848]">總計：3筆</span>
-          <Button
-            type="primary"
-            className={"h-[32px] p-0 w-[110px] ml-[35px]"}
-            onClick={okAction}
-          >
-            <span className="allCenter text-[14px]">會出報表(.csv)</span>
-          </Button>
+          <span className="text-[16px] text-[#484848]">
+            總計：{data.length}筆
+          </span>
         </div>
       </div>
 
