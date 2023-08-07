@@ -55,7 +55,7 @@ const TablePage = () => {
       title: "門市名稱",
       key: "storeName",
       dataIndex: "storeName",
-      className: "text-[12px]",
+      className: "text-[12px] xl:text-[14px]",
       render: (text: any) => {
         let emptyArr = [];
         let restWord = text;
@@ -82,19 +82,19 @@ const TablePage = () => {
       title: "服務單號",
       key: "serviceNum",
       dataIndex: "serviceNum",
-      className: "text-[12px]",
+      className: "text-[12px] xl:text-[14px]",
     },
     {
       title: "客戶姓名與聯絡電話",
       key: "customer",
       dataIndex: "customer",
-      className: "text-[12px]",
+      className: "text-[12px] xl:text-[14px]",
     },
     {
       title: "服務進度",
       key: "serviceProgress",
       dataIndex: "serviceProgress",
-      className: "text-[12px]",
+      className: "text-[12px] xl:text-[14px]",
       render: (_, record) => (
         <span
           className={
@@ -116,7 +116,7 @@ const TablePage = () => {
       ),
       key: "sum",
       dataIndex: "sum",
-      className: "text-[12px]",
+      className: "text-[12px] xl:text-[14px]",
       render: (_, record) => (
         <div className="flex flex-col items-start justify-center">
           <div className="flex flex-row items-center justify-center">
@@ -146,13 +146,13 @@ const TablePage = () => {
       title: "開單時間",
       key: "time",
       dataIndex: "time",
-      className: "text-[12px]",
+      className: "text-[12px] xl:text-[14px]",
     },
     {
       title: "操作",
       key: "operation",
       dataIndex: "operation",
-      className: "text-[12px]",
+      className: "text-[12px] xl:text-[14px]",
     },
   ];
   const data: DataItem[] = [
@@ -298,7 +298,7 @@ const TablePage = () => {
               key={income.name}
               className="flex flex-col items-start justify-center  p-[20px_24px]"
             >
-              <span className="text-[12px] xl:text-[14px]">
+              <span className="text-[12px] xl:text-[14px] xl:text-[14px]">
                 {income.name}：
               </span>
               <div className="mt-[5px]">
