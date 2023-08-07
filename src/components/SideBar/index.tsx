@@ -19,6 +19,7 @@ interface RouteItem {
 }
 
 const SideBar = () => {
+  const go = useNavigate();
   const [active, setActive] = useState<string>("首頁");
   const pageList: RouteItem[] = [
     { name: "首頁", icon: searchIcon, activeIcon: activeHome, route: "/demo" },
@@ -26,9 +27,6 @@ const SideBar = () => {
     { name: "門市/會員資訊", icon: sheetIcon, route: "" },
     { name: "營業/會員報表", icon: tableIcon, route: "/tablePage" },
   ];
-
-  const go = useNavigate();
-
   const newStore = () => {
     console.log("build new store");
   };
@@ -43,6 +41,7 @@ const SideBar = () => {
         <img
           className="w-[120px] xl:w-[180px] h-[38px] xl:h-[56px] mb-[33px] xl:mb-[50px]"
           src={LogoImg}
+          onClick={() => go("/demo")}
         />
         <div className="box-border w-[164px] xl:w-[190px] h-[72px] xl:h-[80px] bg-[#FFF2E7] rounded-[4px] xl:rounded-[8px] p-[12px_0_9px_12px] xl:p-[12px_0_9px_16px]">
           <div className="flex flex-row items-center justify-between">
