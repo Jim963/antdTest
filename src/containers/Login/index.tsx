@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Input } from "antd";
 import LogoImg from "../../assets/images/logo.png";
 
 const Login = () => {
+  const go = useNavigate();
   const [account, setAccount] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errMessage, setErrMessage] = useState<string>("");
@@ -60,7 +62,10 @@ const Login = () => {
         </Button>
       </div>
 
-      <div className="text-[14px] xl:text-[16px] text-[#999] mt-[24px] cursor-pointer">
+      <div
+        className="text-[14px] xl:text-[16px] text-[#999] mt-[24px] cursor-pointer"
+        onClick={() => go("/forgotPassword")}
+      >
         忘記密碼？
       </div>
     </div>

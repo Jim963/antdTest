@@ -1,5 +1,6 @@
 import BasicLayout from "../layout/BasicLayout";
 import Login from "../containers/Login";
+import ForgotPassword from "../containers/ForgotPassword";
 import Demo from "../containers/Demo";
 import TablePage from "../containers/TablePage";
 import Undone from "../containers/Undone";
@@ -41,6 +42,10 @@ const routesData: routeLayout[] = [
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/forgotPassword",
+    element: <ForgotPassword />,
   },
   {
     path: "*",
