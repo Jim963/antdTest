@@ -7,13 +7,10 @@ const Undone = () => {
     storeName: string;
     serviceNum: number | string;
     customer: string;
-    serviceProgress?: string | React.ReactNode;
+    sendType?: string | React.ReactNode;
     time: string | React.ReactNode;
     operation?: React.ReactNode;
     expand?: React.ReactNode;
-    linePay?: string | number;
-    cash?: string | number;
-    payStatus: string;
   }
   const columns: ColumnsType<DataItem> = [
     Table.EXPAND_COLUMN,
@@ -57,55 +54,18 @@ const Undone = () => {
       className: "text-[12px] xl:text-[14px]",
     },
     {
-      title: "服務進度",
-      key: "serviceProgress",
-      dataIndex: "serviceProgress",
+      title: "發送類別",
+      key: "sendType",
+      dataIndex: "sendType",
       className: "text-[12px] xl:text-[14px]",
       render: (_, record) => (
         <span
           className={
-            record.serviceProgress === "已取消"
-              ? "text-[#999]"
-              : "text-navyBlue"
+            record.sendType === "已取消" ? "text-[#999]" : "text-navyBlue"
           }
         >
-          {record.serviceProgress}
+          {record.sendType}
         </span>
-      ),
-    },
-    {
-      title: (
-        <div>
-          <div>總金額</div>
-          <div className="text-[#999] font-normal">(LINE Pay已付/現金已付)</div>
-        </div>
-      ),
-      key: "sum",
-      dataIndex: "sum",
-      className: "text-[12px] xl:text-[14px]",
-      render: (_, record) => (
-        <div className="flex flex-col items-start justify-center">
-          <div className="flex flex-row items-center justify-center">
-            <div className="font-bold">
-              ＄{Number(record.linePay) + Number(record.cash)}
-            </div>
-            <div>
-              ({record.linePay} / {record.cash})
-            </div>
-          </div>
-
-          <div
-            className={`px-2 rounded ${
-              record.payStatus === "已付款"
-                ? "text-navyBlue bg-[#D9E6F2]"
-                : record.payStatus === "尚缺款項"
-                ? "text-[#F87700] bg-[#FFF2E7]"
-                : "text-[#999] bg-[#F8F8F8]"
-            }`}
-          >
-            {record.payStatus}
-          </div>
-        </div>
       ),
     },
     {
@@ -115,7 +75,7 @@ const Undone = () => {
       className: "text-[12px] xl:text-[14px]",
     },
     {
-      title: "操作",
+      title: "",
       key: "operation",
       dataIndex: "operation",
       className: "text-[12px] xl:text-[14px]",
@@ -127,7 +87,7 @@ const Undone = () => {
       storeName: "一二三四五六123409876",
       serviceNum: "000",
       customer: "客戶一(電話)",
-      serviceProgress: "已開單",
+      sendType: "已開單",
       time: (
         <div>
           <div>1993/01/27</div> <div>10:00</div>
@@ -135,9 +95,6 @@ const Undone = () => {
       ),
       operation: (
         <div className="flex flex-col items-center justify-center">
-          <Button ghost type="primary" className={"w-[100px] h-[32px] my-2"}>
-            客戶取件
-          </Button>
           <Button type="primary" className={"w-[100px] h-[32px] my-2"}>
             店長收件
           </Button>
@@ -151,9 +108,6 @@ const Undone = () => {
           </Button>
         </div>
       ),
-      linePay: "500",
-      cash: "50",
-      payStatus: "已付款",
       expand: <div>expand information</div>,
     },
     {
@@ -161,7 +115,7 @@ const Undone = () => {
       storeName: "公司名五個字:3",
       serviceNum: "001",
       customer: "客戶二(電話)",
-      serviceProgress: "已取消",
+      sendType: "已取消",
       time: (
         <div>
           <div>1993/01/27</div> <div>10:00</div>
@@ -169,9 +123,6 @@ const Undone = () => {
       ),
       operation: (
         <div className="flex flex-col items-center justify-center">
-          <Button ghost type="primary" className={"w-[100px] h-[32px] my-2"}>
-            客戶取件
-          </Button>
           <Button type="primary" className={"w-[100px] h-[32px] my-2"}>
             店長收件
           </Button>
@@ -185,9 +136,6 @@ const Undone = () => {
           </Button>
         </div>
       ),
-      linePay: "500",
-      cash: "50",
-      payStatus: "尚缺款項",
       expand: <div>nothing here</div>,
     },
     {
@@ -195,7 +143,7 @@ const Undone = () => {
       storeName: "公司名",
       serviceNum: "002",
       customer: "客戶三(電話)",
-      serviceProgress: "已取件",
+      sendType: "已開單",
       time: (
         <div>
           <div>1993/01/27</div> <div>09:00</div>
@@ -203,9 +151,6 @@ const Undone = () => {
       ),
       operation: (
         <div className="flex flex-col items-center justify-center">
-          <Button ghost type="primary" className={"w-[100px] h-[32px] my-2"}>
-            客戶取件
-          </Button>
           <Button type="primary" className={"w-[100px] h-[32px] my-2"}>
             店長收件
           </Button>
@@ -219,9 +164,7 @@ const Undone = () => {
           </Button>
         </div>
       ),
-      linePay: "500",
-      cash: "50",
-      payStatus: "已退款",
+
       expand: <div>nothing here</div>,
     },
   ];
