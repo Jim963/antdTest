@@ -298,7 +298,7 @@ const TablePage = () => {
               key={income.name}
               className="flex flex-col items-start justify-center  p-[20px_24px]"
             >
-              <span className="text-[12px] xl:text-[14px] xl:text-[14px]">
+              <span className="text-[12px] xl:text-[14px]">
                 {income.name}：
               </span>
               <div className="mt-[5px]">
