@@ -5,6 +5,7 @@ import LogoImg from "../../assets/images/logo.png";
 const Login = () => {
   const [account, setAccount] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [errMessage, setErrMessage] = useState<string>("");
   const login = () => {
     console.log(account, password);
   };
@@ -22,6 +23,7 @@ const Login = () => {
             className="text-[14px] xl:text-[16px] font-bold py-[9px] mt-[5px]"
             placeholder={"請輸入帳號"}
             allowClear
+            status={errMessage === "account" ? "error" : ""}
             value={account}
             onChange={(e) => {
               const { value } = e?.target;
@@ -37,6 +39,7 @@ const Login = () => {
             className="text-[14px] xl:text-[16px] font-bold py-[9px] mt-[5px]"
             placeholder={"請輸入密碼"}
             allowClear
+            status={errMessage === "password" ? "error" : ""}
             value={password}
             onChange={(e) => {
               const { value } = e?.target;
