@@ -125,12 +125,6 @@ const TablePage = () => {
       title: "操作",
       key: "operation",
       dataIndex: "operation",
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Invite {record.storeName}</a>
-          <a>Delete</a>
-        </Space>
-      ),
     },
   ];
   const data: DataItem[] = [
@@ -161,7 +155,20 @@ const TablePage = () => {
           <div>1993/01/27</div> <div>10:00</div>
         </div>
       ),
-      operation: <div></div>,
+      operation: (
+        <div className="flex flex-col items-center justify-center">
+          <Button block ghost type="primary">
+            客戶取件
+          </Button>
+          <Button block type="primary">
+            店長收件
+          </Button>
+          <Button block>詳情</Button>
+          <Button block className={"text-[#F44336] border-[#F44336]"}>
+            刪除服務單
+          </Button>
+        </div>
+      ),
       expand: <div>nothing here</div>,
     },
   ];
