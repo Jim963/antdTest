@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { Button, Input } from "antd";
 import LogoImg from "../../assets/images/logo.png";
 

@@ -1,7 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import routes from "./router/index";
 import { getUserToken } from "./utils/handleUserToken";
-import FixedBtnRow from "./components/FixedBtnRow";
 
 const App = () => {
   const userToken = getUserToken();
@@ -12,7 +11,6 @@ const App = () => {
     <>
       <div className="App w-screen min-h-screen text-[#484848]">
         {routeElement}
-        <FixedBtnRow></FixedBtnRow>
       </div>
     </>
   );
