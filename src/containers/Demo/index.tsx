@@ -64,9 +64,13 @@ const Demo = () => {
       if (tmp === true) {
         console.log(i, "i", i - gap, "i-GAP", "true option");
         answer[i] = trueArr[i - gap];
+        // 0,1,2,3,4,5 trueArr
+        // 0,1,2,6,7,8 realIndex
       } else {
         console.log(i, "i", i - gap, "i-GAP", "false option");
-        answer[i] = falseArr[i - gap + 3];
+        answer[i] = falseArr[i - gap];
+        // 0,1,2,3,4,5 falseArr
+        // 3,4,5,9,10,11 realIndex
       }
 
       if ((i + 1) % 3 === 0) {
