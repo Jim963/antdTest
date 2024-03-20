@@ -32,7 +32,6 @@ const SignFile = () => {
       setPositionCatch((pre) => [...pre, { x: touchPos.x, y: touchPos.y }]);
       ctx.moveTo(touchPos.x, touchPos.y);
     }
-    event.preventDefault();
   };
 
   const handleMouseDown = (event: React.MouseEvent) => {
@@ -44,7 +43,6 @@ const SignFile = () => {
       setPositionCatch((pre) => [...pre, { x: mousePos.x, y: mousePos.y }]);
       ctx.moveTo(mousePos.x, mousePos.y);
     }
-    event.preventDefault();
   };
 
   const draw = (position: { x: number; y: number }, record: boolean) => {
@@ -107,10 +105,11 @@ const SignFile = () => {
       ctx.moveTo(startPoint.x, startPoint.y);
       let index = 1;
       const repainting = setInterval(() => {
+        console.log("ya");
         const prePoint = positionCatch[index - 1];
         const nowPoint = positionCatch[index];
         if (index >= positionCatch.length) {
-          console.log(index);
+          console.log(index, "intervalClear");
           clearInterval(repainting);
           setDrawing(false);
         }
