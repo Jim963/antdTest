@@ -16,7 +16,7 @@ const SignFile = () => {
   const [drawing, setDrawing] = useState(false);
   const [_, setSignData] = useAtom(signAtom);
   const [positionCatch, setPositionCatch] = useState<
-    { x: number; y: number }[]
+    ({ x: number; y: number } | "stop")[]
   >([]);
 
   useEffect(() => {
@@ -80,10 +80,12 @@ const SignFile = () => {
 
   /** 結束 */
   const handleTouchEnd = (_event: React.TouchEvent) => {
+    setPositionCatch((pre) => [...pre, "stop"]);
     setDrawing(false);
   };
 
   const handleMouseUp = (_event: React.MouseEvent) => {
+    setPositionCatch((pre) => [...pre, "stop"]);
     setDrawing(false);
   };
 
@@ -106,17 +108,28 @@ const SignFile = () => {
     const intervalTime = 5000 / positionCatch.length;
     const startPoint = positionCatch[0];
     setDrawing(true);
-    if (!!ctx) {
+    if (!!ctx && startPoint !== "stop") {
       ctx.beginPath();
       ctx.moveTo(startPoint.x, startPoint.y);
       let index = 1;
       const repainting = setInterval(() => {
+        const prePoint = positionCatch[index - 1];
+        const nowPoint = positionCatch[index];
         if (index >= positionCatch.length) {
           console.log(index);
           clearInterval(repainting);
           setDrawing(false);
         }
-        draw(positionCatch[index], false);
+        if (nowPoint === "stop") {
+          setDrawing(false);
+        } else if (prePoint === "stop") {
+          setDrawing(true);
+          ctx.beginPath();
+          ctx.moveTo(nowPoint.x, nowPoint.y);
+        } else {
+          draw(nowPoint, false);
+        }
+
         index++;
       }, intervalTime);
     }
