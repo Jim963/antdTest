@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-
-//test
+import { useEffect, useRef, useState } from "react";
 import getTouchPos from "../../utils/getTouchPos";
 import getMousePos from "../../utils/getMousePos";
 import { useAtom } from "jotai";
@@ -25,12 +23,10 @@ const SignFile = () => {
     if (!!refCurrent) setCtx(refCurrent.getContext("2d"));
   }, [canvasRef]);
 
-  /** 開始 */
   const handleTouchStart = (event: React.TouchEvent) => {
     if (!canvas) return;
     setDrawing(true);
     const touchPos = getTouchPos(canvas, event);
-    // ctx && ctx.beginPath(touchPos.x, touchPos.y);
     if (!!ctx) {
       ctx.beginPath();
       setPositionCatch((pre) => [...pre, { x: touchPos.x, y: touchPos.y }]);
@@ -78,7 +74,6 @@ const SignFile = () => {
     draw(mousePos, true);
   };
 
-  /** 結束 */
   const handleTouchEnd = (_event: React.TouchEvent) => {
     setPositionCatch((pre) => [...pre, "stop"]);
     setDrawing(false);
@@ -89,7 +84,6 @@ const SignFile = () => {
     setDrawing(false);
   };
 
-  /** 清除 */
   const handleClear = () => {
     if (!ctx || !canvas) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
