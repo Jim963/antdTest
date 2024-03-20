@@ -36,54 +36,6 @@ const Demo = () => {
   const [openEdit, setOpenEdit] = useState(false);
   //modal
 
-  const test = () => {
-    const data = [
-      true,
-      true,
-      false,
-      true,
-      false,
-      false,
-      false,
-      true,
-      false,
-      true,
-      true,
-      false,
-    ];
-    let answer: any = new Array(data.length).fill("none");
-    const newData = data.map((item, index) => ({ value: item, site: index }));
-    const trueArr = newData.filter((item) => item.value === true);
-    const falseArr = newData.filter((item) => item.value === false);
-
-    let tmp = true;
-    let count = 0;
-
-    for (let i = 0; i < data.length; i++) {
-      const gap = count * 3;
-      if (tmp === true) {
-        console.log(i, "i", i - gap, "i-GAP", "true option");
-        answer[i] = trueArr[i - gap];
-        // 0,1,2,3,4,5 trueArr
-        // 0,1,2,6,7,8 realIndex
-      } else {
-        console.log(i, "i", i - gap, "i-GAP", "false option");
-        answer[i] = falseArr[i - gap];
-        // 0,1,2,3,4,5 falseArr
-        // 3,4,5,9,10,11 realIndex
-      }
-
-      if ((i + 1) % 3 === 0) {
-        tmp = !tmp;
-        count += 1;
-      }
-    }
-
-    console.log(answer, "答案");
-  };
-
-  test();
-
   return (
     <>
       {/* notification */}

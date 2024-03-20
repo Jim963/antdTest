@@ -2,6 +2,9 @@ import { useRoutes } from "react-router-dom";
 import routes from "./router/index";
 import { getUserToken } from "./utils/handleUserToken";
 
+//test
+import SignBox from "./components/SignTest";
+
 const App = () => {
   const userToken = getUserToken();
   console.log(userToken, "userToken");
@@ -10,7 +13,8 @@ const App = () => {
   return (
     <>
       <div className="App w-screen min-h-screen text-[#484848]">
-        {routeElement}
+        {/* {routeElement} */}
+        <SignBox></SignBox>
       </div>
     </>
   );
