@@ -105,25 +105,24 @@ const SignFile = () => {
       ctx.moveTo(startPoint.x, startPoint.y);
       let index = 1;
       const repainting = setInterval(() => {
-        console.log("ya");
-        const prePoint = positionCatch[index - 1];
+        const prePoint = index >= 1 && positionCatch[index - 1];
         const nowPoint = positionCatch[index];
         if (index >= positionCatch.length) {
-          console.log(index, "intervalClear");
+          setDrawing(false);
           clearInterval(repainting);
-          setDrawing(false);
-        }
-        if (nowPoint === "stop") {
-          setDrawing(false);
-        } else if (prePoint === "stop") {
-          setDrawing(true);
-          ctx.beginPath();
-          ctx.moveTo(nowPoint.x, nowPoint.y);
         } else {
-          draw(nowPoint, false);
-        }
+          if (nowPoint === "stop") {
+            setDrawing(false);
+          } else if (prePoint === "stop") {
+            setDrawing(true);
+            ctx.beginPath();
+            ctx.moveTo(nowPoint.x, nowPoint.y);
+          } else {
+            draw(nowPoint, false);
+          }
 
-        index++;
+          index++;
+        }
       }, intervalTime);
     }
   };
