@@ -19,9 +19,10 @@ const NatureSignTest = ({
     hashAlgorithm: "SHA256",
   });
   let timeoutId;
+  let STATE_CACHE = {};
 
   const login = () => {
-    console.log(natureState, "login@@@@@@@@@@@@");
+    console.log(STATE_CACHE, "看一下參數");
   };
 
   // get random tbs
@@ -67,14 +68,6 @@ const NatureSignTest = ({
 
   // 拿取tbs封包
   const getTbsPackage = () => {
-    console.log("getTbsPackage", {
-      tbs: natureState.tbs,
-      tbsEncoding: natureState.tbsEncoding,
-      hashAlgorithm: natureState.hashAlgorithm,
-      pin: pinCode,
-      func: "MakeSignature",
-      signatureType: "PKCS1",
-    });
     const tbsData = {
       tbs: encodeURIComponent(natureState.tbs),
       tbsEncoding: natureState.tbsEncoding,
@@ -83,26 +76,28 @@ const NatureSignTest = ({
       func: "MakeSignature",
       signatureType: "PKCS1",
     };
+    console.log(tbsData, "封包傳出");
     return JSON.stringify(tbsData);
   };
 
   //賦值
-  const setSignature = (signature) => {
+  const setSignature = (signature, cache) => {
     const ret = JSON.parse(signature);
-    console.log(ret, "setSignature");
-    console.log("setSignature", {
+    STATE_CACHE = {
+      ...cache,
       b64Signature: ret.signature,
       b64Cert: ret.certb64,
       returnCode: ret.ret_code,
-    });
-    setNatureState((pre) => {
-      return {
-        ...pre,
-        b64Signature: ret.signature,
-        b64Cert: ret.certb64,
-        returnCode: ret.ret_code,
-      };
-    });
+    };
+    console.log(ret, "setSignature");
+    // setNatureState((pre) => {
+    //   return {
+    //     ...pre,
+    //     b64Signature: ret.signature,
+    //     b64Cert: ret.certb64,
+    //     returnCode: ret.ret_code,
+    //   };
+    // });
     if (ret.ret_code !== 0) {
       console.log("nope");
       //   alert(MajorErrorReason(ret.ret_code));
@@ -117,7 +112,6 @@ const NatureSignTest = ({
   // 收到訊息處理
   const receiveMessage = (event) => {
     if (console) console.debug(event);
-
     //安全起見，這邊應填入網站位址檢查
     if (event.origin !== "http://localhost:61161") return;
     try {
@@ -127,10 +121,11 @@ const NatureSignTest = ({
         if (ret.func === "getTbs") {
           clearTimeout(timeoutId);
           const json = getTbsPackage();
+          STATE_CACHE = JSON.parse(json);
+          console.log(STATE_CACHE, "看一下cache");
           postTarget.current.postMessage(json, "*");
         } else if (ret.func === "sign") {
-          console.log(natureState, "nowState");
-          setSignature(event.data);
+          setSignature(event.data, STATE_CACHE);
         }
       } else {
         if (console) console.error("no func");
@@ -164,7 +159,7 @@ const NatureSignTest = ({
       console.log("remove!");
       window.removeEventListener("message", receiveMessage, false);
     };
-  });
+  }, [pinCode]);
 
   const handleChange = (e) => {
     const { value, name } = e.target;

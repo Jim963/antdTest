@@ -24,10 +24,6 @@ const App = () => {
     hashAlgorithm: "SHA256",
   });
   const [natureTrigger, setNatureTrigger] = useState(false);
-
-  useEffect(() => {
-    console.log(state, "state change");
-  }, [state.pinCode]);
   return (
     <>
       <div className="App w-screen min-h-screen text-[#484848]">
